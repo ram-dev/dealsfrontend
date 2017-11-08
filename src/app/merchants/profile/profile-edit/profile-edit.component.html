@@ -1,0 +1,120 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-header>
+                <h2 class="title">Profile</h2>                
+            </nb-card-header>
+        </nb-card>
+        <form (ngSubmit)="updateProfile()" #updateProfileForm="ngForm">
+            <div *ngIf="errors && errors.length > 0 && !submitted" class="alert alert-danger" role="alert">
+                <div><strong>Oh snap!</strong></div>
+                <div *ngFor="let error of errors">{{ error }}</div>
+            </div>
+            <div *ngIf="messages && messages.length > 0 && !submitted" class="alert alert-success" role="alert">
+                <div><strong>Hooray!</strong></div>
+                <div *ngFor="let message of messages">{{ message }}</div>
+            </div>
+            <nb-card>
+            	<nb-card-header>                
+	                <small class="form-text sub-title">User Details</small>
+	            </nb-card-header>
+            	<nb-card-body>
+	                <div class="row">
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-firstName">First Name</label>
+	                            <input name="firstName" [(ngModel)]="user.firstName" type="text" id="input-firstName" class="form-control" placeholder="First Name" #firstName="ngModel" [class.form-control-danger]="firstName.invalid && firstName.touched" [required]="getConfigValue('forms.validation.firstName.required')" autofocus>
+	                            <small class="form-text error" *ngIf="firstName.invalid && firstName.touched && firstName.errors?.required">firstName is required!</small>
+	                        </div>
+	                    </div>
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-lastName">Last Name</label>
+	                            <input name="lastName" [(ngModel)]="user.lastName" type="text" id="input-lastName" class="form-control" placeholder="Last Name" #lastName="ngModel" [class.form-control-danger]="lastName.invalid && lastName.touched" [required]="getConfigValue('forms.validation.lastName.required')" autofocus>
+	                            <small class="form-text error" *ngIf="lastName.invalid && lastName.touched && lastName.errors?.required">lastName is required!</small>
+	                        </div>
+	                    </div>
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-username">Email</label>
+	                            <input name="username" [(ngModel)]="user.username" type="text" id="input-username" class="form-control" placeholder="Email" #username="ngModel" [class.form-control-danger]="username.invalid && username.touched" [required]="getConfigValue('forms.validation.username.required')" autofocus>
+	                            <small class="form-text error" *ngIf="username.invalid && username.touched && username.errors?.required">Email is required!</small>
+	                        </div>
+	                    </div>
+	                </div>
+	                 <div class="row">
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-gender">Gender</label>
+	                            <input name="gender" [(ngModel)]="user.gender" type="text" id="input-gender" class="form-control" placeholder="Gender" #gender="ngModel">                           
+	                        </div>
+	                    </div>
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-phone">Phone</label>
+	                            <input name="phone" [(ngModel)]="user.phone" type="text" id="input-phone" class="form-control" placeholder="Phone" #phone="ngModel" [class.form-control-danger]="phone.invalid && phone.touched" [required]="getConfigValue('forms.validation.phone.required')">
+	                            <small class="form-text error" *ngIf="phone.invalid && phone.touched && phone.errors?.required">phone is required!</small>
+	                        </div>
+	                    </div>	                    
+	                </div>
+                </nb-card-body>
+            </nb-card>
+             <nb-card>
+            	<nb-card-header>                
+	                <small class="form-text sub-title">Contact Details</small>
+	            </nb-card-header>
+            	<nb-card-body>
+	                <div class="row">
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-address1">Address 1</label>
+	                            <input name="address1" [(ngModel)]="user.address1" type="text" id="input-address1" class="form-control" placeholder="Address 1" #firstName="ngModel" >
+	                        </div>
+	                    </div>
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-address2">Address 2</label>
+	                            <input name="address2" [(ngModel)]="user.address2" type="text" id="input-address2" class="form-control" placeholder="Address 2" #lastName="ngModel">
+	                        </div>
+	                    </div>
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-zip">Zip Code</label>
+	                            <input name="zip" [(ngModel)]="user.zip" type="text" id="input-zip" class="form-control" placeholder="Zip Code" #username="ngModel" >
+	                        </div>
+	                    </div>
+	                </div>
+	                 <div class="row">
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-state">State</label>
+	                            <input name="state" [(ngModel)]="user.state" type="text" id="input-state" class="form-control" placeholder="State" #state="ngModel">                           
+	                        </div>
+	                    </div>
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-city">City</label>
+	                            <input name="city" [(ngModel)]="user.city" type="text" id="input-city" class="form-control" placeholder="City" #city="ngModel" >	                           
+	                        </div>
+	                    </div>	 
+	                    <div class="col-md-4">
+	                        <div class="form-group">
+	                            <label for="input-country">Country</label>
+	                            <input name="country" [(ngModel)]="user.country" type="text" id="input-country" class="form-control" placeholder="Country" #country="ngModel">
+	                        </div>
+	                    </div>	                    
+	                </div>
+                </nb-card-body>
+            </nb-card>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-hero-success" >
+                        Save changes
+                    </button>
+                    
+                </div>
+            </div>
+            <br/>
+        </form>
+    </div>
+</div>

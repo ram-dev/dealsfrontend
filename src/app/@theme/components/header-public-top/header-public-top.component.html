@@ -1,0 +1,19 @@
+<div class="header-container" [class.left]="position === 'normal'" [class.right]="position === 'inverse'">
+    <div class="logo-containter">
+        <a  class="navigation"><i class="nb-home"></i></a>
+        <a  class="menu"> Food & Beverages</a>
+        <a  class="menu"> Wellness</a>
+        <a  class="menu"> SPA</a>
+        <a  class="menu"> Entertainment</a> 
+        <a  class="menu"> Travel</a> 
+        <a  class="menu"> E Shopping</a>       
+    </div>    
+</div>
+
+<div class="header-container" [class.left]="position === 'inverse'" [class.right]="position === 'normal'">
+    <div class="logo-containter">       
+        <a href="#/auth/register" class="menu"> Register</a> 
+        <a href="#/auth/login" class="menu"> Login</a>  
+        <a class="menu"><i class="fa fa-map-marker"></i> Hyderabad</a>     
+    </div>    
+</div>
