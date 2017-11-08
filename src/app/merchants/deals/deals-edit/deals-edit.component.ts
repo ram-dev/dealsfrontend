@@ -11,9 +11,9 @@ import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'ang
 })
 export class DealsEditComponent {
   private params;
-  private offerType = 1;
-  private DealType = 'Create';
-  private matDatepicker;
+  public offerType = 1;
+  public DealType = 'Create';
+  public matDatepicker;
   // Default selection
 optionsOutletModel: number[] = [2,3,4,6];
 

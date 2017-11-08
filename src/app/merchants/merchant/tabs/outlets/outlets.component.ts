@@ -8,7 +8,7 @@ import { DealsListService } from '../../../../@core/data/deals-list.service';
   template: `
     <nb-card>
   <nb-card-header>   
-    <a href="/#/merchants/deals/edit" class="btn btn-outline-success btn-sm"><i class="nb-plus"></i> Create Outlets</a>
+    <a href="/#/merchants/outlets/edit" class="btn btn-outline-success btn-sm"><i class="nb-plus"></i> Create Outlets</a>
   </nb-card-header>
 
   <nb-card-body>
@@ -72,9 +72,9 @@ export class OutletsComponent {
         type:'html',
         valuePrepareFunction:(cell,row)=>{         
           return `<div class="btn-group">
-          <a title="Edit" class="btn btn-primary btn-icon" href="/#/merchants/deals/edit/${row.id}"> 
+          <a title="Edit" class="btn btn-primary btn-icon" href="/#/merchants/outlets/edit/${row.id}"> 
           <i class="nb-edit"></i> 
-          <a title="Delete" class="btn btn-success btn-icon" href="/#/merchants/deals/addcoupon/${row.id}">
+          <a title="Delete" class="btn btn-success btn-icon" href="/#/merchants/outlets/addcoupon/${row.id}">
            <i class="nb-trash"></i>
            </a></div>`
         },

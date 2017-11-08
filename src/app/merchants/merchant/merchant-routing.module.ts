@@ -7,6 +7,7 @@ import { GeneralComponent } from './tabs/general/general.component';
 import { AmenitiesComponent } from './tabs/amenities/amenities.component';
 import { ImagesComponent } from './tabs/images/images.component';
 import { OutletsComponent } from './tabs/outlets/outlets.component';
+import { OultelsEditComponent } from './tabs/outlets/edit/edit.component';
 
 const routes: Routes = [{
   path: '',
@@ -48,5 +49,6 @@ export const routedComponents = [
   GeneralComponent,
   AmenitiesComponent,
   OutletsComponent,
-  ImagesComponent
+  ImagesComponent,
+  OultelsEditComponent
 ];

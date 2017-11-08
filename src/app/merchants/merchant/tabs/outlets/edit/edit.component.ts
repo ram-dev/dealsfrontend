@@ -5,15 +5,15 @@ import { DealsListService } from '../../../../../@core/data/deals-list.service';
 import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
 
 @Component({
-  selector: 'ngx-deals-edit',
-  templateUrl: './deals-edit.component.html',  
-  styleUrls: ['./deals-edit.component.scss']  
+  selector: 'ngx-oultes-edit',
+  templateUrl: './edit.component.html',  
+  styleUrls: ['./edit.component.scss']  
 })
-export class DealsEditComponent {
+export class OultelsEditComponent {
   private params;
-  private offerType = 1;
-  private DealType = 'Create';
-  private matDatepicker;
+  public offerType = 1;
+  public DealType = 'Create';
+  public matDatepicker;
   // Default selection
 optionsOutletModel: number[] = [2,3,4,6];
 
