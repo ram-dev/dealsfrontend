@@ -9,7 +9,7 @@ import { NbLayoutModule, NbCardModule, NbCheckboxModule } from '@nebular/theme';
 import { NbAuthService } from './services/auth.service';
 import { NbDummyAuthProvider } from './providers/dummy-auth.provider';
 import { NbEmailPassAuthProvider } from './providers/email-pass-auth.provider';
-
+import { ThemeModule } from '../@theme/theme.module';
 import {
   defaultSettings,
   NB_AUTH_USER_OPTIONS_TOKEN,
@@ -59,6 +59,7 @@ export function nbOptionsFactory(options) {
     RouterModule.forChild(routes),
     FormsModule,
     HttpClientModule,
+    ThemeModule
   ],
   declarations: [
     NbAuthComponent,

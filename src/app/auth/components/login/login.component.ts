@@ -14,6 +14,13 @@ import { NbAuthResult, NbAuthService } from '../../services/auth.service';
   selector: 'nb-login',
   template: `
     <nb-auth-block>
+
+        <nb-card>
+          <nb-card-body>
+            <div class="col-xl-4 col-lg-6 col-md-8 col-sm-12">
+              
+           
+      
       <h2 class="title">Sign In</h2>
       <small class="form-text sub-title">Hello! Sign in with your username or email</small>
 
@@ -91,6 +98,9 @@ import { NbAuthResult, NbAuthService } from '../../services/auth.service';
           Don't have an account? <a routerLink="../register"><strong>Sign Up</strong></a>
         </small>
       </div>
+       </div>
+          </nb-card-body>
+        </nb-card>
     </nb-auth-block>
   `,
 })

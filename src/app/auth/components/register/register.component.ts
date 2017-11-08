@@ -15,6 +15,9 @@ import { NbAuthResult, NbAuthService } from '../../services/auth.service';
   styleUrls: ['./register.component.scss'],
   template: `
     <nb-auth-block>
+    <nb-card>
+          <nb-card-body>
+            <div class="col-xl-4 col-lg-6 col-md-8 col-sm-12">
       <h2 class="title">Sign Up</h2>
       <form (ngSubmit)="register()" #form="ngForm">
 
@@ -122,6 +125,9 @@ import { NbAuthResult, NbAuthService } from '../../services/auth.service';
           Already have an account? <a routerLink="../login"><strong>Sign in</strong></a>
         </small>
       </div>
+      </div>
+          </nb-card-body>
+        </nb-card>
     </nb-auth-block>
   `,
 })

@@ -42,8 +42,8 @@ const routes: Routes = [
     ],
   },
   { path: 'home', loadChildren: 'app/home/home.module#HomeModule'},
-  { path: '', redirectTo: 'merchants', pathMatch: 'full' },
-  { path: '**', redirectTo: 'merchants' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 const config: ExtraOptions = {
