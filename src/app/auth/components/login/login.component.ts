@@ -84,7 +84,12 @@ import { NbAuthResult, NbAuthService } from '../../services/auth.service';
           Sign In
         </button>
       </form>
-
+      <div class="links">
+        
+        <small class="form-text">
+          Don't have an account? <a routerLink="../register"><strong>Sign Up</strong></a>
+        </small>
+      </div>
       
        </div>
           </nb-card-body>

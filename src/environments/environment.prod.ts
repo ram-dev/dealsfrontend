@@ -5,5 +5,5 @@
  */
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000/frontend/api/v1/'
+  apiUrl: 'http://35.194.79.203:3000/frontend/api/v1/'
 };
