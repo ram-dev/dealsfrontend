@@ -10,5 +10,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/frontend/api/v1/'
+  apiUrl: 'http://dev.yofferz.com:3000/frontend/api/v1/'
 };
