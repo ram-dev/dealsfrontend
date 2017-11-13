@@ -41,7 +41,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'Add Money',
     icon :'nb-plus-circled'
   },
-  {
+  /*{
     title: 'Auth',
     icon: 'nb-locked',
     children: [
@@ -62,5 +62,5 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/auth/reset-password',
       },
     ],
-  },
+  },*/
 ];

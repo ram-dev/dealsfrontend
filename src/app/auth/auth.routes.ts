@@ -42,5 +42,5 @@ export const routes: Routes = [
         component: NbResetPasswordComponent,
       },
     ],
-  },
+  }
 ];

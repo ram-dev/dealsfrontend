@@ -20,14 +20,20 @@ import 'rxjs/add/operator/delay';
   styleUrls: ['./home.layout.scss'],
   template: `
     <nb-layout [center]="layout.id === 'center-column'" windowMode>
-      <nb-layout-header fixed class="nav-top">
+      <nb-layout-header fixed class="nav-top mobilemenuInverse">
         <ngx-header-public-top [position]="sidebar.id === 'left' ? 'normal': 'inverse'"></ngx-header-public-top>
       </nb-layout-header>
       <nb-layout-header fixed class="secondary-menu">
         <ngx-header-public [position]="sidebar.id === 'left' ? 'normal': 'inverse'"></ngx-header-public>
-      </nb-layout-header>
-
-    
+      </nb-layout-header>  
+      <nb-sidebar class="menu-sidebar mobilemenu"
+                   tag="menu-sidebar"
+                   responsive
+                   [right]="sidebar.id === 'right'">
+        <nb-sidebar-header>         
+        </nb-sidebar-header>
+        <ng-content select="nb-menu"></ng-content>
+      </nb-sidebar>
 
       <nb-layout-column class="main-content">
         <ng-content select="router-outlet"></ng-content>
@@ -43,8 +49,7 @@ import 'rxjs/add/operator/delay';
 
       <nb-layout-footer fixed>
         <ngx-footer-public></ngx-footer-public>
-      </nb-layout-footer>
-
+      </nb-layout-footer>      
       
     </nb-layout>
   `,

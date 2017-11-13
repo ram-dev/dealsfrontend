@@ -1,5 +1,6 @@
 <div class="header-container" [class.left]="position === 'normal'" [class.right]="position === 'inverse'">
-    <div class="logo-containter">        
+    <div class="logo-containter">
+    	<a (click)="toggleSidebar()" class="navigation mobilemenu"><i class="nb-menu"></i></a>     
         <div class="logo" (click)="goToHome()">Y<span>offerZ.com</span></div>
     </div>    
 </div>

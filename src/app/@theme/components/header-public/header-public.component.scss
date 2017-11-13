@@ -6,7 +6,9 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-
+  .mobilemenu{
+    display:none;
+  }
   .left {
     display: flex;
     width: 100%;
@@ -82,12 +84,16 @@
     .toggle-layout {
       padding: 0;
     }
+    
   }
 
   @include media-breakpoint-down(sm) {
 
     nb-user /deep/ .user-name {
       display: none;
+    }
+    .mobilemenu /deep/{
+      display:block;
     }
   }
 
@@ -111,6 +117,10 @@
   @include media-breakpoint-down(xs) {
     .right /deep/ {
       display: none;
+    }
+
+    .mobilemenu /deep/{
+      display:block;
     }
   }
 }

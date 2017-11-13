@@ -5,12 +5,14 @@
  */
 import { Component, OnDestroy } from '@angular/core';
 import { NbAuthService } from '../services/auth.service';
+import { MENU_ITEMS } from '../../home/home-menu';
 
 @Component({
   selector: 'nb-auth',
   styleUrls: ['./auth.component.scss'],
   template: `
-  <ngx-home-layout>      
+  <ngx-home-layout>    
+      <nb-menu [items]="menu"></nb-menu>  
       <router-outlet></router-outlet>
     </ngx-home-layout>    
   `,
@@ -18,7 +20,7 @@ import { NbAuthService } from '../services/auth.service';
 export class NbAuthComponent implements OnDestroy {
 
   subscription: any;
-
+  menu = MENU_ITEMS;
   authenticated: boolean = false;
   token: string = '';
 
