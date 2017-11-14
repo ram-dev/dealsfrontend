@@ -3,10 +3,11 @@
 
 @include nb-install-component() {
   nb-card {
-    flex-direction: row;
+    //flex-direction: row;
     align-items: center;
-    height: 6rem;
+    height: 7rem;
     overflow: visible;
+    background: transparent;
 
     $bevel: btn-hero-bevel(nb-theme(card-bg));
     $shadow: nb-theme(btn-hero-shadow);
@@ -21,9 +22,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 5.75rem;
-      height: 4.75rem;
-      font-size: 3.75rem;
+      width: 3.75rem;
+      height: 2.75rem;
+      font-size: 1.75rem;
       border-radius: nb-theme(card-border-radius);
       transition: width 0.4s ease;
       transform: translate3d(0, 0, 0);
@@ -102,7 +103,7 @@
     }
 
     .status {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: nb-theme(font-weight-light);
       text-transform: uppercase;
       color: nb-theme(card-fg);

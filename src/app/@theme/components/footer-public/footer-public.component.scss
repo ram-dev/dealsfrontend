@@ -7,7 +7,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  .footer-nav{   
+    display:block;
+    a{
+      padding: .51rem;
+      border-left: 1px solid #dfdfdf;
+      &:first-child{
+        border-left:0;
+      }
+    }
+  }
   .socials {
     font-size: 2rem;
 
@@ -25,6 +34,10 @@
   @include media-breakpoint-down(is) {
     .socials {
       font-size: 1.5rem;
+    }
+
+    .footer-nav{   
+      display:none;
     }
   }
 }
