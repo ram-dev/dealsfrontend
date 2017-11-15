@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../shared/product.model'
+import { Deal } from '../shared/deal.model'
 
 @Component({
   selector: 'showcase',
@@ -8,7 +8,7 @@ import { Product } from '../shared/product.model'
 })
 export class ShowcaseComponent implements OnInit {
 
-  @Input() products: Product[]
+  @Input() products: Deal[]
 
   constructor() {
 

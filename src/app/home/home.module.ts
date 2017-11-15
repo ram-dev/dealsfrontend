@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './home.component';
 import { HomeDashboardModule } from './homedashboard/homedashboard.module';
+import { DealsCategoryModule } from './deals/deals-category.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import {
@@ -18,6 +19,7 @@ const HOME_COMPONENTS = [
     HomeRoutingModule,
     ThemeModule,
     HomeDashboardModule,
+    DealsCategoryModule,
     NgbCarouselModule.forRoot(),
     NgbAlertModule.forRoot(),
   ],

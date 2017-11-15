@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from '../shared/product.model';
-//import { CartService } from '../cart.service';
+import { Deal } from '../shared/deal.model';
 
 @Component({
   selector: 'product-thumbnail',
@@ -8,7 +7,7 @@ import { Product } from '../shared/product.model';
   styleUrls: ['./product-thumbnail.component.scss']
 })
 export class ProductThumbnailComponent implements OnInit {
-  @Input() product: Product
+  @Input() product: Deal
 
   detailViewActive: boolean
 

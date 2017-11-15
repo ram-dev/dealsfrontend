@@ -1,0 +1,253 @@
+@import "./shared/colors";
+@import "./shared/mixins";
+@import '../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+
+@include nb-install-component() {
+.main-container{
+  padding-top: 2rem;
+}
+
+.filters-wrapper{
+  position: relative;
+  z-index: 100;
+}
+
+sort-filters{
+  position: relative;
+  z-index: 20;
+}
+
+cart{
+  position: absolute;
+  top: -23px;
+  right: -57px;
+  z-index: 99999999;
+}
+
+search-bar{
+  position: relative;
+  top: -8px;
+}
+
+showcase{
+  position: relative;
+  top: -39px;
+  z-index: 10
+}
+
+.sort-filters-wrapper{
+  position: relative;
+}
+
+url-form{
+  position: absolute;
+  top: -55px;
+}
+
+/** Media queries **/
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px) {
+    url-form{
+        position: fixed;
+        bottom: 20px;
+        left: 10px;
+    }
+
+    filters{
+      position: fixed;
+      top: 71px;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+    }
+    .sort-filters-wrapper{
+      position: fixed;
+      top: 44px;
+      left: 0;
+      width: 100%;
+      box-shadow: 0px 3px 16px rgba(0,0,0,0.3);
+      padding-top: 10px;
+      background: $primary-color;
+      z-index: 200;
+    }
+
+    .main-container{
+      padding-top: 34px;
+    }
+    search-bar{
+      position: fixed;
+      top: 0;
+      width: 100%;
+      left: 0;
+      z-index: 9000;
+    }
+
+  }
+
+    .solar-card nb-card-header {
+        border: none;
+        padding-bottom: 0;
+    }
+    .home-container {
+        padding: 2rem;
+    }
+    .section-header {
+        color: #25b15c;
+        text-align: center;
+        padding: 1rem 0;
+        border-top: 1px solid #636c72;
+        border-bottom: 1px solid #a4abb3;
+        margin: 1% 0;
+    }
+    .slider {
+        margin-top: 8.3rem; 
+        .img-fluid {
+            max-height: 18rem;
+        }
+    }
+    .cat-why-section {
+        background: url(/assets/images/category/footer2.jpg) no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+    .home-category-section {
+        width: 100%;
+        padding: 0;
+
+        li {
+            list-style: none;
+
+            .categoryWrapper {
+                width: calc(94% /3);
+                height: 17rem;
+                margin: 1%;
+                display: inline-block;
+                float: left;
+                position: relative;
+
+                &.cat-food {
+                    background: url(/assets/images/category/food.jpg) no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+
+                &.cat-wellness {
+                    background: url(/assets/images/category/wellness.jpg) no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+                &.cat-spa {
+                    background: url(/assets/images/category/spa.jpg) no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+                &.cat-entertainment {
+                    background: url(/assets/images/category/entertainment.png) no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+                &.cat-travels {
+                    background: url(/assets/images/category/travel.jpg) no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+                &.cat-shopping {
+                    background: url(/assets/images/category/shopping.jpg) no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                }
+            }
+
+            .cat-section {
+                width: 100%;
+                height: 100%;
+                display: block;
+                position: relative;
+                background: rgba(93, 18, 18, 0.71);
+            }
+
+            .cat-why {
+                .cat-section {
+                    background: transparent;
+                }
+                .cat-icon {
+                    font-size: .8em;
+                    bottom: 56%;
+                    background-image: linear-gradient(to right, #4cc4ff, #4ca6ff);
+                    box-shadow: 0 0 0 0 #419cdb, 0 0 0 0 #4cb5ff;
+                }
+                .cat-title {
+                    bottom: 34%;
+                }
+                .cat-sub {
+                    position: absolute;
+                    top: 69%;
+                    text-align: center;
+                    color: #fff;
+                    width: 100%;
+                }
+            }
+            .cat-icon {
+                color: #fff;
+                position: absolute;
+                bottom: 36%;
+                right: 36%;
+                padding: .5rem 1.5rem;
+                font-size: 1.2em;
+                background-image: linear-gradient(to right, #40dcb2, #40dc7e);
+                box-shadow: 0 0 0 0 #37bd83, 0 0 0 0 #40dc98;
+                border-radius: 10%;
+
+                span {
+                    font-size: 5em;
+                }
+            }
+            .cat-title {
+                color: #fff;
+                font-size: 2em;
+                bottom: 14%;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+            }
+        }
+    }
+
+
+    @include media-breakpoint-down(sm) {
+        ngx-traffic {
+            display: none;
+        }
+        .slider {
+            margin-top: 0;
+            .img-fluid {
+                max-height: 24rem;
+            }
+        }
+        .home-category-section {
+            li {
+                .categoryWrapper {
+                    width: 100%;
+                    margin-bottom: 1%;
+                }
+                .cat-icon {
+                    bottom: 50%;
+                    right: calc(90%/3);
+                    span {
+                        font-size: 3em;
+                    }
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down(is) {
+        /deep/ nb-card.large-card {
+            height: nb-theme(card-height-medium);
+        }
+    }
+}

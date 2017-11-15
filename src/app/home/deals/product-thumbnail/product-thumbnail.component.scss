@@ -1,6 +1,9 @@
 @import "../shared/colors";
 @import "../shared/mixins";
-
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+@include nb-install-component(){
 .wrapper{
   border-radius: 5px;
   box-shadow: 0 5px 5px;
@@ -58,23 +61,20 @@
 }
 
 .img-wrapper{
-  height: 85px;
+  height: 12rem;
   position: relative;
   overflow: hidden;
 }
 
 .details{
-  padding-bottom: 7px;
+  margin: 1rem;
+  padding: 1rem;
   hr{
     width: 90%;
     height: 0;
     border-top: 1px solid $primary-color;
   }
-  button{
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
+  
   .view:hover, .cart:hover{
     opacity: 0.8;
   }
@@ -195,7 +195,7 @@
     padding-left: 14px;
     padding-right: 14px;
     height: 90%;
-    overflow: scroll;
+    overflow: hidden;
   }
   .bg{
     position: absolute;
@@ -229,6 +229,12 @@
   margin-top: 18px;
   font-weight: 600;
   margin-bottom: 3px;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 .4rem;
 }
 
 .price{
@@ -331,7 +337,7 @@
       margin-bottom: -22px;
     }
     .img-wrapper{
-      height: 123px;
+      height: 14rem;
     }
 
     .detail-view{
@@ -349,4 +355,5 @@
         height: 78%;
       }
     }
+}
 }

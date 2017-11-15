@@ -12,16 +12,12 @@ import { DealSummaryComponent } from './dealsummary/dealsummary.component';
 import { DealSummarychartsPieComponent } from './dealsummary/dealsummary-chart/dealsummary-chart.component';
 import { DownloadGraphComponent } from './downloadgraph/downloadgraph.component';
 import { DownloadGraphChartComponent } from './downloadgraph/downloadgraph-chart/downloadgraph-chart.component';
-import { ShowcaseComponent } from './showcase/showcase.component';
-import { ProductComponent } from './product/product.component';
-import { ProductThumbnailComponent } from './product-thumbnail/product-thumbnail.component';
 
 import {
     NgbCarouselModule,
     NgbAlertModule
 } from '@ng-bootstrap/ng-bootstrap';
 
-import { DataService } from './data.service';
 
 @NgModule({
   imports: [
@@ -38,13 +34,10 @@ import { DataService } from './data.service';
     DealSummaryComponent,
     DownloadGraphComponent,
     DownloadGraphChartComponent,
-    DealSummarychartsPieComponent,
-    ShowcaseComponent,
-    ProductComponent,
-    ProductThumbnailComponent,
+    DealSummarychartsPieComponent    
   ],
   providers: [
-    DataService,    
+      
   ],
 })
 export class HomeDashboardModule { }

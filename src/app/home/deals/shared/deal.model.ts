@@ -14,4 +14,5 @@ export class Deal{
   terms : string
   images: string[]
   best_seller : boolean
+  available: boolean
 }

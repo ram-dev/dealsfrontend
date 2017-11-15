@@ -3,13 +3,43 @@ import { NgModule } from '@angular/core';
 
 import { HomeComponent } from './home.component';
 import { HomeDashboardComponent } from './homedashboard/homedashboard.component';
+import { DealsCategoryComponent } from './deals/deals-category.component';
 
 const routes: Routes = [{
   path: '',
   component: HomeComponent,
-  children: [{
+  children: [
+  {    
     path: 'index',
     component: HomeDashboardComponent
+  },
+  {
+    path: 'deals',    
+    component: DealsCategoryComponent
+  },
+  {
+    path: 'deals-food/:id',    
+    component: DealsCategoryComponent
+  },
+  {
+    path: 'deals-wellness/:id',    
+    component: DealsCategoryComponent
+  },
+  {
+    path: 'deals-spa/:id',    
+    component: DealsCategoryComponent
+  },
+  {
+    path: 'deals-entertainment/:id',    
+    component: DealsCategoryComponent
+  },
+  {
+    path: 'deals-travel/:id',    
+    component: DealsCategoryComponent
+  },
+  {
+    path: 'deals-shopping/:id',    
+    component: DealsCategoryComponent
   },
   {
     path: '',
