@@ -27,6 +27,7 @@ import {
   ThemeSettingsComponent,
   ThemeSwitcherComponent,
   TinyMCEComponent,
+  MultipleCarousel,
 } from './components';
 import { CapitalizePipe, PluralPipe, RoundPipe, TimingPipe } from './pipes';
 import {
@@ -70,6 +71,7 @@ const COMPONENTS = [
   HomeLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
+  MultipleCarousel,
 ];
 
 const PIPES = [

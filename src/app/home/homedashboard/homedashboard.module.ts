@@ -18,6 +18,7 @@ import {
     NgbAlertModule
 } from '@ng-bootstrap/ng-bootstrap';
 
+import { DataService } from '../deals/dealdata.service';
 
 @NgModule({
   imports: [
@@ -37,7 +38,7 @@ import {
     DealSummarychartsPieComponent    
   ],
   providers: [
-      
+    DataService
   ],
 })
 export class HomeDashboardModule { }

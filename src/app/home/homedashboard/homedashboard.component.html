@@ -12,119 +12,289 @@
     </div>
 </div>
 <div class="row">
-  <div class="col-md-12"><h2 class="section-header">Our Deals</h2></div>
+    <div class="col-md-12">
+        <h2 class="section-header">Our Deals</h2></div>
 </div>
-<div class="row home-category-section">
-  <div class="col-md-12">
-    <ul>
-      <li>
-        <div class="categoryWrapper cat-food"> 
-          <a href="#/home/deals-food/1" class="cat-section"><div class="cat-icon"><span><i class="fa fa-cutlery"></i></span></div><div class="cat-title">Deals in Food & Beverages</div></a>
+<section class="food">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="section-header-cat">
+            <h4 class="float-md-left"><a href="#/home/deals-food/1"><i class="fa fa-cutlery"></i> Deals in Food & Beverages</a></h4>
+            <a class="float-md-right" href="#/home/deals-food/1"><span>View all</span></a>
         </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-wellness"> 
-          <a href="#/home/deals-wellness/2" class="cat-section"><div class="cat-icon"><span><i class="fa fa-heartbeat"></i></span></div><div class="cat-title">Deals in Wellness</div></a>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-spa"> 
-          <a href="#/home/deals-spa/3" class="cat-section"><div class="cat-icon"><span><i class="fa fa-bath"></i></span></div><div class="cat-title">Deals in SPA</div></a>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-entertainment"> 
-          <a href="#/home/deals-entertainment/4" class="cat-section"><div class="cat-icon"><span><i class="fa fa-film"></i></span></div><div class="cat-title">Deals in Entertainment</div></a>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-travels"> 
-          <a href="#/home/deals-travel/5" class="cat-section"><div class="cat-icon"><span><i class="fa fa-plane"></i></span></div><div class="cat-title">Deals in Travels</div></a>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-shopping"> 
-          <a href="#/home/deals-shopping/6" class="cat-section"><div class="cat-icon"><span><i class="fa fa-shopping-bag"></i></span></div><div class="cat-title">Deals in E-Shopping</div></a>
-        </div>
-      </li>
-    </ul>
+        <hr/>
+    </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-md-12">
+        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+    </div>
+  </div>
+</section>
+
+<section class="wellness">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="section-header-cat">
+            <h4 class="float-md-left"><a href="#/home/deals-wellness/2"><i class="fa fa-heartbeat"></i> Deals in Wellness</a></h4>
+            <a class="float-md-right" href="#/home/deals-wellness/2"><span>View all</span></a>
+        </div>
+        <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+    </div>
+  </div>
+</section>
+
+<section class="spa">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="section-header-cat">
+            <h4 class="float-md-left"><a href="#/home/deals-spa/3"><i class="fa fa-bath"></i> Deals in SPA</a></h4>
+            <a class="float-md-right" href="#/home/deals-spa/3"><span>View all</span></a>
+        </div>
+        <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+    </div>
+  </div>
+</section>
+
+<section class="entertainment">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="section-header-cat">
+            <h4 class="float-md-left"><a href="#/home/deals-entertainment/4"><i class="fa fa-film"></i> Deals in Entertainment</a></h4>
+            <a class="float-md-right" href="#/home/deals-entertainment/4"><span>View all</span></a>
+        </div>
+        <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+    </div>
+  </div>
+</section>
+
+<section class="travel">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="section-header-cat">
+            <h4 class="float-md-left"><a href="#/home/deals-travel/5"><i class="fa fa-plane"></i> Deals in Travels</a></h4>
+            <a class="float-md-right" href="#/home/deals-travel/5"><span>View all</span></a>
+        </div>
+        <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+    </div>
+  </div>
+</section>
+
+<section class="shopping">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="section-header-cat">
+            <h4 class="float-md-left"><a href="#/home/deals-shopping/6"><i class="fa fa-shopping-bag"></i> Deals in E-Shopping</a></h4>
+            <a class="float-md-right" href="#/home/deals-shopping/6"><span>View all</span></a>
+        </div>
+        <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+    </div>
+  </div>
+</section>
+
+<ng-template #prev>
+    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+</ng-template>
+<ng-template #next>
+    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+</ng-template>
+<ng-template #item let-item let-i="index">
+    <div class="categoryItem">
+        <div class="wrapper" [class.unavailable]='!item.available'>
+            <div class="info">
+                <div class="img-wrapper">
+                    <img class="img" [src]='item.images[0]'>
+                    <div class="img-placeholder"></div>
+                </div>
+                <h5 class="title">{{item.name}}</h5>
+                <p class="price"><span>{{item.discount}}</span> % Discount</p>
+            </div>
+            <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf='item.best_seller'>
+                <span class="star left">&nbsp;</span>
+                <span class="txt">Bestoffer</span>
+                <span class="star right">&nbsp;</span>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<!-- <div class="row home-category-section">
+    <div class="col-md-12">
+        <ul>
+            <li>
+                <div class="categoryWrapper cat-food">
+                    <a href="#/home/deals-food/1" class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-cutlery"></i></span></div>
+                        <div class="cat-title">Deals in Food & Beverages</div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-wellness">
+                    <a href="#/home/deals-wellness/2" class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-heartbeat"></i></span></div>
+                        <div class="cat-title">Deals in Wellness</div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-spa">
+                    <a href="#/home/deals-spa/3" class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-bath"></i></span></div>
+                        <div class="cat-title">Deals in SPA</div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-entertainment">
+                    <a href="#/home/deals-entertainment/4" class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-film"></i></span></div>
+                        <div class="cat-title">Deals in Entertainment</div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-travels">
+                    <a href="#/home/deals-travel/5" class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-plane"></i></span></div>
+                        <div class="cat-title">Deals in Travels</div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-shopping">
+                    <a href="#/home/deals-shopping/6" class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-shopping-bag"></i></span></div>
+                        <div class="cat-title">Deals in E-Shopping</div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div> -->
 <div class="row">
-  <div class="col-md-12"><h2 class="section-header">Other Services</h2></div>
+    <div class="col-md-12">
+        <h2 class="section-header">Other Services</h2></div>
 </div>
 <div class="home-container">
-  <div class="row">
-            <div class="col-xxxl-2 col-md-2">
-                <ngx-status-card title="Car Wash" value="" type="info">
-                    <i class="fa fa-car"></i>
-                </ngx-status-card>
-            </div>
-            <div class="col-xxxl-2 col-md-2">
-                <ngx-status-card title="Pest Control" value="" type="info">
-                    <i class="fa fa-fire-extinguisher"></i>
-                </ngx-status-card>
-            </div>
-            <div class="col-xxxl-2 col-md-2">
-                <ngx-status-card title="Photography" value="" type="info">
-                    <i class="fa fa-camera"></i>
-                </ngx-status-card>
-            </div>
-            <div class="col-xxxl-2 col-md-2">
-                <ngx-status-card title="Dance & Music Classes" value="" type="info">
-                    <i class="fa fa-music"></i>
-                </ngx-status-card>
-            </div>
-            <div class="col-xxxl-2 col-md-2">
-                <ngx-status-card title="Flower & Cake Delivary" value="" type="info">
-                    <i class="fa fa-truck"></i>
-                </ngx-status-card>
-            </div>
-            <div class="col-xxxl-2 col-md-2">
-                <ngx-status-card title="Coaching Classes" value="" type="info">
-                    <i class="fa fa-certificate"></i>
-                </ngx-status-card>
-            </div>
+    <div class="row">
+        <div class="col-xxxl-2 col-md-2">
+            <ngx-status-card title="Car Wash" value="" type="info">
+                <i class="fa fa-car"></i>
+            </ngx-status-card>
         </div>
-   
+        <div class="col-xxxl-2 col-md-2">
+            <ngx-status-card title="Pest Control" value="" type="info">
+                <i class="fa fa-fire-extinguisher"></i>
+            </ngx-status-card>
+        </div>
+        <div class="col-xxxl-2 col-md-2">
+            <ngx-status-card title="Photography" value="" type="info">
+                <i class="fa fa-camera"></i>
+            </ngx-status-card>
+        </div>
+        <div class="col-xxxl-2 col-md-2">
+            <ngx-status-card title="Dance & Music Classes" value="" type="info">
+                <i class="fa fa-music"></i>
+            </ngx-status-card>
+        </div>
+        <div class="col-xxxl-2 col-md-2">
+            <ngx-status-card title="Flower & Cake Delivary" value="" type="info">
+                <i class="fa fa-truck"></i>
+            </ngx-status-card>
+        </div>
+        <div class="col-xxxl-2 col-md-2">
+            <ngx-status-card title="Coaching Classes" value="" type="info">
+                <i class="fa fa-certificate"></i>
+            </ngx-status-card>
+        </div>
+    </div>
 </div>
 <div class="row">
-  <div class="col-md-12"><h2 class="section-header">Why YofferZ.com ?</h2></div>
+    <div class="col-md-12">
+        <h2 class="section-header">Why YofferZ.com ?</h2></div>
 </div>
 <div class="row home-category-section cat-why-section">
-  <div class="col-md-12">
-    <ul>
-      <li>
-        <div class="categoryWrapper cat-why"> 
-          <div class="cat-section"><div class="cat-icon"><span><i class="fa fa-cloud-download"></i></span></div><div class="cat-title">FREE Download!</div>
-          <div class="cat-sub">All of our coupons are completely free to download.</div></div>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-why"> 
-          <div class="cat-section"><div class="cat-icon"><span><i class="fa fa-bell"></i></span></div><div class="cat-title">Crazy Discount Offerz!</div><div class="cat-sub">We work Hard to bring you exclusive discounted Offers you won't find anywhere else!</div></div>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-why"> 
-          <div class="cat-section"><div class="cat-icon"><span><i class="fa fa-shopping-cart"></i></span></div><div class="cat-title">My Shops</div><div class="cat-sub">Find your favorite shops online</div></div>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-why"> 
-          <div class="cat-section"><div class="cat-icon"><span><i class="fa fa-sign-in"></i></span></div><div class="cat-title">Easy Registration</div><div class="cat-sub">Easy registration process helps business to grow Online.</div></div>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-why"> 
-          <div class="cat-section"><div class="cat-icon"><span><i class="fa fa-download"></i></span></div><div class="cat-title">Easy download</div><div class="cat-sub">No hassle: Enter your mobile no and OTP to get the discount Voucher</div></div>
-        </div>
-      </li>
-      <li>
-        <div class="categoryWrapper cat-why"> 
-          <div class="cat-section"><div class="cat-icon"><span><i class="fa fa-user"></i></span></div><div class="cat-title">No Account Required</div><div class="cat-sub">Vouchers are available for all, no membership required.</div></div>
-        </div>
-      </li>
-    </ul>
-  </div>
+    <div class="col-md-12">
+        <ul>
+            <li>
+                <div class="categoryWrapper cat-why">
+                    <div class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-cloud-download"></i></span></div>
+                        <div class="cat-title">FREE Download!</div>
+                        <div class="cat-sub">All of our coupons are completely free to download.</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-why">
+                    <div class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-bell"></i></span></div>
+                        <div class="cat-title">Crazy Discount Offerz!</div>
+                        <div class="cat-sub">We work Hard to bring you exclusive discounted Offers you won't find anywhere else!</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-why">
+                    <div class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-shopping-cart"></i></span></div>
+                        <div class="cat-title">My Shops</div>
+                        <div class="cat-sub">Find your favorite shops online</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-why">
+                    <div class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-sign-in"></i></span></div>
+                        <div class="cat-title">Easy Registration</div>
+                        <div class="cat-sub">Easy registration process helps business to grow Online.</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-why">
+                    <div class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-download"></i></span></div>
+                        <div class="cat-title">Easy download</div>
+                        <div class="cat-sub">No hassle: Enter your mobile no and OTP to get the discount Voucher</div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="categoryWrapper cat-why">
+                    <div class="cat-section">
+                        <div class="cat-icon"><span><i class="fa fa-user"></i></span></div>
+                        <div class="cat-title">No Account Required</div>
+                        <div class="cat-sub">Vouchers are available for all, no membership required.</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
