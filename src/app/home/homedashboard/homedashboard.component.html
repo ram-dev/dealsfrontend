@@ -27,7 +27,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+        <ngx-deal-slider catId="1" ></ngx-deal-slider>
     </div>
   </div>
 </section>
@@ -44,7 +44,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+        <ngx-deal-slider catId="2" ></ngx-deal-slider>
     </div>
   </div>
 </section>
@@ -61,10 +61,10 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+        <ngx-deal-slider catId="3" ></ngx-deal-slider>
     </div>
   </div>
-</section>
+</section> 
 
 <section class="entertainment">
   <div class="row">
@@ -78,7 +78,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+        <ngx-deal-slider catId="4" ></ngx-deal-slider>
     </div>
   </div>
 </section>
@@ -95,10 +95,10 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+        <ngx-deal-slider catId="5" ></ngx-deal-slider>
     </div>
   </div>
-</section>
+</section> 
 
 <section class="shopping">
   <div class="row">
@@ -112,36 +112,12 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-        <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+        <ngx-deal-slider catId="6" ></ngx-deal-slider>
     </div>
   </div>
 </section>
 
-<ng-template #prev>
-    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-</ng-template>
-<ng-template #next>
-    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-</ng-template>
-<ng-template #item let-item let-i="index">
-    <div class="categoryItem">
-        <div class="wrapper" [class.unavailable]='!item.available'>
-            <div class="info">
-                <div class="img-wrapper">
-                    <img class="img" [src]='item.images[0]'>
-                    <div class="img-placeholder"></div>
-                </div>
-                <h5 class="title">{{item.name}}</h5>
-                <p class="price"><span>{{item.discount}}</span> % Discount</p>
-            </div>
-            <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf='item.best_seller'>
-                <span class="star left">&nbsp;</span>
-                <span class="txt">Bestoffer</span>
-                <span class="star right">&nbsp;</span>
-            </div>
-        </div>
-    </div>
-</ng-template>
+
 <!-- <div class="row home-category-section">
     <div class="col-md-12">
         <ul>

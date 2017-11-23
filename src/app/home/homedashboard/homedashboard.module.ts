@@ -12,6 +12,8 @@ import { DealSummaryComponent } from './dealsummary/dealsummary.component';
 import { DealSummarychartsPieComponent } from './dealsummary/dealsummary-chart/dealsummary-chart.component';
 import { DownloadGraphComponent } from './downloadgraph/downloadgraph.component';
 import { DownloadGraphChartComponent } from './downloadgraph/downloadgraph-chart/downloadgraph-chart.component';
+import { DealSliderComponent } from './deal-slider/deal-slider.component';
+
 
 import {
     NgbCarouselModule,
@@ -35,7 +37,8 @@ import { DataService } from '../deals/dealdata.service';
     DealSummaryComponent,
     DownloadGraphComponent,
     DownloadGraphChartComponent,
-    DealSummarychartsPieComponent    
+    DealSummarychartsPieComponent,
+    DealSliderComponent  
   ],
   providers: [
     DataService

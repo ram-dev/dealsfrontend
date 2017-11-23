@@ -1,0 +1,26 @@
+<div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+<ng-template #prev>
+    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+</ng-template>
+<ng-template #next>
+    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+</ng-template>
+<ng-template #item let-item let-i="index">    
+    <div class="categoryItem" *ngIf="item.categories.indexOf(catId) > -1">
+        <div class="wrapper" [class.unavailable]='!item.available'>
+            <div class="info">
+                <div class="img-wrapper">
+                    <img class="img" [src]='item.images[0]'>
+                    <div class="img-placeholder"></div>
+                </div>
+                <h5 class="title">{{item.name}}</h5>
+                <p class="price"><span>{{item.discount}}</span> % Discount</p>
+            </div>
+            <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf='item.best_seller'>
+                <span class="star left">&nbsp;</span>
+                <span class="txt">Bestoffer</span>
+                <span class="star right">&nbsp;</span>
+            </div>
+        </div>
+    </div>
+</ng-template>

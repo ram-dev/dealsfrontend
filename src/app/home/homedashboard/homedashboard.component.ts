@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import { Deal } from '../deals/shared/deal.model';
-import { DataService } from '../deals/dealdata.service';
 
 @Component({
   selector: 'ngx-dashboard',
@@ -9,13 +7,10 @@ import { DataService } from '../deals/dealdata.service';
   templateUrl: './homedashboard.component.html',
 })
 export class HomeDashboardComponent {
-  sliders: Array<any> = [];
-  items: Array<any> = []
-  products: Deal[]
-  sliderWidth: any ;
+  sliders: Array<any> = [];  
 
-  constructor(private dataService: DataService) {
-    this.sliderWidth = outerWidth - 80;   
+  constructor() {
+      
     this.sliders.push({
             imagePath: 'assets/images/camera1.jpg',
             label: 'First slide label',
@@ -33,8 +28,6 @@ export class HomeDashboardComponent {
   }
 
   ngOnInit(){
-    this.dataService.getData().then(data => {      
-      this.items = data.deals;  
-    })
+    
   }
 }
