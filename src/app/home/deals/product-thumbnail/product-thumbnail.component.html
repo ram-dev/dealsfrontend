@@ -14,7 +14,7 @@
             <button type="button" class="btn btn-outline-success btn-tn" (click)='onProductClick()'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> View more</button>
           </div>
           <div class="col-4-sm offset-sm-1">
-            <button type="button" class="btn btn-outline-success btn-tn"><i class="fa fa-download" aria-hidden="true"></i> Coupon</button>
+            <button type="button" (click)="redirect(product.id)" class="btn btn-outline-success btn-tn"><i class="fa fa-download" aria-hidden="true"></i> Coupon</button>
           </div>
         </div>
       </div>

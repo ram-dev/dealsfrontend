@@ -5,17 +5,17 @@ import { DataService } from '../../deals/dealdata.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'ngx-deal-slider',
-  styleUrls: ['./deal-slider.component.scss'],
-  templateUrl: './deal-slider.component.html',
+  selector: 'ngx-deal-hot',
+  styleUrls: ['./deal-hot.component.scss'],
+  templateUrl: './deal-hot.component.html',
 })
-export class DealSliderComponent implements OnDestroy {  
+export class DealHotComponent implements OnDestroy {  
 
   @Input() catId: number;
   items: Array<any> = [];
   sliderWidth: any ;
 
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(private dataService: DataService,  private router: Router) {
     this.sliderWidth = outerWidth - 80; 
     
   }
@@ -29,6 +29,7 @@ export class DealSliderComponent implements OnDestroy {
   redirect(pagename: string) {    
     this.router.navigate(['/home/deals/view/'+pagename]);
   }
+
   ngOnDestroy() {
     
   }

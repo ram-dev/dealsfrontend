@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Deal } from '../shared/deal.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'product-thumbnail',
@@ -11,7 +12,7 @@ export class ProductThumbnailComponent implements OnInit {
 
   detailViewActive: boolean
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
@@ -21,6 +22,10 @@ export class ProductThumbnailComponent implements OnInit {
 
   onProductClick(){
     this.detailViewActive = !this.detailViewActive
+  }
+
+  redirect(pagename: string) {    
+    this.router.navigate(['/home/deals/view/'+pagename]);
   }
 
   onAddToCart(){

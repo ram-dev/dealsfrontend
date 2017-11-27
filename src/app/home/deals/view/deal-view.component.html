@@ -1,0 +1,132 @@
+<div class="dealViewWrapper container">
+    <div class="row">
+        <div class="col-md-12 col-lg-6">
+            <nb-card size="xlarge">
+            	<nb-card-body>
+            	<div class="row">
+            		<div class="col-md-12">            			
+		                    <ngb-carousel>
+		                        <ng-template ngbSlide *ngFor="let slider of sliders">
+		                            <img class="img-fluid mx-auto d-block" [src]="slider.imagePath" alt="Random first slide" width="100%">                           
+		                        </ng-template>
+		                    </ngb-carousel>
+		                    <div class="DealTitle dealdetails">
+					          	<div class="heading">
+					            <h3 class="imgHead">Over The Top
+					            	<span style="font-size:14px;">
+					              	,<span id="repLocation_185">Janakpuri</span>
+					                </span>
+					            </h3>
+					          </div>
+					          <h6 title="Enjoy your favourite food at Over the Top. Now Get Flat 20 % of on the bill ( Drinks and Food)">Enjoy your favourite food at Over the Top. Now Get Flat 20 % of on the bill ( Drinks and Food)</h6>
+					        </div> 
+					        <div class="share-deals">
+	                			<span>Share the Deal</span><br>
+	                			<share-buttons [theme]="'circles'"
+								 [include]="['facebook','twitter','google']"
+								 [show]="3"
+								 [size]="-3"
+								 [url]="'http://twitter.com'"
+								 [title]="'test1'"
+								 [description]="'desc'"
+								 [image]="'345'"
+								 [tags]="'fsdfds'"
+								></share-buttons>
+	                		</div>  
+		                
+            		</div>
+            	</div>             
+               
+                </nb-card-body>       
+            </nb-card>
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <nb-card size="xlarge">
+                <nb-tabset>
+                    <nb-tab tabTitle="COUPON">
+                        <div>
+                            <h4>Download This Coupon</h4>
+                            <p>To download this Coupon, enter your Mobile No.</p>
+                            <div class="input-group mail-btn-group">
+					          <span class="input-group-btn">
+					            <button class="btn btn-success btn-icon">
+					              +91
+					            </button>
+					          </span>
+					          <input type="text" class="form-control" placeholder="Please enter your mobile no">
+					          <span class="input-group-btn">
+					            <button class="btn btn-success">
+					              SMS me this FREE Coupon
+					            </button>
+					          </span>
+					        </div>
+					        <nb-checkbox [value]="true" disabled>I agree to </nb-checkbox><a target="_blank" href="">terms of use</a>
+					        <p class="term"> <i class="fa fa-lock" aria-hidden="true"></i> <span style="margin-top:8px; font-size:11px;">Your Mobile No. is 100% safe with us.</span></p>
+                        </div>
+                        <div>
+                            <h4>Address</h4>
+                            <div class="row">
+                            	<div class="col-md-12"> <p title="GF-3&amp;4,D2 SOUTHERN PARK MALL BEHIND SELECT CITY WALK SAKET NEW DELHI .,BEHIND SELECT CITY  MALL,South Delhi">GF-3&amp;4,D2 SOUTHERN PARK MALL BEHIND SELECT CITY WALK SAKET NEW DELHI .,BEHIND SELECT CITY  MALL,South Delhi</p></div>
+                            	<div class="col-md-12">
+                            		<ngx-gmaps [latValue]=51.678418 [lngValue]=7.809007 ></ngx-gmaps>
+                            	</div>
+                            </div>
+                        </div>
+                    </nb-tab>                   
+                    <nb-tab tabTitle="INFO">
+                    	
+                        <table class="table table-striped table-dark">
+                            <!-- cellspacing='0' is important, must stay -->
+                            <tbody>
+                                <tr>
+                                    <td valign="top">Deal</td>
+                                    <td>ARABIAN NIGHT LIVE BELLY DANCE</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">Offer</td>
+                                    <td>Thursaday
+                                        <br> Another energy filled episode of the amazing Arabian Nights is back this week, taking fun to another level! Drop in to witness some great belly dancing and get the party started.
+                                        <br> **t&amp;c apply **
+                                        <br> Arabian Music &amp; Arabic food ,
+                                        <br> pankaj - photography
+                                        <br> girls &amp; Couples Entry free ,
+                                        <br>
+                                        <br> for reservation :
+                                        <br> 9654257050 /9717390103</td>
+                                </tr>
+                                <!--<tr><td>Location</td>
+									<td>Saket </td></tr>-->
+                                <tr>
+                                    <td valign="top">Address</td>
+                                    <td>GF-3&amp;4,D2 SOUTHERN PARK MALL BEHIND SELECT CITY WALK SAKET NEW DELHI .,BEHIND SELECT CITY MALL,South Delhi</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">Terms &amp; Conditions </td>
+                                    <td>
+                                        <ul>
+                                            <li>Not available on Monday, Tuesday, Wednesday, Friday, Saturday, Sunday. Prior appointment mandatory to avail the discount. Cannot be clubbed with any other offer. Coupon valid only on Thursdays.</li>
+                                            <li>This offer cannot be clubbed with other offers. You can download this coupon FREE of cost from dealsandyou.com. You only need to pay The Arabian Night at Club London on Thursdays as per the Offer Details.</li>
+                                            <li>This is a limited time offer and subject to approval from the merchant. DealsAndYou does not take any responsibility and/or has no liability if the coupon is not accepted at the outlet. To avoid any confusion, we suggest you to take an appointment or make a reservation and present the coupon before placing the order or consuming any service at the merchant's outlet.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Coupon Valid Till</td>
+                                    <td>07-Dec-2017</td>
+                                </tr>                                
+                            </tbody>
+                        </table>
+                    </nb-tab>
+                </nb-tabset>
+            </nb-card>
+        </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12">
+    	<div class="hot-deals">
+    		<h4>Other Hot Deals</h4>
+        	<ngx-deal-hot catId="1" ></ngx-deal-hot>
+    	</div>   	
+    </div>
+  </div>
+</div>

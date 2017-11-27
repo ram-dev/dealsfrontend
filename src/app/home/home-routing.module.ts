@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { HomeDashboardComponent } from './homedashboard/homedashboard.component';
 import { DealsCategoryComponent } from './deals/deals-category.component';
+import { DealViewComponent } from './deals/view/deal-view.component';
 
 const routes: Routes = [{
   path: '',
@@ -40,6 +41,10 @@ const routes: Routes = [{
   {
     path: 'deals-shopping/:id',    
     component: DealsCategoryComponent
+  },
+  {
+    path:"deals/view/:id",
+    component:DealViewComponent
   },
   {
     path: '',

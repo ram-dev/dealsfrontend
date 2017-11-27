@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+import { AgmCoreModule } from '@agm/core';
 import { AngularEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartModule } from 'angular2-chartjs';
@@ -12,6 +13,11 @@ import { ProductComponent } from './product/product.component';
 import { ProductThumbnailComponent } from './product-thumbnail/product-thumbnail.component';
 import { FiltersComponent } from './filters/filters.component';
 import { SortFiltersComponent } from './sort-filters/sort-filters.component';
+import { DealViewComponent } from './view/deal-view.component';
+import { GmapsComponent } from './gmaps/gmaps.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons';
+import { DealHotComponent } from './deal-hot/deal-hot.component';
+
 
 import {
     NgbCarouselModule,
@@ -28,6 +34,8 @@ import { DataService } from './dealdata.service';
     ChartModule,    
     NgbCarouselModule.forRoot(),
     NgbAlertModule.forRoot(),
+    AgmCoreModule.forRoot(),
+    ShareButtonsModule.forRoot(),
   ],
   declarations: [
     DealsCategoryComponent,
@@ -35,7 +43,10 @@ import { DataService } from './dealdata.service';
     ProductComponent,
     FiltersComponent,
     SortFiltersComponent,
-    ProductThumbnailComponent   
+    ProductThumbnailComponent,
+    DealViewComponent,
+    GmapsComponent,
+    DealHotComponent,
   ],
   providers: [
     DataService
