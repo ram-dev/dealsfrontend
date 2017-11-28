@@ -1,42 +1,40 @@
 <div class="wrapper" [class.unavailable]='!product.available'>
-  <div class="info" >
-    <div class="img-wrapper">
-      <img class="img" [src]='product.images[0]'>
-      <div class="img-placeholder"></div>
-    </div>
-    <h5 class="title">{{product.name}}</h5>
-    <p class="price"><span>{{product.discount}}</span> % Discount</p>
-    <div class="details">
-      <div class="available" *ngIf = 'product.available'>
-        
-        <div class="row">
-          <div class="col-4-sm">
-            <button type="button" class="btn btn-outline-success btn-tn" (click)='onProductClick()'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> View more</button>
-          </div>
-          <div class="col-4-sm offset-sm-1">
-            <button type="button" (click)="redirect(product.id)" class="btn btn-outline-success btn-tn"><i class="fa fa-download" aria-hidden="true"></i> Coupon</button>
-          </div>
+    <div class="info">
+        <div class="img-wrapper" (click)="redirect(product.id)">
+            <img class="img" [src]='product.images[0]'>
+            <div class="img-placeholder"></div>
         </div>
-      </div>
-      <div class="not-available" *ngIf = '!product.available'>
-        
-        <p>Not available</p>
-      </div>
+        <h5 class="title">{{product.name}}</h5>
+        <p class="price"><span>{{product.discount}}</span> % Discount</p>
+        <div class="details">
+            <div class="available" *ngIf='product.available'>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="clearfix">
+                            <button type="button" class="btn btn-outline-success btn-tn float-left" (click)='onProductClick()'><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> View more</button>
+                            <button type="button" (click)="redirect(product.id)" class="btn btn-outline-success btn-tn float-right"><i class="fa fa-download" aria-hidden="true"></i> Coupon</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="not-available" *ngIf='!product.available'>
+                <p>Not available</p>
+            </div>
+        </div>
+        <!--span class="category-name" *ngFor='let category of product.categories'>{{category}}</span-->
+        <div class="detail-view" [class.active]='detailViewActive'>
+            <div class="bg" [class.shown]='detailViewActive'></div>
+            <div class="info-wrapper">
+                <p class="d-holder d-title">{{product.name}}</p>
+                <p class="d-holder d-description">{{product.offerdetails}}</p>
+                <p class="d-holder d-description">{{product.offer}}</p>
+            </div>
+            <button type="button" class="hide-detail-btn" (click)='onProductClick()'>Click to hide</button>
+        </div>
     </div>
-    <!--span class="category-name" *ngFor='let category of product.categories'>{{category}}</span-->
-    <div class="detail-view" [class.active]='detailViewActive'>
-      <div class="bg" [class.shown]='detailViewActive'></div>
-      <div class="info-wrapper">
-        <p class="d-holder d-title">{{product.name}}</p>
-        <p class="d-holder d-description">{{product.offerdetails}}</p>
-        <p class="d-holder d-description">{{product.offer}}</p>
-      </div>
-      <button type="button" class="hide-detail-btn" (click)='onProductClick()'>Click to hide</button>
+    <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf='product.best_seller'>
+        <span class="star left">&nbsp;</span>
+        <span class="txt">Bestoffer</span>
+        <span class="star right">&nbsp;</span>
     </div>
-  </div>
-  <div class="bestseller-badge" [class.in-detailed]='detailViewActive' *ngIf = 'product.best_seller'>
-    <span class="star left">&nbsp;</span>
-    <span class="txt">Bestoffer</span>
-    <span class="star right">&nbsp;</span>
-  </div>
 </div>

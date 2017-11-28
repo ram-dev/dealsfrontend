@@ -19,8 +19,8 @@ export class DataService {
 
   getRemoteData(url): Observable<any>{
     return this.http.get(url)
-                    .map(this.extractData)
-                    .catch(this.handleError);
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {
