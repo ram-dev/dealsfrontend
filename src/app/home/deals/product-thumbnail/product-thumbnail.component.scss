@@ -19,6 +19,11 @@
   margin-bottom: 0;
 }
 
+.img-fluid-tumb{
+  max-width: 100%;
+  height: 12rem;
+}
+
 .view-details-wrapper{
   position: relative;
   &:after{
@@ -64,6 +69,18 @@
   height: 12rem;
   position: relative;
   overflow: hidden;
+
+  /deep/ .carousel-indicators{
+    li{
+      display: none;
+    }   
+  } 
+  /deep/ .carousel-control-next{
+    display: none;
+  }
+  /deep/ .carousel-control-prev{
+    display: none;
+  }
 }
 
 .details{

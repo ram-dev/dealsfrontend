@@ -1,8 +1,12 @@
 <div class="wrapper" [class.unavailable]='!product.available'>
     <div class="info">
         <div class="img-wrapper" (click)="redirect(product.id)">
-            <img class="img" [src]='product.images[0]'>
-            <div class="img-placeholder"></div>
+            
+            <ngb-carousel>
+                <ng-template ngbSlide *ngFor="let slider of product.images">
+                    <img class="img-fluid-tumb mx-auto d-block" [src]="slider" alt="Random first slide" width="100%">
+                </ng-template>
+            </ngb-carousel>
         </div>
         <h5 class="title">{{product.name}}</h5>
         <p class="price"><span>{{product.discount}}</span> % Discount</p>
