@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'ngx-footer-public',
   styleUrls: ['./footer-public.component.scss'],
   template: `
-    <span class="created-by">Copyright @ <b><a href="#" target="_blank">yofferz.com</a></b> 2017</span>
+    <span class="created-by">© 2017 Copyright <b><a href="#">YofferZ</a></b>, All rights reserved</span>
     <div class="footer-nav">
       <a href="#" target="_blank">About us</a>
       <a href="#" target="_blank">Contact us</a>

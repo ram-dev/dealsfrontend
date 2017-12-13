@@ -1,10 +1,18 @@
 <div class="row ">
     <div class="col-md-3 slider">
+
         <div class="filters-wrapper">
             <filters #filtersComponent [categories]='originalData.categories' [customFilters]='customFilters' [discountFilters]='discountFilters' (onFilterChange)='onFilterChange($event)'></filters>
         </div>
     </div>
     <div class="col-md-9 slider">
+       <div class="row">
+          <div class="col-12">
+            <div class="sort-filters-wrapper">
+              <sort-filters [filters]='sortFilters' (onSortChange)='sortProducts($event)'></sort-filters>
+            </div>
+          </div>          
+        </div>
         <ngb-carousel>
             <ng-template ngbSlide *ngFor="let slider of sliders">
                 <img class="img-fluid mx-auto d-block" [src]="slider.imagePath" alt="Random first slide" width="100%">
@@ -13,7 +21,7 @@
                     <p>{{slider.text}}</p>
                 </div>
             </ng-template>
-        </ngb-carousel>
+        </ngb-carousel>       
         <div class="deal-list">
             <div class="main-container">
                 <div class="container">
