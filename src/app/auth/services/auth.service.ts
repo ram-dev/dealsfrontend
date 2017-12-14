@@ -37,8 +37,12 @@ export class NbAuthResult {
     if (messages instanceof Array) {
       this.messages = messages;
     }
-
-    this.token = this.response.body.token;
+    if(this.response.body){
+     this.token = this.response.body.token; 
+    }else{
+      this.token = null;
+    }
+    
   }
 
   getResponse(): any {
@@ -157,6 +161,7 @@ export class NbAuthService {
   register(provider: string, data?: any): Observable<NbAuthResult> {
     return this.getProvider(provider).register(data)
       .switchMap((result: NbAuthResult) => {
+       
         if (result.isSuccess() && result.getTokenValue()) {
           return this.tokenService.set(result.getTokenValue())
             .switchMap(_ => this.tokenService.get())

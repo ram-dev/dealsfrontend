@@ -128,7 +128,7 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
       method: 'post',
       redirect: {
         success: '/',
-        failure: null,
+        failure: '/auth/register',
       },
       defaultErrors: ['Something went wrong, please try again.'],
       defaultMessages: ['You have been successfully registered.'],
