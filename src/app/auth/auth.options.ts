@@ -55,6 +55,30 @@ export const defaultSettings: any = {
         minLength: 4,
         maxLength: 50,
       },
+      companyname:{
+        required: true,
+        minLength: 4,
+        maxLength: 50,
+      },
+      categoryId:{
+        required: true,
+      },
+      username: {
+        required: true,
+      },
+      firstName :{
+        required: true,
+        minLength: 4,
+        maxLength: 50,
+      },
+      contactNumber:{
+        required: true,
+      },
+      lastName: {
+        required: true,
+        minLength: 4,
+        maxLength: 50,
+      },
       email: {
         required: true,
       },
