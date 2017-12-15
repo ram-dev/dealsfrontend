@@ -30,6 +30,29 @@
       border-radius: 0;
       height: 100vh;
       margin-top: 5rem;
+
+       nb-card-body{
+          .register{
+            padding-top: 20rem;
+          }
+          
+       }
+    }
+  }
+
+  @media (max-width: 410px) {
+
+    nb-card {
+      border-radius: 0;
+      height: 100vh;
+      margin-top: 5rem;
+
+       nb-card-body{
+          .register{
+            padding-top: 24rem;
+          }
+          
+       }
     }
   }
 
