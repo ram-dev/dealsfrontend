@@ -116,7 +116,7 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
       method: 'post',
       redirect: {
         success: '/merchants',
-        failure: null,
+        failure: '/auth/login',
       },
       defaultErrors: ['Login/Email combination is not correct, please try again.'],
       defaultMessages: ['You have been successfully logged in.'],
@@ -127,19 +127,19 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
       endpoint: 'register',
       method: 'post',
       redirect: {
-        success: '/',
+        success: '/auth/register',
         failure: '/auth/register',
       },
       defaultErrors: ['Something went wrong, please try again.'],
-      defaultMessages: ['You have been successfully registered.'],
+      defaultMessages: ['You have been successfully registered. Please verify the mail.'],
     },
     logout: {
       alwaysFail: false,
       endpoint: 'logout',
       method: 'post',
       redirect: {
-        success: '/',
-        failure: null,
+        success: '/auth/login',
+        failure: '/',
       },
       defaultErrors: ['Something went wrong, please try again.'],
       defaultMessages: ['You have been successfully logged out.'],
@@ -212,6 +212,7 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
         let errors = [];
         if (res instanceof HttpErrorResponse) {
           errors = this.getConfigValue('errors.getter')('login', res);
+		  errors.push(res.error.error);
         } else {
           errors.push('Something went wrong.');
         }
@@ -250,6 +251,7 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
         let errors = [];
         if (res instanceof HttpErrorResponse) {
           errors = this.getConfigValue('errors.getter')('register', res);
+          errors.push(res.error.error);
         } else {
           errors.push('Something went wrong.');
         }
