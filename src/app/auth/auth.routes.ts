@@ -11,6 +11,7 @@ import { NbRegisterComponent } from './components/register/register.component';
 import { NbLogoutComponent } from './components/logout/logout.component';
 import { NbRequestPasswordComponent } from './components/request-password/request-password.component';
 import { NbResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { NbVerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 export const routes: Routes = [
   {
@@ -40,6 +41,10 @@ export const routes: Routes = [
       {
         path: 'reset-password',
         component: NbResetPasswordComponent,
+      },
+      {
+        path: 'email-verify',
+        component: NbVerifyEmailComponent,
       },
     ],
   }

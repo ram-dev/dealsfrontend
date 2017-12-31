@@ -165,6 +165,16 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
       defaultErrors: ['Something went wrong, please try again.'],
       defaultMessages: ['Your password has been successfully changed.'],
     },
+    verifyEmail: {
+      endpoint: 'verifyemail',
+      method: 'get',
+      redirect: {
+        success: '/auth/email-verify/',
+        failure: '/auth/email-verify/',
+      },
+      defaultErrors: ['Something went wrong, please try again.'],
+      defaultMessages: ['Your email verification has been successfully verified.'],
+    },
     token: {
       key: 'data.token',
       getter: (module: string, res: HttpResponse<Object>) => getDeepFromObject(res.body,
@@ -313,7 +323,7 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
     const tokenKey = data.token;
     const method = this.getConfigValue('resetPass.method');
     const url = this.getActionEndpoint('resetPass') +'/'+ tokenKey;
-    console.log(this.config.resetPass);
+    
     return this.http.request(method, url, { body: data, observe: 'response' })
       .map((res) => {
         if (this.getConfigValue('resetPass.alwaysFail')) {
@@ -349,6 +359,49 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
       });
   }
 
+  verifyEmail(data: any = {}): Observable<NbAuthResult> {
+    this.config.verifyEmail.redirect.failure += data.token;
+    this.config.verifyEmail.redirect.success += data.token;
+    this.config.verifyEmail.resetPasswordTokenKey = data.token;
+    const tokenKey = data.token;
+    const method = this.getConfigValue('verifyEmail.method');
+    const url = this.getActionEndpoint('verifyEmail') +'/'+ tokenKey;
+    
+    return this.http.request(method, url, { body: data, observe: 'response' })
+      .map((res) => {
+        if (this.getConfigValue('verifyEmail.alwaysFail')) {
+          throw this.createFailResponse();
+        }
+
+        return res;
+      })
+      .map((res) => {
+        return new NbAuthResult(
+          true,
+          res,
+          this.getConfigValue('verifyEmail.redirect.success'),
+          [],
+          this.getConfigValue('messages.getter')('verifyEmail', res));
+      })
+      .catch((res) => {
+        let errors = [];
+        if (res instanceof HttpErrorResponse) {
+          errors = this.getConfigValue('errors.getter')('verifyEmail', res);
+          errors.push(res.error.error);
+        } else {
+          errors.push('Something went wrong.');
+        }
+
+        return Observable.of(
+          new NbAuthResult(
+            false,
+            res,
+            this.getConfigValue('verifyEmail.redirect.failure'),
+            errors,
+          ));
+      });
+  }
+  
   logout(data: any = {}): Observable<NbAuthResult> {
     const tokenKey = this.getConfigValue('token.key');   
     data[tokenKey] = this.route.snapshot.queryParams[tokenKey];

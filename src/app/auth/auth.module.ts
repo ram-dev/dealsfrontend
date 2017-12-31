@@ -28,6 +28,7 @@ import { NbRegisterComponent } from './components/register/register.component';
 import { NbLogoutComponent } from './components/logout/logout.component';
 import { NbRequestPasswordComponent } from './components/request-password/request-password.component';
 import { NbResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { NbVerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 import { routes } from './auth.routes';
 import { deepExtend } from './helpers';
@@ -68,6 +69,7 @@ export function nbOptionsFactory(options) {
     NbRegisterComponent,
     NbRequestPasswordComponent,
     NbResetPasswordComponent,
+    NbVerifyEmailComponent,
     NbLogoutComponent,
   ],
   exports: [
@@ -77,6 +79,7 @@ export function nbOptionsFactory(options) {
     NbRegisterComponent,
     NbRequestPasswordComponent,
     NbResetPasswordComponent,
+    NbVerifyEmailComponent,
     NbLogoutComponent,
   ],
 })

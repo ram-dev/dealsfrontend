@@ -36,6 +36,11 @@ export class NbDummyAuthProvider extends NbAbstractAuthProvider {
       .delay(this.getConfigValue('delay'));
   }
 
+  verifyEmail(data?: any): Observable<NbAuthResult> {
+    return Observable.of(this.createDummyResult(data))
+      .delay(this.getConfigValue('delay'));
+  }
+
   logout(data?: any): Observable<NbAuthResult> {
     return Observable.of(this.createDummyResult(data))
       .delay(this.getConfigValue('delay'));

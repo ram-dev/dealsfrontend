@@ -7,6 +7,7 @@ import {
   NbRegisterComponent,
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
+  NbVerifyEmailComponent,
 } from './auth';
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'reset-password/:resetpasswordtoken',
         component: NbResetPasswordComponent,
+      },
+      {
+        path: 'email-verify/:verifytoken',
+        component: NbVerifyEmailComponent,
       },
     ],
   },

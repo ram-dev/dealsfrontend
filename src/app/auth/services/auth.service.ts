@@ -222,6 +222,20 @@ export class NbAuthService {
     return this.getProvider(provider).resetPassword(data);
   }
 
+   /**
+   * Tries to verify email with the selected provider
+   *
+   * Example:
+   * verifyEmail('email', {token: 'test'})
+   *
+   * @param provider
+   * @param data
+   * @returns {Observable<NbAuthResult>}
+   */
+  verifyEmail(provider: string, data?: any): Observable<NbAuthResult> {
+    return this.getProvider(provider).verifyEmail(data);
+  }
+
   getProvider(provider: string): NbAbstractAuthProvider {
     if (!this.providers[provider]) {
       throw new TypeError(`Nb auth provider '${provider}' is not registered`);

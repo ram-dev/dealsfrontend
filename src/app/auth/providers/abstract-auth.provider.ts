@@ -25,6 +25,8 @@ export abstract class NbAbstractAuthProvider {
 
   abstract resetPassword(data?: any): Observable<NbAuthResult>;
 
+  abstract verifyEmail(data?: any): Observable<NbAuthResult>;
+
   abstract logout(): Observable<NbAuthResult>;
 
   protected createFailResponse(data?: any): HttpResponse<Object> {

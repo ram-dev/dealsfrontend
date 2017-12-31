@@ -30,6 +30,7 @@ export interface NgEmailPassAuthProviderConfig {
   register?: boolean | NbEmailPassModuleConfig;
   requestPass?: boolean | NbEmailPassModuleConfig;
   resetPass?: boolean | NbEmailPassResetModuleConfig;
+  verifyEmail?: boolean | NbEmailPassResetModuleConfig;
   logout?: boolean | NbEmailPassResetModuleConfig;
   token?: {
     key?: string;
