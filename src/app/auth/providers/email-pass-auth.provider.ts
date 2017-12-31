@@ -139,27 +139,27 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
       method: 'post',
       redirect: {
         success: '/auth/login',
-        failure: '/',
+        failure: '/auth/logout',
       },
       defaultErrors: ['Something went wrong, please try again.'],
       defaultMessages: ['You have been successfully logged out.'],
     },
     requestPass: {
-      endpoint: 'request-pass',
+      endpoint: 'forgot',
       method: 'post',
       redirect: {
-        success: '/',
-        failure: null,
+        success: '/auth/request-password',
+        failure: '/auth/request-password',
       },
       defaultErrors: ['Something went wrong, please try again.'],
       defaultMessages: ['Reset password instructions have been sent to your email.'],
     },
     resetPass: {
-      endpoint: 'reset-pass',
-      method: 'put',
+      endpoint: 'reset',
+      method: 'post',
       redirect: {
-        success: '/',
-        failure: null,
+        success: '/auth/reset-password/',
+        failure: '/auth/reset-password/',
       },
       resetPasswordTokenKey: 'reset_password_token',
       defaultErrors: ['Something went wrong, please try again.'],
@@ -288,7 +288,8 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
       .catch((res) => {
         let errors = [];
         if (res instanceof HttpErrorResponse) {
-          errors = this.getConfigValue('errors.getter')('requestPass', res);
+          errors = this.getConfigValue('errors.getter')('requestPass', res);          
+          errors.push(res.error.error);
         } else {
           errors.push('Something went wrong.');
         }
@@ -304,11 +305,15 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
   }
 
   resetPassword(data: any = {}): Observable<NbAuthResult> {
-    const tokenKey = this.getConfigValue('resetPass.resetPasswordTokenKey');
-    data[tokenKey] = this.route.snapshot.queryParams[tokenKey];
-
+   /* const tokenKey = this.getConfigValue('resetPass.resetPasswordTokenKey');
+    data[tokenKey] = this.route.snapshot.queryParams[tokenKey];*/
+    this.config.resetPass.redirect.failure += data.token;
+    this.config.resetPass.redirect.success += data.token;
+    this.config.resetPass.resetPasswordTokenKey = data.token;
+    const tokenKey = data.token;
     const method = this.getConfigValue('resetPass.method');
-    const url = this.getActionEndpoint('resetPass');
+    const url = this.getActionEndpoint('resetPass') +'/'+ tokenKey;
+    console.log(this.config.resetPass);
     return this.http.request(method, url, { body: data, observe: 'response' })
       .map((res) => {
         if (this.getConfigValue('resetPass.alwaysFail')) {
@@ -329,6 +334,7 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
         let errors = [];
         if (res instanceof HttpErrorResponse) {
           errors = this.getConfigValue('errors.getter')('resetPass', res);
+          errors.push(res.error.error);
         } else {
           errors.push('Something went wrong.');
         }
@@ -375,6 +381,7 @@ export class NbEmailPassAuthProvider extends NbAbstractAuthProvider {
         let errors = [];
         if (res instanceof HttpErrorResponse) {
           errors = this.getConfigValue('errors.getter')('logout', res);
+          errors.push(res.error.error);
         } else {
           errors.push('Something went wrong.');
         }

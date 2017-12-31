@@ -4,7 +4,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 import { Component, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NB_AUTH_OPTIONS_TOKEN } from '../../auth.options';
 import { getDeepFromObject } from '../../helpers';
 
@@ -101,12 +101,12 @@ export class NbResetPasswordComponent {
   errors: string[] = [];
   messages: string[] = [];
   user: any = {};
-
+  params ;
   constructor(protected service: NbAuthService,
               @Inject(NB_AUTH_OPTIONS_TOKEN) protected config = {},
-              protected router: Router) {
-
-    this.redirectDelay = this.getConfigValue('forms.resetPassword.redirectDelay');
+              protected router: Router, protected activatedRoute: ActivatedRoute) {
+    this.params = this.activatedRoute.snapshot.params;
+   	this.redirectDelay = this.getConfigValue('forms.resetPassword.redirectDelay');
     this.showMessages = this.getConfigValue('forms.resetPassword.showMessages');
     this.provider = this.getConfigValue('forms.resetPassword.provider');
   }
@@ -114,7 +114,7 @@ export class NbResetPasswordComponent {
   resetPass(): void {
     this.errors = this.messages = [];
     this.submitted = true;
-
+    this.user.token = this.params.resetpasswordtoken;
     this.service.resetPassword(this.provider, this.user).subscribe((result: NbAuthResult) => {
       this.submitted = false;
       if (result.isSuccess()) {
