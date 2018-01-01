@@ -7,8 +7,8 @@ import { DataModule } from './data/data.module';
 import { AnalyticsService } from './utils/analytics.service';
 
 const NB_CORE_PROVIDERS = [
-  ...DataModule.forRoot().providers,
-  ...NbAuthModule.forRoot({
+  DataModule.forRoot().providers,
+  NbAuthModule.forRoot({
     providers: {
       email: {
         service: NbDummyAuthProvider,
@@ -42,7 +42,7 @@ export class CoreModule {
     return <ModuleWithProviders>{
       ngModule: CoreModule,
       providers: [
-        ...NB_CORE_PROVIDERS,
+        NB_CORE_PROVIDERS,
       ],
     };
   }

@@ -12,7 +12,6 @@ export class AuthGuard implements CanActivate {
         return this.nbAuthService.isAuthenticated()
         .map(
           result => {
-          console.log("logged-in with result", result);
           if (result){
             return true;
           } else{
@@ -21,7 +20,6 @@ export class AuthGuard implements CanActivate {
           }
         ).catch(() => {
           this.router.navigate(['/auth/login']);
-          console.log("not yet logged-in")
           return Observable.of(false);
           })
           
