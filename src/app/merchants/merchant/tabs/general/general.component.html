@@ -1,198 +1,44 @@
 <form>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="input-firstName">Company Name</label>
-                <input name="Company" type="text" id="input-company" class="form-control" placeholder="Company Name">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="input-firstName">Vendor Website</label>
-                <input name="url" type="text" id="input-url" class="form-control" placeholder="URL">
-            </div>
-        </div>
+    
+     <div class="alert alert-success" role="alert">
+      Selected business: {{values | json}}
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
-                <label for="input-firstName">Category</label>
+                <label for="input-firstName">Business Service : (*)</label>
             </div>
-            <div class="category">
+            <div class="category1">                
                 <div class="row">
-                    <div class="col-md-3">
-                        <ul>
-                            <li>
-                                <input type="checkbox" name="cat" id="1" title="Food &amp; Beverages" value="1"> <span class="firstli">Food &amp; Beverages</span>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" onchange="check('1')" name="catsub_1" id="13" value="13">Fine Dine
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('1')" name="catsub_1" id="14" value="14">Bar / Pub / Lounge
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('1')" name="catsub_1" id="15" value="15">Bakery / Fast Food
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('1')" name="catsub_1" id="16" value="16">Cafe / Confectionery
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <input type="checkbox" name="cat" id="3" title="Wellness" value="3"> <span class="firstli">Wellness</span>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" onchange="check('3')" name="catsub_3" id="8" value="8">Salon
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('3')" name="catsub_3" id="12" value="12">Health &amp; Fitness
-                                        <ul>
-                                            <li>
-                                                <input type="checkbox" onchange="check('3', '12')" name="catsub1_12" id="27" value="27">Zumba / Yoga / Aerobics</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <input type="checkbox" name="cat" id="2" title="SPA" value="2"> <span class="firstli">SPA</span>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" onchange="check('2')" name="catsub_2" id="9" value="9">Spa Services
-                                        <ul>
-                                            <li>
-                                                <input type="checkbox" onchange="check('2', '9')" name="catsub1_9" id="11" value="11">eShoping</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <div class="col-md-12">
+                        <ngx-treeview
+                            [config]="config"
+                            [items]="items"
+                            (selectedChange)="onSelectedChange($event)">
+                        </ngx-treeview>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="input-firstName">Company Info :</label>
+            </div>
+            <div class="category1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="input-firstName">Company Name (*)</label>
+                            <input name="Company" type="text" id="input-company" class="form-control" placeholder="Company Name">
+                        </div>
                     </div>
-                    <div class="col-md-3">                    	
-                        <ul>
-                            <li>
-                                <input type="checkbox" name="cat" id="4" title="Entertainment" value="4"> <span class="firstli">Entertainment</span>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" onchange="check('4')" name="catsub_4" id="19" value="19">Theatre / Movies
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('4')" name="catsub_4" id="20" value="20">Games / Live Events / Concerts
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('4')" name="catsub_4" id="21" value="21">Amusement Park
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <input type="checkbox" name="cat" id="5" title="Travel" value="5"> <span class="firstli">Travel</span>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" onchange="check('5')" name="catsub_5" id="17" value="17">Domestic
-                                        <ul>
-                                            <li>
-                                                <input type="checkbox" onchange="check('5', '17')" name="catsub1_17" id="30" value="30">Hotels</li>
-                                            <li>
-                                                <input type="checkbox" onchange="check('5', '17')" name="catsub1_17" id="31" value="31">Holiday Packages</li>
-                                            <li>
-                                                <input type="checkbox" onchange="check('5', '17')" name="catsub1_17" id="32" value="32">Airfare / Tickets</li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('5')" name="catsub_5" id="18" value="18">International
-                                        <ul>
-                                            <li>
-                                                <input type="checkbox" onchange="check('5', '18')" name="catsub1_18" id="33" value="33">Hotels</li>
-                                            <li>
-                                                <input type="checkbox" onchange="check('5', '18')" name="catsub1_18" id="34" value="34">Holiday Packages</li>
-                                            <li>
-                                                <input type="checkbox" onchange="check('5', '18')" name="catsub1_18" id="35" value="35">Airfare / Tickets</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-md-3">
-                        <ul>
-                            <li>
-                                <input type="checkbox" name="cat" id="6" title="E-Shopping" value="6"> <span class="firstli">E-Shopping</span>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" onchange="check('6')" name="catsub_6" id="10" value="10">E-Com /Online Services
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <input type="checkbox" name="cat" id="7" title="Services" value="7"> <span class="firstli">Services</span>
-                                <ul>
-                                    <li>
-                                        <input type="checkbox" onchange="check('7')" name="catsub_7" id="22" value="22">Car Wash
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('7')" name="catsub_7" id="23" value="23">Pest Control
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('7')" name="catsub_7" id="24" value="24">Astrology
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('7')" name="catsub_7" id="25" value="25">Photography / Printing
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('7')" name="catsub_7" id="26" value="26">Music / Dance Classes
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('7')" name="catsub_7" id="28" value="28">Flower / Cake Delivery
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <input type="checkbox" onchange="check('7')" name="catsub_7" id="29" value="29">Training / Coaching Classes
-                                        <ul>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="input-firstName">Vendor Website</label>
+                            <input name="url" type="text" id="input-url" class="form-control" placeholder="URL">
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

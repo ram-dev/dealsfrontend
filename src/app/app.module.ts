@@ -18,7 +18,7 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { ImageUploadModule } from "angular2-image-upload";
 import { NbEmailPassAuthProvider, NbAuthModule  } from './auth';
 import { NB_AUTH_TOKEN_WRAPPER_TOKEN,  NB_AUTH_INTERCEPTOR_HEADER, NbAuthSimpleToken, NbAuthJWTInterceptor} from './auth';
-
+import { TreeviewModule } from 'ngx-treeview';
 
 
 @NgModule({
@@ -34,7 +34,8 @@ import { NB_AUTH_TOKEN_WRAPPER_TOKEN,  NB_AUTH_INTERCEPTOR_HEADER, NbAuthSimpleT
     NgbModule.forRoot(),
     ImageUploadModule.forRoot(),
     ThemeModule.forRoot(),
-    CoreModule.forRoot(),    
+    CoreModule.forRoot(), 
+    TreeviewModule.forRoot(),   
     NbAuthModule.forRoot({
          providers: {
            email: {

@@ -6,6 +6,8 @@ import { MerchantRoutingModule, routedComponents } from './merchant-routing.modu
 import { ImageUploadModule } from "angular2-image-upload";
 import { DealsListService } from '../../@core/data/deals-list.service';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import { TreeviewModule } from 'ngx-treeview';
+import { generalService } from './tabs/general/general.service';
 
 @NgModule({
   imports: [
@@ -13,13 +15,15 @@ import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
     MerchantRoutingModule,
     Ng2SmartTableModule,
     MultiselectDropdownModule,
-    ImageUploadModule.forRoot(),    
+    ImageUploadModule.forRoot(), 
+    TreeviewModule.forRoot()   
   ],
   declarations: [
     routedComponents,
   ],
   providers: [
-    DealsListService
+    DealsListService,
+    generalService
   ],
 })
 export class MerchantModule {
