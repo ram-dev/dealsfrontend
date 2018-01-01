@@ -1,5 +1,5 @@
 export class Deal{
-  id: number
+  id: string
   name: string
   categories: string[]
   outlets: string[]
