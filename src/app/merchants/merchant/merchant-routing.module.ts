@@ -29,11 +29,19 @@ const routes: Routes = [{
     {
       path: 'outlets',
       component: OutletsComponent,
-    },
+    },    
     {
       path: 'amenities',
       component: AmenitiesComponent,
     }],
+  },
+  {
+    path: 'outlets/edit',
+    component: OultelsEditComponent,
+  },
+  {
+    path: 'outlets/edit/:id',
+    component: OultelsEditComponent,
   }]
 }];
 

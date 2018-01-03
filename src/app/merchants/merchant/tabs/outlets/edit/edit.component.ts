@@ -12,7 +12,7 @@ import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'ang
 export class OultelsEditComponent {
   private params;
   public offerType = 1;
-  public DealType = 'Create';
+  public OutletType = 'Create';
   public matDatepicker;
   // Default selection
 optionsOutletModel: number[] = [2,3,4,6];
@@ -47,7 +47,7 @@ myOptionsOutlet: IMultiSelectOption[] = [
   ngOnInit(){
    console.log(this.params.id);
    if(this.params.id){
-     this.DealType = 'Edit';
+     this.OutletType = 'Edit';
    }
     
   }

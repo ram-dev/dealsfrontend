@@ -1,7 +1,11 @@
 <div class="row">
     <div class="col-md-12">
         <nb-card class="inline-form-card">
-            <nb-card-header>{{DealType}} Deals                
+            <nb-card-header>
+                <div class="clearfix">
+                  <h4 style="line-height: 2;" class="float-left">{{OutletType}} Outlet</h4>
+                  <a href="/#/merchants/merchant/tabs/outlets" class="btn btn-secondary float-right btn-sm "><i class="nb-arrow-left"></i> Back</a>
+                </div>
             </nb-card-header>
         </nb-card>
     </div>
@@ -11,198 +15,70 @@
         <nb-card class="inline-form-card">
             <nb-card-body>
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="inputFirstName">Deal Name</label>
-                            <input type="text" class="form-control" id="inputDealName" placeholder="Deal Name">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">                        
-                            <label for="inputLastName">Outlet</label>
-                            <div class="btn-group btn-group-full-width">                                
-                                <ss-multiselect-dropdown [options]="myOptionsOutlet" [texts]="myTexts" [settings]="mySettings" [(ngModel)]="optionsOutletModel"></ss-multiselect-dropdown>
-                            </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputEmail">Category</label>
-                            <select class="form-control" placeholder="Select Category">
-                                <option>Minsk</option>
-                                <option>Gomel</option>
-                                <option>Brest</option>
-                                <option>Grodno</option>
-                                <option>Mogilev</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputWebsite">Sub Category</label>
-                            <select class="form-control" placeholder="Select sub category">
-                                <option>Minsk</option>
-                                <option>Gomel</option>
-                                <option>Brest</option>
-                                <option>Grodno</option>
-                                <option>Mogilev</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </nb-card-body>
-        </nb-card>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <nb-card class="inline-form-card">
-            <!-- <nb-card-header>Offer Details</nb-card-header> -->
-            <nb-card-body>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputFirstName">offer type</label>
-                            <select class="form-control" [(ngModel)]="offerType">
-                                <option value="0">Select offer type</option>
-                                <option value="1">Flat Discount</option>
-                                <option value="2">Minimum Discount</option>
-                                <option value="3">Buy/Get Discount</option>
-                                <option value="4">Package Campaign/Deal</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 1) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">% Discount On</label>
-                            <input type="text" class="form-control full-width" placeholder="% Discount On">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 1) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Select option</label>
-                            <select class="form-control">
-                                <option>Total bill</option>
-                                <option>Food Only</option>
-                                <option>Drink Only</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 2) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Get Rs.</label>
-                            <input type="text" class="form-control full-width" placeholder="Get Rs.">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 2) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Off on a Minimum bill of</label>
-                            <input type="text" class="form-control full-width" placeholder="Off on a Minimum bill of">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 3) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Buy</label>
-                            <input type="text" class="form-control full-width" placeholder="Buy">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 3) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Get Free</label>
-                            <input type="text" class="form-control full-width" placeholder="Get Free">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 4) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Discount (%)</label>
-                            <input type="text" class="form-control full-width" placeholder=" Discount (%)">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 4) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Offer Description</label>
-                            <input type="text" class="form-control full-width" placeholder="Offer Description">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="inputFirstName">Offer Details</label>
-                            <textarea rows="2" placeholder="Offer Details" class="form-control"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputFirstName">Coupon Valid From</label>
-                            <input type="date" class="form-control full-width" placeholder="From Date">                           
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputFirstName">Coupon Valid Till</label>
-                            <input type="date" class="form-control full-width" placeholder="To Date">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputFirstName">Fund Allocation (Balance : Rs 1000)</label>
-                            <input type="text" class="form-control full-width" placeholder="Amount">
-                        </div>
-                    </div>
-                </div>
-            </nb-card-body>
-        </nb-card>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <nb-card class="inline-form-card">
-            <nb-card-body>
-                <div class="row">
+                    <input type="hidden" name="merchantId">
+                    <input type="hidden" name="userId">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="inputFirstName">Days Allocation</label>
-                            <select class="form-control" placeholder="Select Outlet">
-                                <option>Week Days</option>
-                                <option>Weekend</option>
-                                <option>All Days</option>
-                            </select>
+                            <label for="inputFirstName">Outlet Name</label>
+                            <input type="text" class="form-control" name="name" id="inputOutletName" placeholder="Outlet Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstName">Address</label>
+                            <input type="text" class="form-control" name="address" id="inputAddress" placeholder="Address">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstName">Country</label>
+                            <input type="text" class="form-control" name="country" id="inputCountry" placeholder="Country">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstName">State</label>
+                            <input type="text" class="form-control" name="state" id="inputState" placeholder="State">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstName">City</label>
+                            <input type="text" class="form-control" name="city" id="inputCity" placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstName">Locality</label>
+                            <input type="text" class="form-control" name="locality" id="inputLocality" placeholder="Locality">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="inputLastName">Select Photo(s)</label>
-                            <select class="form-control" placeholder="Select Outlet">
-                                <option>image 1</option>
-                                <option>image 2</option>
-                                <option>image 3</option>
-                            </select>
+                            <label for="inputFirstName">Call On</label>
+                            <input type="text" name="phone1" class="form-control" id="inputphone1" placeholder="Call on">
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
                         <div class="form-group">
-                            <label for="inputEmail">Terms and Condition</label>
-                            <textarea rows="2" placeholder="Terms and Condition" class="form-control"></textarea>
+                            <label for="inputFirstName">SMS On</label>
+                            <input type="text" name="phone2" class="form-control" id="inputphone2" placeholder="SMS On">
+                        </div>                       
+                        <div class="form-group">
+                            <label for="inputFirstName">Pin code</label>
+                            <input type="text" class="form-control" name="zip" id="inputzip" placeholder="Pin code">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstName">Latitude</label>
+                            <input type="text" class="form-control" name="latitude" id="inputlatitude" placeholder="Latitude">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputFirstName">Longitude</label>
+                            <input type="text" class="form-control" name="longitude" id="inputlongitude" placeholder="longitude">
                         </div>
                     </div>
                 </div>
+                
             </nb-card-body>
         </nb-card>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
         <nb-card class="inline-form-card">
             <nb-card-header>
                 <div class="row">                   
                     <div class="col-sm-12 btn-deals">
-                        <button class="btn btn-success btn-semi-round btn-sm">Save as Draft</button>
-                        <button class="btn btn-success btn-semi-round btn-sm">Go Live</button>
+                        <button class="btn btn-success btn-semi-round btn-sm">Save </button>                        
                     </div>
                 </div>
             </nb-card-header>
