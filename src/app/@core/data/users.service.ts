@@ -20,7 +20,10 @@ export class UserService {
 
   getCurrentUser(): Observable<any> {
     return this.apiService.get('user')
-      .map((res) => res);
+      .map((res) => res)
+      .catch((error) => {
+        return error
+      });
   }
   
   update(user): Observable<User> {
@@ -28,7 +31,8 @@ export class UserService {
     .put('user/'+ user.id, user)
     .map(data => {      
       return data;
-    });
+    })
+    .catch((error) => error);
   }
  
 }

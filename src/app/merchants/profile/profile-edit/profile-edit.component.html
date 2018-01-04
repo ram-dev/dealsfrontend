@@ -14,6 +14,14 @@
                     <div *ngIf="!profileForm.valid && profileForm.touched" class="alert alert-danger" role="alert">
                         <div><strong>Please enter valid data!</strong></div>
                     </div>
+                    <div *ngIf="!profileForm.valid && errors && errors.length > 0 && !submitted" class="alert alert-danger" role="alert">
+		                <div><strong>Oh snap!</strong></div>
+		                <div *ngFor="let error of errors">{{ error }}</div>
+		            </div>
+		            <div *ngIf="messages && messages.length > 0 && !submitted" class="alert alert-success" role="alert">
+		                <div><strong>Hooray!</strong></div>
+		                <div *ngFor="let message of messages">{{ message }}</div>
+		            </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">

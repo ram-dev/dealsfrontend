@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { getDeepFromObject } from '../../helpers';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,6 +23,7 @@ export class ProfileEditComponent {
 
   constructor(private userService : UserService) {
     this.user = {};
+
   }
 
   ngOnInit() {
@@ -51,8 +53,8 @@ export class ProfileEditComponent {
           obj.firstName = data.firstName;
           obj.lastName = data.lastName;
           obj.gender = data.gender  || this.genders[0];
-          obj.birthDate = data.birthDate || '';
-          //"2010-12-12";
+          var datePipe = new DatePipe("en-US");
+          obj.birthDate = datePipe.transform(data.birthDate, 'yyyy-MM-dd') || '';
           obj.contacts = {};
           obj.contacts.address = data.contacts.address || '';
           obj.contacts.zip = data.contacts.zip || '';
@@ -88,22 +90,16 @@ export class ProfileEditComponent {
     formData = this.profileForm.value;  
     formData.id = this.id;  
     console.log(formData);
-    this.userService.update(formData).subscribe((result) =>{
-      this.submitted = false;
-      console.log('res');
-      console.log(result);
-    })
-    /*this.service.resetPassword(this.provider, this.user).subscribe((result: NbAuthResult) => {
-      this.submitted = false;
-      if (result.isSuccess()) {
-        this.messages = result.getMessages();
-      } else {
-        this.errors = result.getErrors();
-      }
-
-      const redirect = result.getRedirect();
-     
-    });*/
+    if(this.profileForm.valid){
+          this.userService.update(formData).subscribe((result) => {
+            this.submitted = false
+            if (result._id != '') {
+              this.messages.push("Profile successfully updated");
+            } else {
+              this.errors.push("Error!");
+            }            
+          })
+    }    
     //this.profileForm.reset();
   }
 
