@@ -19,7 +19,7 @@ import { ImageUploadModule } from "angular2-image-upload";
 import { NbEmailPassAuthProvider, NbAuthModule  } from './auth';
 import { NB_AUTH_TOKEN_WRAPPER_TOKEN,  NB_AUTH_INTERCEPTOR_HEADER, NbAuthSimpleToken, NbAuthJWTInterceptor} from './auth';
 import { TreeviewModule } from 'ngx-treeview';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +29,7 @@ import { TreeviewModule } from 'ngx-treeview';
     HttpModule,
     AppRoutingModule,
     MultiselectDropdownModule,
-
+    ReactiveFormsModule,
 
     NgbModule.forRoot(),
     ImageUploadModule.forRoot(),

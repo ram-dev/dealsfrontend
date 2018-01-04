@@ -16,16 +16,19 @@ let counter = 0;
 @Injectable()
 export class UserService {
 
-  constructor(
-      private apiService: ApiService,
-    ) 
-  {
-    
-  }
+  constructor( private apiService: ApiService ) { }
 
   getCurrentUser(): Observable<any> {
     return this.apiService.get('user')
       .map((res) => res);
+  }
+  
+  update(user): Observable<User> {
+    return this.apiService
+    .put('user/'+ user.id, user)
+    .map(data => {      
+      return data;
+    });
   }
  
 }
