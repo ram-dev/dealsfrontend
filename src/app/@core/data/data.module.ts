@@ -8,6 +8,7 @@ import { StateService } from './state.service';
 import { SmartTableService } from './smart-table.service';
 import { PlayerService } from './player.service';
 import { OutletService } from './outlet.service';
+import { MerchantListService } from './merchant-list.service';
 
 const SERVICES = [
   ApiService,
@@ -17,6 +18,7 @@ const SERVICES = [
   SmartTableService,
   PlayerService,
   OutletService,
+  MerchantListService,
 ];
 
 @NgModule({

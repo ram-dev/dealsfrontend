@@ -15,8 +15,8 @@ import { ApiService } from './api.service';
 export class DealsListService {
     constructor( private apiService: ApiService ) { }
 
-    /*getAllOutletByMechantId(merchantId): Observable<any> {
-        return this.apiService.get('merchant/'+merchantId+'/outlet')
+    getAllDealByMechantId(merchantId): Observable<any> {
+        return this.apiService.get('deal/'+merchantId)
             .map((res) => res)
             .catch((error) => {
                 return error
@@ -24,8 +24,8 @@ export class DealsListService {
         );
     }
 
-    getOutletByMechantId(merchantId, outletId): Observable<any> {
-        return this.apiService.get('merchant/'+merchantId+'/outlet/'+outletId)
+    getDealByMechantId(merchantId, dealId): Observable<any> {
+        return this.apiService.get('deal/'+merchantId+'/view/'+dealId)
             .map((res) => res)
             .catch((error) => {
                 return error
@@ -33,9 +33,9 @@ export class DealsListService {
         );
     }
 
-    createOutlet(merchant, merchantId): Observable<any> {
+    createDeal(dealData, merchantId): Observable<any> {
         return this.apiService
-           .post('merchant/'+merchantId+'/outlet', merchant)
+           .post('deal/'+merchantId+'/create', dealData)
            .map((res) => res)
            .catch((error) => {
                 return error
@@ -44,9 +44,9 @@ export class DealsListService {
     }
 
 
-    updateOutlet(merchant, merchantId, outletId): Observable<any> {
+    updateDeal(dealData, merchantId, dealId): Observable<any> {
         return this.apiService
-           .put('merchant/'+merchantId+'/outlet/'+outletId, merchant)
+           .put('deal/'+merchantId+'/edit/'+dealId, dealData)
            .map((res) => res)
            .catch((error) => {
                 return error
@@ -54,15 +54,15 @@ export class DealsListService {
         );
     }
 
-    deleteOutlet(merchantId, outletId): Observable<any> {
+    deleteDeal(merchantId, dealId): Observable<any> {
         return this.apiService
-           .delete('merchant/'+merchantId+'/outlet/'+outletId)
+           .delete('deal/'+merchantId+'/delete/'+dealId)
            .map((res) => res)
            .catch((error) => {
                 return error
             }
         );
-    }*/
+    }
 
     data = [{
         id: 1,    
