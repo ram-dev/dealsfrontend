@@ -39,7 +39,8 @@ export class NbAuthResult {
     }
     if(this.response.body){
       if(this.response.body._id){
-        localStorage.setItem('userId',this.response.body._id);
+        localStorage.setItem('userId',this.response.body._id);        
+        localStorage.setItem('merchantId',this.response.body.merchant);
       }             
       this.token = this.response.body.token; 
     }else{

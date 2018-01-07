@@ -3,6 +3,8 @@ import { GeneralComponent } from './general/general.component';
 import { AmenitiesComponent } from './amenities/amenities.component';
 import { ImagesComponent } from './images/images.component';
 import { OutletsComponent } from './outlets/outlets.component';
+import { Observable } from 'rxjs/Observable';
+import { UserService } from '../../../@core/data/users.service';
 
 @Component({
   selector: 'ngx-tabs',
@@ -10,6 +12,12 @@ import { OutletsComponent } from './outlets/outlets.component';
   templateUrl: './tabs.component.html',
 })
 export class TabsComponent {
+  id: any;
+  userId : any;
+  constructor() {
+    this.id = localStorage.getItem('merchantId');
+    this.userId = localStorage.getItem('userId');
+  }
 
   tabs: any[] = [
     {

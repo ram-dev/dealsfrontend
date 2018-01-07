@@ -25,6 +25,14 @@ export class UserService {
         return error
       });
   }
+
+  getUserById(userId): Observable<any> {
+    return this.apiService.get('user/'+userId)
+      .map((res) => res)
+      .catch((error) => {
+        return error
+      });
+  }
   
   update(user): Observable<User> {
     return this.apiService
