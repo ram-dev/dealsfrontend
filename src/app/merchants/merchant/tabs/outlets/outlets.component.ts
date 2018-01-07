@@ -80,29 +80,14 @@ export class OutletsComponent {
   constructor(private service: DealsListService) {
     this.id = localStorage.getItem('merchantId');
     this.service.getAllOutletByMechantId(this.id).subscribe( data => {
-        console.log(data);
-        this.source.load(data);
-    });
-    /*var data1 = [
-      {
-        "_id":"1",
-        "merchantId":"5a3a462aedcaf65ddcdc9a08",
-        "name": "third 34",
-        "userId": "5a3a462aedcaf65ddcdc9a06",
-        "latitude":"22.34",
-        "longitude":"11.43",
-        "contacts":{
-          "address":"432 ola road",
-          "zip":"323131",
-          "city":"Bangalore",
-          "state":"Karnataka",
-          "country":"India",
-          "locality":"Begur",
-          "phone1":"9876543210",
-          "phone2":"8876543210"
-        }
-      }
-    ];*/    
+        if (data instanceof Array) {         
+          this.source.load(data);
+        }else{
+          var arr = [];
+          arr.push(data);          
+          this.source.load(arr);
+        }        
+    });    
   }
 
   onDeleteConfirm(event): void {
