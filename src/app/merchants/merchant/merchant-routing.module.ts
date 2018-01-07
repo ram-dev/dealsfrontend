@@ -29,6 +29,10 @@ const routes: Routes = [{
     {
       path: 'outlets',
       component: OutletsComponent,
+    },
+    {
+      path: 'outlets/delete/:id',
+      component: OutletsComponent,
     },    
     {
       path: 'amenities',

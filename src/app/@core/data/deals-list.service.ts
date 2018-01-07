@@ -54,6 +54,16 @@ export class DealsListService {
         );
     }
 
+    deleteOutlet(merchantId, outletId): Observable<any> {
+        return this.apiService
+           .delete('merchant/'+merchantId+'/outlet/'+outletId)
+           .map((res) => res)
+           .catch((error) => {
+                return error
+            }
+        );
+    }
+
     data = [{
         id: 1,    
         startDate:"12-10-2017",
