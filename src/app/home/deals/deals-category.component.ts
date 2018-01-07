@@ -74,7 +74,6 @@ export class DealsCategoryComponent {
     this.dataService.getData().then(data => {
       this.originalData = data; 
       let list: any = [];
-      console.log(this.catid);
       if(this.catid){
         this.originalData.categories.forEach(element => {
           if(element.categori_id == this.catid){
@@ -174,8 +173,7 @@ export class DealsCategoryComponent {
       productsSource = this.products
       filterAllData = false
     }
-    //console.log('filtering ' + productsSource.length + ' products')
-
+    
     this.products = productsSource.filter(product => {
       //Filter by search
       if(filterAllData || filter.type=='search'){
@@ -250,7 +248,6 @@ export class DealsCategoryComponent {
   }
 
   sortProducts(criteria){
-    //console.log('sorting ' + this.products.length + ' products')
     this.products.sort((a,b) => {
       let discountComparison = parseFloat(a.discount.replace(/\./g, '').replace(',', '.')) - parseFloat(b.discount.replace(/\./g, '').replace(',', '.'))
       if(criteria == 'discountDes'){

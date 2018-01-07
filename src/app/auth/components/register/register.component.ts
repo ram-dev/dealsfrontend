@@ -50,7 +50,6 @@ export class NbRegisterComponent {
 
     this.service.register(this.provider, this.user).subscribe((result: NbAuthResult) => {
       this.submitted = false;
-      console.log(result);
       if (result.isSuccess()) {
         this.messages = result.getMessages();
       } else {
