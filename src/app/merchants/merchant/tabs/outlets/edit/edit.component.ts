@@ -1,6 +1,6 @@
 import { LocalDataSource } from 'ng2-smart-table';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { DealsListService } from '../../../../../@core/data/deals-list.service';
+import { OutletService } from '../../../../../@core/data/outlet.service';
 import { Component, Inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -23,7 +23,7 @@ export class OultelsEditComponent {
   merchantId : any ;
   userId : any;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private dealService : DealsListService) { 
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private service : OutletService) { 
     this.params = this.activatedRoute.snapshot.params;
     this.outletId = this.params.id;
     console.log(this.outletId);    
@@ -34,7 +34,7 @@ export class OultelsEditComponent {
   ngOnInit(){   
     this.initForm()
     if(this.params.id){
-      this.dealService.getOutletByMechantId(this.merchantId,this.outletId)
+      this.service.getOutletByMechantId(this.merchantId,this.outletId)
       .subscribe((result) => {          
           if (result.error) {
             this.errors.push(result.error);              
@@ -92,7 +92,7 @@ export class OultelsEditComponent {
     var self = this;
     if(this.outletForm.valid){
       if(this.outletId){
-        this.dealService.updateOutlet(formData, this.merchantId, this.outletId).subscribe(
+        this.service.updateOutlet(formData, this.merchantId, this.outletId).subscribe(
           (result) => {
             this.submitted = false
             if (result.error) {
@@ -109,7 +109,7 @@ export class OultelsEditComponent {
           }
         )
       }else{
-        this.dealService.createOutlet(formData, this.merchantId).subscribe(
+        this.service.createOutlet(formData, this.merchantId).subscribe(
           (result) => {
             this.submitted = false
             if (result.error) {

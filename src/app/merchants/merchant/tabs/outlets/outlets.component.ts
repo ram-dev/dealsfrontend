@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { DealsListService } from '../../../../@core/data/deals-list.service';
+import { OutletService } from '../../../../@core/data/outlet.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -80,7 +80,7 @@ export class OutletsComponent {
   source: LocalDataSource = new LocalDataSource();
   isDelte : Boolean = false;
   deleteId : any ;
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private service: DealsListService) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private service: OutletService) {
     this.id = localStorage.getItem('merchantId');
     this.params = this.activatedRoute.snapshot.params;
     if(this.activatedRoute.snapshot.url.length == 3){
@@ -112,16 +112,12 @@ export class OutletsComponent {
 
   onDeleteoutlet(){
     var self = this;
-    if (window.confirm('Are you sure you want to delete?')) {
-      console.log(true);
+    if (window.confirm('Are you sure you want to delete?')) {     
       this.service.deleteOutlet(this.id, this.deleteId).subscribe( data => {
          self.router.navigate(['/merchants/merchant/tabs/outlets']);
-      });    
-      //event.confirm.resolve();
-    } else {
-      console.log(false);
-      self.router.navigate(['/merchants/merchant/tabs/outlets']);
-      //event.confirm.reject();
+      });          
+    } else {      
+      self.router.navigate(['/merchants/merchant/tabs/outlets']);      
     }
   }
 }
