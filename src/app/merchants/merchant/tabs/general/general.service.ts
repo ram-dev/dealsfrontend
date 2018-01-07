@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TreeviewItem } from 'ngx-treeview';
 
 export class generalService {
-    getCategory(): TreeviewItem[] {
+    getCategory(ids): TreeviewItem[] {
         const foodBeveragesCategory =  new TreeviewItem({
             text: 'FOOD & BEVERAGES', value: "5a290b2d539eb0b14cd91d0c", checked : true, collapsed: true, children: [
                 { text: 'Fine Dine', value: "5a2919f13fee7034a0fad59f", checked : false },
