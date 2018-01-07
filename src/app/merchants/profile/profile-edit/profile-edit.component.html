@@ -159,7 +159,7 @@
             </nb-card>
             <div class="row">
                 <div class="col-md-12">
-                    <button class="btn btn-hero-success" type="submit">
+                    <button [disabled]="submitted || !profileForm.valid" class="btn btn-hero-success" type="submit">
                         Save changes
                     </button>
                 </div>

@@ -38,11 +38,13 @@ export class NbAuthResult {
       this.messages = messages;
     }
     if(this.response.body){
-     this.token = this.response.body.token; 
+      if(this.response.body._id){
+        localStorage.setItem('userId',this.response.body._id);
+      }             
+      this.token = this.response.body.token; 
     }else{
-      this.token = null;
-    }
-    
+      this.token = null;      
+    }    
   }
 
   getResponse(): any {

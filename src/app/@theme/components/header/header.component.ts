@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
           }                    
         },
         error => {
+          localStorage.removeItem('userId');
           this.router.navigate(['/auth/login']);          
         }
       );

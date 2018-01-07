@@ -34,5 +34,14 @@ export class UserService {
     })
     .catch((error) => error);
   }
+
+  resetpassword(user): Observable<User> {
+    return this.apiService
+    .post('user/'+ user.id +'/resetpwd', user)
+    .map(data => {      
+      return data;
+    })
+    .catch((error) => error);
+  }
  
 }

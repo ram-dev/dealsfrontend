@@ -4,6 +4,7 @@ import { Headers, Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import { NbAuthService, NbAuthJWTToken } from '../../auth';
 
 @Injectable()
@@ -27,7 +28,10 @@ export class ApiService {
   }
 
   private formatErrors(error: any) {
-     return Observable.throw(error.json());
+    return Observable.throw(error).catch(err => {       
+       return Observable.of(err);
+     }
+    )
   }
 
   get(path: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {

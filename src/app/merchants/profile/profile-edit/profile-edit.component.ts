@@ -89,16 +89,20 @@ export class ProfileEditComponent {
     var formData : any  = {};
     formData = this.profileForm.value;  
     formData.id = this.id;  
-    console.log(formData);
+   
     if(this.profileForm.valid){
-          this.userService.update(formData).subscribe((result) => {
+          this.userService.update(formData).subscribe(
+            (result) => {
             this.submitted = false
             if (result._id != '') {
               this.messages.push("Profile successfully updated");
             } else {
               this.errors.push("Error!");
             }            
-          })
+          },
+          error => {         
+          this.errors.push(error);
+        })
     }    
     //this.profileForm.reset();
   }
