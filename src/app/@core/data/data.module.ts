@@ -9,6 +9,7 @@ import { SmartTableService } from './smart-table.service';
 import { PlayerService } from './player.service';
 import { OutletService } from './outlet.service';
 import { MerchantListService } from './merchant-list.service';
+import { AmenityService } from './amenity.service';
 
 const SERVICES = [
   ApiService,
@@ -19,6 +20,7 @@ const SERVICES = [
   PlayerService,
   OutletService,
   MerchantListService,
+  AmenityService,
 ];
 
 @NgModule({
