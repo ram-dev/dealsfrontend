@@ -34,8 +34,8 @@ export class GeneralComponent {
       private categoryservice: generalService,
       private service: MerchantListService
     ) {
-      this.merchantId = localStorage.getItem('merchantId');
-      this.userId = localStorage.getItem('userId');
+      this.merchantId = sessionStorage.getItem('merchantId');
+      this.userId = sessionStorage.getItem('userId');
     }
 
     ngOnInit() {

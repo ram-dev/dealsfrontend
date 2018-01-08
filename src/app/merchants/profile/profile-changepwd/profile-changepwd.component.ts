@@ -24,7 +24,7 @@ export class ProfileChangePWDComponent {
   id: any;
 
   constructor(private userService : UserService) {
-    this.id = localStorage.getItem('userId');
+    this.id = sessionStorage.getItem('userId');
   }
 
   ngOnInit() {

@@ -15,8 +15,8 @@ export class TabsComponent {
   id: any;
   userId : any;
   constructor() {
-    this.id = localStorage.getItem('merchantId');
-    this.userId = localStorage.getItem('userId');
+    this.id = sessionStorage.getItem('merchantId');
+    this.userId = sessionStorage.getItem('userId');
   }
 
   tabs: any[] = [

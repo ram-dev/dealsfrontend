@@ -81,7 +81,7 @@ export class OutletsComponent {
   isDelte : Boolean = false;
   deleteId : any ;
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private service: OutletService) {
-    this.id = localStorage.getItem('merchantId');
+    this.id = sessionStorage.getItem('merchantId');
     this.params = this.activatedRoute.snapshot.params;
     if(this.activatedRoute.snapshot.url.length == 3){
       if(this.activatedRoute.snapshot.url[1].path == 'delete'){

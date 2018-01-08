@@ -27,8 +27,8 @@ export class OultelsEditComponent {
     this.params = this.activatedRoute.snapshot.params;
     this.outletId = this.params.id;
     console.log(this.outletId);    
-    this.merchantId = localStorage.getItem('merchantId');
-    this.userId = localStorage.getItem('userId');
+    this.merchantId = sessionStorage.getItem('merchantId');
+    this.userId = sessionStorage.getItem('userId');
   }
   
   ngOnInit(){   

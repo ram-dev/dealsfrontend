@@ -32,8 +32,8 @@ export class NbLogoutComponent implements OnInit {
       const redirect = result.getRedirect();
       if (redirect) {
         setTimeout(() => {
-          localStorage.removeItem('userId');
-          localStorage.removeItem('merchantId');
+          sessionStorage.clear();
+          localStorage.clear()
           return this.router.navigateByUrl(redirect);
         }, this.redirectDelay);
       }

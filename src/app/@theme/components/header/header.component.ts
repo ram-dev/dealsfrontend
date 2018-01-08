@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(
         data => {
           this.user = data;
-          localStorage.setItem('merchantId',this.user.merchant);
+          sessionStorage.setItem('merchantId',this.user.merchant);
           this.user.name = data.firstName + ' '+ data.lastName
           if(data.avatar == 'default.png' || data.avatar == 'Default.jpg'){
             this.user.picture = 'assets/images/default.png';
@@ -43,8 +43,8 @@ export class HeaderComponent implements OnInit {
           }                    
         },
         error => {
-          localStorage.removeItem('userId');
-          localStorage.removeItem('merchantId');
+          sessionStorage.removeItem('userId');
+          sessionStorage.removeItem('merchantId');
           this.router.navigate(['/auth/login']);          
         }
       );
