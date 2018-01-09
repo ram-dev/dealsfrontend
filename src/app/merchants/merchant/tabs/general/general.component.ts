@@ -28,7 +28,7 @@ export class GeneralComponent {
   errors: string[] = [];
   messages: string[] = [];  
   generalForm: FormGroup;
-
+  selectedAminity: any = [];
 
   constructor(private router : Router, private activatedRoute: ActivatedRoute, 
       private categoryservice: generalService,
@@ -51,6 +51,7 @@ export class GeneralComponent {
             obj._id = result._id;
             obj.name = result.name;
             obj.userId = result.userId;
+            this.selectedAminity = result.amenityId;
             this.items = this.categoryservice.getCategory(result.categoryId);
             //obj.categoryId = result.categoryId;
             obj.url = result.url || '';           
@@ -90,7 +91,8 @@ export class GeneralComponent {
         for(var i =0 ; i < this.values.length; i++){
           formData.categoryId.push(this.values[i]);
         }
-        if(this.generalForm.valid){         
+        if(this.generalForm.valid){   
+          formData.amenityId = this.selectedAminity;    
            this.service.saveMechantGeneral(formData, this.merchantId).subscribe(
             (result) => {
               this.submitted = false
