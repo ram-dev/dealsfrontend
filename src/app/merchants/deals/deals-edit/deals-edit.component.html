@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <nb-card class="inline-form-card">
-            <nb-card-header>{{DealType}} Deals                
+            <nb-card-header>{{DealType}} Deals
             </nb-card-header>
         </nb-card>
     </div>
@@ -10,196 +10,215 @@
     <div class="col-md-12">
         <nb-card class="inline-form-card">
             <nb-card-body>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="inputFirstName">Deal Name</label>
-                            <input type="text" class="form-control" id="inputDealName" placeholder="Deal Name">
-                        </div>
+                <form [formGroup]="dealForm" (ngSubmit)="onSubmit()">
+                    <div *ngIf="!dealForm.valid && errors && errors.length > 0 && !submitted" class="alert alert-danger" role="alert">
+                        <div><strong>Oh snap!</strong></div>
+                        <div *ngFor="let error of errors">{{ error }}</div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">                        
-                            <label for="inputLastName">Outlet</label>
-                            <div class="btn-group btn-group-full-width">                                
-                                <ss-multiselect-dropdown [options]="myOptionsOutlet" [texts]="myTexts" [settings]="mySettings" [(ngModel)]="optionsOutletModel"></ss-multiselect-dropdown>
+                    <div *ngIf="messages && messages.length > 0 && !submitted" class="alert alert-success" role="alert">
+                        <div><strong>Hooray!</strong></div>
+                        <div *ngFor="let message of messages">{{ message }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Deal Name</label>
+                                <input type="text" id="name" formControlName="name" class="form-control" [class.form-control-danger]="dealForm.get('name').invalid && dealForm.get('name').touched">
+                                <span *ngIf="!dealForm.get('name').valid && dealForm.get('name').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('name').errors['required']">This field is required!</span>
+                                </span>
                             </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputEmail">Category</label>
-                            <select class="form-control" placeholder="Select Category">
-                                <option>Minsk</option>
-                                <option>Gomel</option>
-                                <option>Brest</option>
-                                <option>Grodno</option>
-                                <option>Mogilev</option>
-                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="outletIds">Outlet</label>
+                                <input type="text" id="outletIds" formControlName="outletIds" class="form-control" [class.form-control-danger]="dealForm.get('outletIds').invalid && dealForm.get('outletIds').touched">
+                                <span *ngIf="!dealForm.get('outletIds').valid && dealForm.get('outletIds').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('outletIds').errors['required']">This field is required!</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="images">Images</label>
+                                <input type="text" id="images" formControlName="images" class="form-control" [class.form-control-danger]="dealForm.get('images').invalid && dealForm.get('images').touched">
+                                <span *ngIf="!dealForm.get('images').valid && dealForm.get('images').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('images').errors['required']">This field is required!</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="mainCategoryId">Category</label>
+                                <select name="mainCategoryId"  id="mainCategoryId" formControlName="mainCategoryId" class="form-control" [class.form-control-danger]="dealForm.get('mainCategoryId').invalid && dealForm.get('mainCategoryId').touched">
+                                    <option *ngFor="let category of mainCategoryList" [ngValue]="category._id">
+                                      {{ category.name }}
+                                    </option>
+                                </select>                                
+                                <span *ngIf="!dealForm.get('mainCategoryId').valid && dealForm.get('mainCategoryId').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('mainCategoryId').errors['required']">This field is required!</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="subCategoryIds">Sub Category</label>
+                                <!-- <input type="text" id="subCategoryIds" formControlName="subCategoryIds" class="form-control" [class.form-control-danger]="dealForm.get('subCategoryIds').invalid && dealForm.get('subCategoryIds').touched">
+                                <span *ngIf="!dealForm.get('subCategoryIds').valid && dealForm.get('subCategoryIds').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('subCategoryIds').errors['required']">This field is required!</span>
+                                </span> -->
+                                <ngx-dropdown-treeview [config]="config" [items]="items" [buttonClass]="buttonClass" 
+                                >
+                              </ngx-dropdown-treeview>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="offertype">offer type</label>
+                                <select name="offertype"  id="offertype" formControlName="offertype" class="form-control" (change)="offerChange()" [(ngModel)]="selectedPackage" [class.form-control-danger]="dealForm.get('offertype').invalid && dealForm.get('offertype').touched">
+                                    <option *ngFor="let oftype of offerTypeList" [ngValue]="oftype.value">
+                                      {{ oftype.name }}
+                                    </option>
+                                </select>   
+                                <span *ngIf="!dealForm.get('offertype').valid && dealForm.get('offertype').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('offertype').errors['required']">This field is required!</span>
+                                </span>                                                           
+                            </div>
+                        </div>
+                        <div class="col-md-4" [style.display]="(selectedPackage == 1) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">% Discount On</label>
+                                <input type="text" id="offertype_one" [disabled]="(selectedPackage == 1) ? 'false' : 'true'" formControlName="offertype_one" class="form-control full-width" [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="% Discount On">
+                            </div>                            
+                        </div>
+                        <div class="col-md-4" [style.display]="(selectedPackage == 1) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Select option</label>
+                                <select class="form-control" formControlName="offertype_two" [disabled]="(selectedPackage == 1) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" >
+                                    <option>Total bill</option>
+                                    <option>Food Only</option>
+                                    <option>Drink Only</option>
+                                </select>
+                            </div>                           
+                        </div>
+                        <div class="col-md-4" [style.display]="(selectedPackage == 2) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Get Rs.</label>
+                                <input type="text" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 2) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Get Rs.">
+                            </div>
+                        </div>
+                        <div class="col-md-4" [style.display]="(selectedPackage == 2) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Off on a Minimum bill of</label>
+                                <input type="text" formControlName="offertype_two" [disabled]="(selectedPackage == 2) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" class="form-control full-width" placeholder="Off on a Minimum bill of">
+                            </div>
+                        </div>
+                        <div class="col-md-4" [style.display]="(selectedPackage == 3) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Buy</label>
+                                <input type="text" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 3) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Buy">
+                            </div>
+                        </div>
+                        <div class="col-md-4" [style.display]="(selectedPackage == 3) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Get Free</label>
+                                <input type="text" class="form-control full-width" [disabled]="(selectedPackage == 3) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" placeholder="Get Free">
+                            </div>
+                        </div>
+                        <div class="col-md-4" [style.display]="(selectedPackage == 4) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Discount (%)</label>
+                                <input type="text" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 4) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder=" Discount (%)">
+                            </div>
+                        </div>
+                        <div class="col-md-4" [style.display]="(selectedPackage == 4) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Offer Description</label>
+                                <input type="text" class="form-control full-width" [disabled]="(selectedPackage == 4) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" placeholder="Offer Description">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputWebsite">Sub Category</label>
-                            <select class="form-control" placeholder="Select sub category">
-                                <option>Minsk</option>
-                                <option>Gomel</option>
-                                <option>Brest</option>
-                                <option>Grodno</option>
-                                <option>Mogilev</option>
-                            </select>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="offerDeatils">Offer Details</label>
+                                <textarea rows="2" id="offerDeatils" formControlName="offerDeatils" placeholder="Offer Details" class="form-control"  [class.form-control-danger]="dealForm.get('offerDeatils').invalid && dealForm.get('offerDeatils').touched"></textarea>
+                                <span *ngIf="!dealForm.get('offerDeatils').valid && dealForm.get('offerDeatils').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('offerDeatils').errors['required']">This field is required!</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="terms">Terms and Condition</label>                                
+                                <textarea rows="2" id="terms" formControlName="terms" placeholder="Terms and Condition" class="form-control"  [class.form-control-danger]="dealForm.get('terms').invalid && dealForm.get('terms').touched"></textarea>
+                                <span *ngIf="!dealForm.get('terms').valid && dealForm.get('terms').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('terms').errors['required']">This field is required!</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="offerValidFrom">Coupon Valid From</label>
+                                <input type="date" id="offerValidFrom" formControlName="offerValidFrom" class="form-control" placeholder="From Date" [class.form-control-danger]="dealForm.get('offerValidFrom').invalid && dealForm.get('offerValidFrom').touched">
+                                <span *ngIf="!dealForm.get('offerValidFrom').valid && dealForm.get('offerValidFrom').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('offerValidFrom').errors['required']">This field is required!</span>
+                                </span>                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="offerValidTo">Coupon Valid Till</label>
+                                <input type="date" id="offerValidTo" formControlName="offerValidTo" class="form-control" placeholder="To Date" [class.form-control-danger]="dealForm.get('offerValidTo').invalid && dealForm.get('offerValidTo').touched">
+                                <span *ngIf="!dealForm.get('offerValidTo').valid && dealForm.get('offerValidTo').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('offerValidTo').errors['required']">This field is required!</span>
+                                </span>                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="fundAllocation">Fund Allocation (Balance : Rs {{amount}})</label>
+                                <input type="text" id="fundAllocation" formControlName="fundAllocation" class="form-control" placeholder="Amount" [class.form-control-danger]="dealForm.get('fundAllocation').invalid && dealForm.get('fundAllocation').touched">
+                                <span *ngIf="!dealForm.get('fundAllocation').valid && dealForm.get('fundAllocation').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('fundAllocation').errors['required']">This field is required!</span>
+                                </span>                               
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="dayAllocationType">Days Allocation</label>
+                                <select name="dayAllocationType"  id="dayAllocationType" formControlName="dayAllocationType" class="form-control" [class.form-control-danger]="dealForm.get('dayAllocationType').invalid && dealForm.get('dayAllocationType').touched">
+                                    <option *ngFor="let day of daysType" [ngValue]="day">
+                                      {{ day }}
+                                    </option>
+                                </select>   
+                                <span *ngIf="!dealForm.get('dayAllocationType').valid && dealForm.get('dayAllocationType').touched" class="form-text error">                           
+                                  <span *ngIf="dealForm.get('dayAllocationType').errors['required']">This field is required!</span>
+                                </span>   
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-12 btn-deals" style="margin-bottom: 20px;">
+                            <button class="btn btn-success btn-semi-round btn-sm">Save as Draft</button>
+                            <button class="btn btn-success btn-semi-round btn-sm" disabled="true">Go Live</button>
+                        </div>
+                        <br/>
+                    </div>
+                </form>
             </nb-card-body>
         </nb-card>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <nb-card class="inline-form-card">
-            <!-- <nb-card-header>Offer Details</nb-card-header> -->
-            <nb-card-body>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputFirstName">offer type</label>
-                            <select class="form-control" [(ngModel)]="offerType">
-                                <option value="0">Select offer type</option>
-                                <option value="1">Flat Discount</option>
-                                <option value="2">Minimum Discount</option>
-                                <option value="3">Buy/Get Discount</option>
-                                <option value="4">Package Campaign/Deal</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 1) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">% Discount On</label>
-                            <input type="text" class="form-control full-width" placeholder="% Discount On">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 1) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Select option</label>
-                            <select class="form-control">
-                                <option>Total bill</option>
-                                <option>Food Only</option>
-                                <option>Drink Only</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 2) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Get Rs.</label>
-                            <input type="text" class="form-control full-width" placeholder="Get Rs.">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 2) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Off on a Minimum bill of</label>
-                            <input type="text" class="form-control full-width" placeholder="Off on a Minimum bill of">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 3) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Buy</label>
-                            <input type="text" class="form-control full-width" placeholder="Buy">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 3) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Get Free</label>
-                            <input type="text" class="form-control full-width" placeholder="Get Free">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 4) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Discount (%)</label>
-                            <input type="text" class="form-control full-width" placeholder=" Discount (%)">
-                        </div>
-                    </div>
-                    <div class="col-sm-4" [style.display]="(offerType == 4) ? 'block' : 'none'">
-                        <div class="form-group">
-                            <label for="inputFirstName">Offer Description</label>
-                            <input type="text" class="form-control full-width" placeholder="Offer Description">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="inputFirstName">Offer Details</label>
-                            <textarea rows="2" placeholder="Offer Details" class="form-control"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputFirstName">Coupon Valid From</label>
-                            <input type="date" class="form-control full-width" placeholder="From Date">                           
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputFirstName">Coupon Valid Till</label>
-                            <input type="date" class="form-control full-width" placeholder="To Date">
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="inputFirstName">Fund Allocation (Balance : Rs 1000)</label>
-                            <input type="text" class="form-control full-width" placeholder="Amount">
-                        </div>
-                    </div>
-                </div>
-            </nb-card-body>
-        </nb-card>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <nb-card class="inline-form-card">
-            <nb-card-body>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="inputFirstName">Days Allocation</label>
-                            <select class="form-control" placeholder="Select Outlet">
-                                <option>Week Days</option>
-                                <option>Weekend</option>
-                                <option>All Days</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="inputLastName">Select Photo(s)</label>
-                            <select class="form-control" placeholder="Select Outlet">
-                                <option>image 1</option>
-                                <option>image 2</option>
-                                <option>image 3</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="inputEmail">Terms and Condition</label>
-                            <textarea rows="2" placeholder="Terms and Condition" class="form-control"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </nb-card-body>
-        </nb-card>
-    </div>
-</div>
-<div class="row">
+
+
+<!-- <div class="row">
     <div class="col-md-12">
         <nb-card class="inline-form-card">
             <nb-card-header>
-                <div class="row">                   
+                <div class="row">
                     <div class="col-sm-12 btn-deals">
                         <button class="btn btn-success btn-semi-round btn-sm">Save as Draft</button>
                         <button class="btn btn-success btn-semi-round btn-sm">Go Live</button>
@@ -208,4 +227,4 @@
             </nb-card-header>
         </nb-card>
     </div>
-</div>
+</div> -->

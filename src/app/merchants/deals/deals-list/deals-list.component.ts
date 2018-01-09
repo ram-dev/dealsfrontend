@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-
 import { DealsListService } from '../../../@core/data/deals-list.service';
+import { OutletService } from '../../../@core/data/outlet.service';
+import { MerchantListService } from '../../../@core/data/merchant-list.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'ngx-deals-list',
@@ -73,9 +75,9 @@ export class DealsListComponent {
         type:'html',
         valuePrepareFunction:(cell,row)=>{         
           return `<div class="btn-group">
-          <a title="Edit" class="btn btn-primary btn-icon" href="/#/merchants/deals/edit/${row.id}"> 
+          <a title="Edit" class="btn btn-primary btn-icon" href="/#/merchants/deals/edit/${row._id}"> 
           <i class="nb-edit"></i> 
-          <a title="Add Coupon" class="btn btn-success btn-icon" href="/#/merchants/deals/addcoupon/${row.id}">
+          <a title="Add Coupon" class="btn btn-success btn-icon" href="/#/merchants/deals/addcoupon/${row._id}">
            <i class="nb-plus"></i>
            </a></div>`
         },
@@ -85,10 +87,22 @@ export class DealsListComponent {
   };
 
   source: LocalDataSource = new LocalDataSource();
-
-  constructor(private service: DealsListService) {
-    const data = this.service.getData();
-    this.source.load(data);
+  id :any ;
+  params :any;
+ 
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private service: DealsListService) {
+    this.id = sessionStorage.getItem('merchantId');
+    this.params = this.activatedRoute.snapshot.params;
+    this.service.getAllDealByMechantId(this.id).subscribe( data => {
+        if (data instanceof Array) {         
+          this.source.load(data);
+        }else{
+          var arr = [];
+          arr.push(data);          
+          this.source.load(arr);
+        }        
+    });    
+    //get merchant details check main category is required and minmum onr outlet and one image
   }
 
   onDeleteConfirm(event): void {

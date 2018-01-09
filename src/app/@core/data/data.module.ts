@@ -10,6 +10,7 @@ import { PlayerService } from './player.service';
 import { OutletService } from './outlet.service';
 import { MerchantListService } from './merchant-list.service';
 import { AmenityService } from './amenity.service';
+import { GalleryService } from './gallery.service';
 
 const SERVICES = [
   ApiService,
@@ -21,6 +22,7 @@ const SERVICES = [
   OutletService,
   MerchantListService,
   AmenityService,
+  GalleryService,
 ];
 
 @NgModule({
