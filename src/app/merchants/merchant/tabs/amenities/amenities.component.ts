@@ -34,8 +34,12 @@ export class AmenitiesComponent {
   "5a290c78539eb0b14cd91d37", 
   "5a290ba6539eb0b14cd91d1f" 
   ];
+  selectedCategory : any = [];
   merchantData : any ;
   selectedAminity: any = [];
+  amenityForm: FormGroup;
+  errors: string[] = [];
+  messages: string[] = [];  
 
 
   constructor(private router : Router, private activatedRoute: ActivatedRoute, private service: AmenityService, private merchantService : MerchantListService) {
@@ -47,13 +51,20 @@ export class AmenitiesComponent {
     this.merchantService.getMerchantByMechantId(this.merchantId)
     .subscribe((result) => {  
       this.merchantData = result; 
+      this.selectedCategory = [];
+      for(var i = 0 ; i < result.categoryId.length; i++){
+        var found = this.mainCategory.indexOf(result.categoryId[i]);
+        if(found != -1){
+          this.selectedCategory.push(result.categoryId[i]);
+        }
+      }
       this.service.getAllAmenity().subscribe((result) => {  
         this.amenityList = result;
         this.service.getAllSubAmenity().subscribe((result) => {  
           this.subamenityList = result;
-          this.selectedAminity = ["5a533795d8d2095818be8a25", "5a5342a9c6363e11949a59e7"]; //this.merchantData.amenityId 
-          this.items = this.service.generateTreeView(this.mainCategory,this.subamenityList, this.selectedAminity);
-          console.log(this.items);
+          this.selectedAminity = this.merchantData.amenityId 
+          this.items = this.service.generateTreeView(this.selectedCategory,this.subamenityList, this.selectedAminity);
+          
         })         
       })
     })
@@ -63,4 +74,23 @@ export class AmenitiesComponent {
     this.values = values;
   }
 
+  onSubmit(){
+       
+    this.merchantData.amenityId = this.values;
+    
+    var formData = this.merchantData;
+    this.merchantService.saveMechantGeneral(formData, this.merchantId).subscribe(
+      (result) => {     
+              
+        if (result.error) {
+          this.errors.push(result.error);              
+        } else {
+          this.messages.push("Amenity successfully Updated");                
+        }            
+      },
+      error => {         
+        this.errors.push(error);
+      }
+    )
+  }
 }

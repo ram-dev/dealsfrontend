@@ -47,7 +47,7 @@ export class GeneralComponent {
             this.errors.push(result.error);              
           } else {
             var obj :any = {};
-            console.log(result);
+            
             obj._id = result._id;
             obj.name = result.name;
             obj.userId = result.userId;
@@ -81,8 +81,7 @@ export class GeneralComponent {
       this.submitted = true;
       var formData : any  = {};
       formData = this.generalForm.value;
-      var self = this;
-      console.log(formData);
+      var self = this;     
       if(this.values.length == 0){
         this.errors.push('please select atleast one business service');
         this.submitted = false;
@@ -91,9 +90,7 @@ export class GeneralComponent {
         for(var i =0 ; i < this.values.length; i++){
           formData.categoryId.push(this.values[i]);
         }
-        if(this.generalForm.valid){
-          console.log('valid');
-           console.log(formData);
+        if(this.generalForm.valid){         
            this.service.saveMechantGeneral(formData, this.merchantId).subscribe(
             (result) => {
               this.submitted = false

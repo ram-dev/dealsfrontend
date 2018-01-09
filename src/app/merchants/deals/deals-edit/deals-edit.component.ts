@@ -41,11 +41,11 @@ myOptionsOutlet: IMultiSelectOption[] = [
 
   constructor(private activatedRoute: ActivatedRoute) { 
     this.params = this.activatedRoute.snapshot.params;
-    console.log(this.params.id);    
+      
   }
   
   ngOnInit(){
-   console.log(this.params.id);
+   
    if(this.params.id){
      this.DealType = 'Edit';
    }

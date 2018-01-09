@@ -75,7 +75,7 @@ export class generalService {
                 {text: 'Training / Coaching Classes', value: "5a2919f13fee7034a0fad5b1", checked : false}                             
             ]
         });
-        function test(ids, categoty){
+        function setCategoryLevelOne(ids, categoty){
             for(var i=0 ; i < ids.length ; i++){
                 var sel = ids[i];
                 if(categoty.value == sel){                   
@@ -91,7 +91,7 @@ export class generalService {
                 }
             }
         }
-        function test1(ids, categoty){
+        function setCategoryLevelTwo(ids, categoty){
             for(var i=0 ; i < ids.length ; i++){
                 var sel = ids[i];
                 if(categoty.value == sel){                   
@@ -116,13 +116,13 @@ export class generalService {
                 }
             }
         }
-        test(ids, foodBeveragesCategory);
-        test(ids, othersCategory);
-        test(ids, eShoppingCategory);
-        test(ids, entertainmentCategory);
-        test1(ids, wellnessCategory);
-        test1(ids, spaCategory);
-        test1(ids, travelCategory);
+        setCategoryLevelOne(ids, foodBeveragesCategory);
+        setCategoryLevelOne(ids, othersCategory);
+        setCategoryLevelOne(ids, eShoppingCategory);
+        setCategoryLevelOne(ids, entertainmentCategory);
+        setCategoryLevelTwo(ids, wellnessCategory);
+        setCategoryLevelTwo(ids, spaCategory);
+        setCategoryLevelTwo(ids, travelCategory);
 
         return [
             foodBeveragesCategory, 

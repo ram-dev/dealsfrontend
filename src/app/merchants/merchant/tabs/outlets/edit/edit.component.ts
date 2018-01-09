@@ -26,7 +26,7 @@ export class OultelsEditComponent {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private service : OutletService) { 
     this.params = this.activatedRoute.snapshot.params;
     this.outletId = this.params.id;
-    console.log(this.outletId);    
+       
     this.merchantId = sessionStorage.getItem('merchantId');
     this.userId = sessionStorage.getItem('userId');
   }

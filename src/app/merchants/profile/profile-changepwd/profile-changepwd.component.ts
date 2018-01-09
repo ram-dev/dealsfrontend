@@ -58,8 +58,8 @@ export class ProfileChangePWDComponent {
           }        
         },
         (error : any) => {   
-          self.submitted = false;      
-          console.log(error);
+          self.submitted = false;     
+          
           self.errors.push(error);
       })
     }

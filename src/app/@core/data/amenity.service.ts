@@ -41,6 +41,7 @@ export class AmenityService {
     }
 
     setdata(res){
+        this.amenityData = [];
         for(var i= 0; i < res.length; i++){
             var obj : any = {};
                 obj.text = res[i].name;
@@ -51,7 +52,7 @@ export class AmenityService {
                 obj.children = [];
             this.amenityData.push(obj);
         }
-        console.log(this.amenityData);
+        
     }
     getAllSubAmenity(): Observable<any> {
         return this.apiService.get('subamenity')
@@ -104,9 +105,30 @@ export class AmenityService {
                     }
                 }
         }
-        console.log(finalList);
+        
         for(var i = 0 ; i< finalList.length; i++){  
             main[i] =  new TreeviewItem(finalList[i]);
+        }
+
+        function setAmenity(ids, categoty){
+            for(var i=0 ; i < ids.length ; i++){
+                var sel = ids[i];
+                if(categoty.value == sel){                   
+                    categoty.checked = true;
+                }else{
+                    var child = categoty.children;                   
+                    for(var j =0; j < child.length ; j++){
+                        var childSel = child[j];
+                        if(childSel.value == sel){                            
+                            childSel.checked = true
+                        }                        
+                    }                
+                }
+            }
+        }
+
+        for(var i = 0 ; i< main.length; i++){  
+            setAmenity(selectedAminity, main[i]);
         }
 
         return main;
