@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-
-import { SmartTableService } from '../../../@core/data/smart-table.service';
+import { DealsListService } from '../../../@core/data/deals-list.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'ngx-smart-table',
@@ -19,21 +19,7 @@ export class SmartTableComponent {
       add:false,
       edit:false,
       delete: false
-    },
-    /*add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
-    },*/
+    },    
     columns: {
       id: {
         title: 'Deal ID',
@@ -67,12 +53,23 @@ export class SmartTableComponent {
       },
     },
   };
+  id :any ;
+  params :any;
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableService) {
-    const data = this.service.getData();
-    this.source.load(data);
+  constructor(private service: DealsListService, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.id = sessionStorage.getItem('merchantId');
+    this.params = this.activatedRoute.snapshot.params;
+    this.service.getAllDownloadDealByMechantId(this.id).subscribe( data => {
+        if (data instanceof Array) {         
+          this.source.load(data);
+        }else{
+          var arr = [];
+          arr.push(data);          
+          this.source.load(arr);
+        }        
+    });
   }
 
   onDeleteConfirm(event): void {

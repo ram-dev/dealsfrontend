@@ -24,6 +24,15 @@ export class DealsListService {
         );
     }
 
+    getAllDownloadDealByMechantId(merchantId): Observable<any> {
+        return this.apiService.get('downloaddeal/'+merchantId)
+            .map((res) => res)
+            .catch((error) => {
+                return error
+            }
+        );
+    }
+
     getDealByMechantId(merchantId, dealId): Observable<any> {
         return this.apiService.get('deal/'+merchantId+'/view/'+dealId)
             .map((res) => res)
