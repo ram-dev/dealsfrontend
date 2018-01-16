@@ -20,36 +20,35 @@ export class SmartTableComponent {
       edit:false,
       delete: false
     },    
-    columns: {
-      id: {
-        title: 'Deal ID',
-        type: 'number',
-        filter:false
-      },
-      firstName: {
+    columns: {     
+      dealName: {
         title: 'Deal Name',
         type: 'string',
         filter:false
       },
-      lastName: {
+      contactName: {
         title: 'Contact Name',
         type: 'string',
         filter:false
       },
-      username: {
+      contactNumber: {
         title: 'Contact Number',
         type: 'string',
         filter:false
       },
-      email: {
+      couponCode: {
         title: 'Coupon Code',
         type: 'string',
         filter:false
       },
-      age: {
+      created: {
         title: 'Date',
         type: 'number',
-        filter:false
+        filter:false,
+        valuePrepareFunction: (cell, row) => {          
+          var raw = new Date(cell);          
+          return raw.toLocaleDateString();          
+        },
       },
     },
   };
