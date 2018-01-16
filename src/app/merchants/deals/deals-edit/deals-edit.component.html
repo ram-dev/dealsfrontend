@@ -87,68 +87,68 @@
                                 </span>                                                           
                             </div>
                         </div>
-                        <div class="col-md-4" [style.display]="(selectedPackage == 1) ? 'block' : 'none'">
+                        <div class="col-md-4" [style.display]="(selectedPackage == '1') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">% Discount On</label>
-                                <input type="number" id="offertype_one" (change)="onChangeValue($event)" [disabled]="(selectedPackage == 1) ? 'false' : 'true'" formControlName="offertype_one" class="form-control full-width" [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="% Discount On">
+                                <input type="number" id="offertype_one" (change)="onChangeValue($event)" [disabled]="(selectedPackage == '1') ? 'false' : 'true'" formControlName="offertype_one" class="form-control full-width" [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="% Discount On">
                             </div>                            
                         </div>
-                        <div class="col-md-4" [style.display]="(selectedPackage == 1) ? 'block' : 'none'">
+                        <div class="col-md-4" [style.display]="(selectedPackage == '1') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Select option</label>
-                                <select class="form-control" (change)="onChangeValue($event)" formControlName="offertype_two" [disabled]="(selectedPackage == 1) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" >
+                                <select class="form-control" (change)="onChangeValue($event)" formControlName="offertype_two" [disabled]="(selectedPackage == '1') ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" >
                                     <option value="Total bill">Total bill</option>
                                     <option value="Food Only">Food Only</option>
                                     <option value="Drink Only">Drink Only</option>
                                 </select>
                             </div>                           
                         </div>
-                        <div class="col-md-4" [style.display]="(selectedPackage == 2) ? 'block' : 'none'">
+                        <div class="col-md-4" [style.display]="(selectedPackage == '2') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Get Rs.</label>
-                                <input type="number" (change)="onChangeValue($event)" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 2) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Get Rs.">
+                                <input type="number" (change)="onChangeValue($event)" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == '2') ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Get Rs.">
                             </div>
                         </div>
-                        <div class="col-md-4" [style.display]="(selectedPackage == 2) ? 'block' : 'none'">
+                        <div class="col-md-4" [style.display]="(selectedPackage == '2') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Off on a Minimum bill of</label>
-                                <input type="number" (change)="onChangeValue($event)" formControlName="offertype_two" [disabled]="(selectedPackage == 2) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" class="form-control full-width" placeholder="Off on a Minimum bill of">
+                                <input type="number" (change)="onChangeValue($event)" formControlName="offertype_two" [disabled]="(selectedPackage == '2') ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" class="form-control full-width" placeholder="Off on a Minimum bill of">
                             </div>
                         </div>
-                        <div class="col-md-4" [style.display]="(selectedPackage == 3) ? 'block' : 'none'">
+                        <div class="col-md-4" [style.display]="(selectedPackage == '3') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Buy</label>
-                                <input type="number" (change)="onChangeValue($event)" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 3) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Buy">
+                                <input type="number" (change)="onChangeValue($event)" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == '3') ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Buy">
                             </div>
                         </div>
-                        <div class="col-md-4" [style.display]="(selectedPackage == 3) ? 'block' : 'none'">
+                        <div class="col-md-4" [style.display]="(selectedPackage == '3') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Get Free</label>
-                                <input type="number" (change)="onChangeValue($event)" formControlName="offertype_two" class="form-control full-width" [disabled]="(selectedPackage == 3) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" placeholder="Get Free">
+                                <input type="number" (change)="onChangeValue($event)" formControlName="offertype_two" class="form-control full-width" [disabled]="(selectedPackage == '3') ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" placeholder="Get Free">
                             </div>
                         </div>
                         
                     </div>
                     <div class="row">                       
-                        <div class="col-md-6" [style.display]="(selectedPackage == 4) ? 'block' : 'none'">
+                        <div class="col-md-6" [style.display]="(selectedPackage == '4') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Discount (%)</label>
                                 <input type="text"  formControlName="discount" class="form-control full-width"[class.form-control-danger]="dealForm.get('discount').invalid && dealForm.get('discount').touched" placeholder="">
                             </div>
                         </div>
-                        <div class="col-md-6" [style.display]="(selectedPackage == 4) ? 'block' : 'none'">
+                        <div class="col-md-6" [style.display]="(selectedPackage == '4') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Offer</label>
                                 <input type="text" formControlName="offer" class="form-control full-width" [class.form-control-danger]="dealForm.get('offer').invalid && dealForm.get('offer').touched" placeholder="Offer Description">
                             </div>
                         </div>
-                         <div class="col-md-6" [style.display]="(selectedPackage != 4) ? 'block' : 'none'">
+                         <div class="col-md-6" [style.display]="(selectedPackage != '4') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Discount (%)</label>
                                 <input disabled formControlName="discount" type="text" class="form-control full-width"[class.form-control-danger]="dealForm.get('discount').invalid && dealForm.get('discount').touched" placeholder="">
                             </div>
                         </div>
-                        <div class="col-md-6" [style.display]="(selectedPackage != 4) ? 'block' : 'none'">
+                        <div class="col-md-6" [style.display]="(selectedPackage != '4') ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Offer</label>
                                 <input disabled type="text" formControlName="offer" class="form-control full-width" [class.form-control-danger]="dealForm.get('offer').invalid && dealForm.get('offer').touched" placeholder="Offer Description">

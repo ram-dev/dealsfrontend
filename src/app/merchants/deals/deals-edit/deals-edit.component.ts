@@ -68,6 +68,7 @@ export class DealsEditComponent {
   ];
   buttonClass = this.buttonClasses[1];
   formDataDeal :any ={};
+  userId: any;
   
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
    private dealService: DealsListService,
@@ -78,6 +79,7 @@ export class DealsEditComponent {
     this.params = this.activatedRoute.snapshot.params;
     this.dealId = this.params.id;
     this.merchantId = sessionStorage.getItem('merchantId');
+    this.userId = sessionStorage.getItem('userId');
     this.merchantService.getMerchantByMechantId(this.merchantId)
       .subscribe((result) => {
         this.merchantData = result;
@@ -196,12 +198,14 @@ export class DealsEditComponent {
     });
     formData.images = []
     this.imagesValues.forEach(function (value) {
-     formData.images.push(value._id);
+     formData.images.push(value.value);
     });
     formData.outletIds = []
     this.outletIdValues.forEach(function (value) {
-     formData.outletIds.push(value._id);
-    });    
+      console.log(value);
+     formData.outletIds.push(value.value);
+    }); 
+    formData.userId = this.userId   
     console.log('final');
     console.log(formData);
     if(this.dealForm.valid){

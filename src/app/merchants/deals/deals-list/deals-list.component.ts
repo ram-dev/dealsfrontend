@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+
 import { LocalDataSource } from 'ng2-smart-table';
 import { DealsListService } from '../../../@core/data/deals-list.service';
 import { OutletService } from '../../../@core/data/outlet.service';
 import { MerchantListService } from '../../../@core/data/merchant-list.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+
 
 @Component({
   selector: 'ngx-deals-list',
@@ -29,36 +31,38 @@ export class DealsListComponent {
       add:false      
     },
     columns: {
-     id: {
-        title: 'ID',
-        type: 'number',
+     name: {
+        title: 'Deal Name',
+        type: 'str',
         filter:false 
       },
-      startDate: {
+      offerValidFrom: {
         title: 'Start Date',
         type: 'string',
-        filter:false 
+        filter:false,
+        valuePrepareFunction: (cell, row) => {          
+          var raw = new Date(cell);          
+          return raw.toLocaleDateString();          
+        },
       },
-      endDate: {
+      offerValidTo: {
         title: 'End Date',
         type: 'string',
-        filter:false 
+        filter:false,
+        valuePrepareFunction: (cell, row) => {          
+          var raw = new Date(cell);         
+          return raw.toLocaleDateString();          
+        },
       },
-      category: {
+      mainCategoryId1: {
         title: 'Category',
         type: 'string',
-        filter:false 
-      },
-      currentBalance: {
-        title: 'Balance',
-        type: 'string',
-        filter:false 
-      },
-      createDate: {
-        title: 'Create Date',
-        type: 'string',
-        filter:false 
-      },
+        filter:false,
+        valuePrepareFunction: (cell, row) => {          
+                  
+          return cell;          
+        },
+      },     
       previewDeal:{
         title: 'Preview Deal',
         type: 'html',
