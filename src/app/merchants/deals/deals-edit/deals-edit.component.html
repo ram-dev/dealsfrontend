@@ -32,25 +32,29 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="outletIds">Outlet</label>
-                                <input type="text" id="outletIds" formControlName="outletIds" class="form-control" [class.form-control-danger]="dealForm.get('outletIds').invalid && dealForm.get('outletIds').touched">
+                                <ngx-dropdown-treeview [config]="config" [items]="outletIdItems | ngxTreeview:'text'" [buttonClass]="buttonClass" (selectedChange)="onSelectedOutletChange($event)">
+                              </ngx-dropdown-treeview>
+                                <!-- <input type="hidden" id="outletIds" formControlName="outletIds" class="form-control" [class.form-control-danger]="dealForm.get('outletIds').invalid && dealForm.get('outletIds').touched">
                                 <span *ngIf="!dealForm.get('outletIds').valid && dealForm.get('outletIds').touched" class="form-text error">                           
                                   <span *ngIf="dealForm.get('outletIds').errors['required']">This field is required!</span>
-                                </span>
+                                </span> -->
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="images">Images</label>
-                                <input type="text" id="images" formControlName="images" class="form-control" [class.form-control-danger]="dealForm.get('images').invalid && dealForm.get('images').touched">
+                                 <ngx-dropdown-treeview [config]="config" [items]="imgIdItems | ngxTreeview:'text'" [buttonClass]="buttonClass" (selectedChange)="onSelectedImageChange($event)">
+                              </ngx-dropdown-treeview>
+                               <!--  <input type="text" id="images" formControlName="images" class="form-control" [class.form-control-danger]="dealForm.get('images').invalid && dealForm.get('images').touched">
                                 <span *ngIf="!dealForm.get('images').valid && dealForm.get('images').touched" class="form-text error">                           
                                   <span *ngIf="dealForm.get('images').errors['required']">This field is required!</span>
-                                </span>
+                                </span> -->
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="mainCategoryId">Category</label>
-                                <select name="mainCategoryId"  id="mainCategoryId" formControlName="mainCategoryId" class="form-control" [class.form-control-danger]="dealForm.get('mainCategoryId').invalid && dealForm.get('mainCategoryId').touched">
+                                <select name="mainCategoryId"  id="mainCategoryId" (change)="onSelectedMainCatChange($event.target.value)" formControlName="mainCategoryId" class="form-control" [class.form-control-danger]="dealForm.get('mainCategoryId').invalid && dealForm.get('mainCategoryId').touched">
                                     <option *ngFor="let category of mainCategoryList" [ngValue]="category._id">
                                       {{ category.name }}
                                     </option>
@@ -62,13 +66,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="subCategoryIds">Sub Category</label>
-                                <!-- <input type="text" id="subCategoryIds" formControlName="subCategoryIds" class="form-control" [class.form-control-danger]="dealForm.get('subCategoryIds').invalid && dealForm.get('subCategoryIds').touched">
-                                <span *ngIf="!dealForm.get('subCategoryIds').valid && dealForm.get('subCategoryIds').touched" class="form-text error">                           
-                                  <span *ngIf="dealForm.get('subCategoryIds').errors['required']">This field is required!</span>
-                                </span> -->
-                                <ngx-dropdown-treeview [config]="config" [items]="items" [buttonClass]="buttonClass" 
-                                >
+                                <label for="subCategoryIds">Sub Category</label>                                
+                                <ngx-dropdown-treeview [config]="config" [items]="subCategoryitems | ngxTreeview:'name'" [buttonClass]="buttonClass" 
+                                (selectedChange)="onSelectedSubCatChange($event)" >
                               </ngx-dropdown-treeview>
                             </div>
                             
@@ -90,57 +90,70 @@
                         <div class="col-md-4" [style.display]="(selectedPackage == 1) ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">% Discount On</label>
-                                <input type="text" id="offertype_one" [disabled]="(selectedPackage == 1) ? 'false' : 'true'" formControlName="offertype_one" class="form-control full-width" [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="% Discount On">
+                                <input type="number" id="offertype_one" (change)="onChangeValue($event)" [disabled]="(selectedPackage == 1) ? 'false' : 'true'" formControlName="offertype_one" class="form-control full-width" [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="% Discount On">
                             </div>                            
                         </div>
                         <div class="col-md-4" [style.display]="(selectedPackage == 1) ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Select option</label>
-                                <select class="form-control" formControlName="offertype_two" [disabled]="(selectedPackage == 1) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" >
-                                    <option>Total bill</option>
-                                    <option>Food Only</option>
-                                    <option>Drink Only</option>
+                                <select class="form-control" (change)="onChangeValue($event)" formControlName="offertype_two" [disabled]="(selectedPackage == 1) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" >
+                                    <option value="Total bill">Total bill</option>
+                                    <option value="Food Only">Food Only</option>
+                                    <option value="Drink Only">Drink Only</option>
                                 </select>
                             </div>                           
                         </div>
                         <div class="col-md-4" [style.display]="(selectedPackage == 2) ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Get Rs.</label>
-                                <input type="text" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 2) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Get Rs.">
+                                <input type="number" (change)="onChangeValue($event)" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 2) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Get Rs.">
                             </div>
                         </div>
                         <div class="col-md-4" [style.display]="(selectedPackage == 2) ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Off on a Minimum bill of</label>
-                                <input type="text" formControlName="offertype_two" [disabled]="(selectedPackage == 2) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" class="form-control full-width" placeholder="Off on a Minimum bill of">
+                                <input type="number" (change)="onChangeValue($event)" formControlName="offertype_two" [disabled]="(selectedPackage == 2) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" class="form-control full-width" placeholder="Off on a Minimum bill of">
                             </div>
                         </div>
                         <div class="col-md-4" [style.display]="(selectedPackage == 3) ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Buy</label>
-                                <input type="text" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 3) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Buy">
+                                <input type="number" (change)="onChangeValue($event)" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 3) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder="Buy">
                             </div>
                         </div>
                         <div class="col-md-4" [style.display]="(selectedPackage == 3) ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Get Free</label>
-                                <input type="text" class="form-control full-width" [disabled]="(selectedPackage == 3) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" placeholder="Get Free">
+                                <input type="number" (change)="onChangeValue($event)" formControlName="offertype_two" class="form-control full-width" [disabled]="(selectedPackage == 3) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" placeholder="Get Free">
                             </div>
                         </div>
-                        <div class="col-md-4" [style.display]="(selectedPackage == 4) ? 'block' : 'none'">
+                        
+                    </div>
+                    <div class="row">                       
+                        <div class="col-md-6" [style.display]="(selectedPackage == 4) ? 'block' : 'none'">
                             <div class="form-group">
                                 <label for="inputFirstName">Discount (%)</label>
-                                <input type="text" class="form-control full-width" id="offertype_one" [disabled]="(selectedPackage == 4) ? 'false' : 'true'" formControlName="offertype_one"  [class.form-control-danger]="dealForm.get('offertype_one').invalid && dealForm.get('offertype_one').touched" placeholder=" Discount (%)">
+                                <input type="text"  formControlName="discount" class="form-control full-width"[class.form-control-danger]="dealForm.get('discount').invalid && dealForm.get('discount').touched" placeholder="">
                             </div>
                         </div>
-                        <div class="col-md-4" [style.display]="(selectedPackage == 4) ? 'block' : 'none'">
+                        <div class="col-md-6" [style.display]="(selectedPackage == 4) ? 'block' : 'none'">
                             <div class="form-group">
-                                <label for="inputFirstName">Offer Description</label>
-                                <input type="text" class="form-control full-width" [disabled]="(selectedPackage == 4) ? 'false' : 'true'" [class.form-control-danger]="dealForm.get('offertype_two').invalid && dealForm.get('offertype_two').touched" placeholder="Offer Description">
+                                <label for="inputFirstName">Offer</label>
+                                <input type="text" formControlName="offer" class="form-control full-width" [class.form-control-danger]="dealForm.get('offer').invalid && dealForm.get('offer').touched" placeholder="Offer Description">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+                         <div class="col-md-6" [style.display]="(selectedPackage != 4) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Discount (%)</label>
+                                <input disabled formControlName="discount" type="text" class="form-control full-width"[class.form-control-danger]="dealForm.get('discount').invalid && dealForm.get('discount').touched" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6" [style.display]="(selectedPackage != 4) ? 'block' : 'none'">
+                            <div class="form-group">
+                                <label for="inputFirstName">Offer</label>
+                                <input disabled type="text" formControlName="offer" class="form-control full-width" [class.form-control-danger]="dealForm.get('offer').invalid && dealForm.get('offer').touched" placeholder="Offer Description">
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="offerDeatils">Offer Details</label>
