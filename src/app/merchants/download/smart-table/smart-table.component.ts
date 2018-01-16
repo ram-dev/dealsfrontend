@@ -42,7 +42,7 @@ export class SmartTableComponent {
         filter:false
       },
       created: {
-        title: 'Date',
+        title: 'Download Date',
         type: 'number',
         filter:false,
         valuePrepareFunction: (cell, row) => {          
