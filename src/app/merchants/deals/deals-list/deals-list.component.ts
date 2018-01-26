@@ -30,12 +30,7 @@ export class DealsListComponent {
       delete: false,
       add:false      
     },
-    columns: {
-     name: {
-        title: 'Deal Name',
-        type: 'str',
-        filter:false 
-      },
+    columns: {    
       offerValidFrom: {
         title: 'Start Date',
         type: 'string',
@@ -54,26 +49,35 @@ export class DealsListComponent {
           return raw.toLocaleDateString();          
         },
       },
-      mainCategoryId1: {
+      mainCategoryId: {
         title: 'Category',
         type: 'string',
         filter:false,
-        valuePrepareFunction: (cell, row) => {          
-                  
-          return cell;          
+        valuePrepareFunction: (cell, row) => {
+          return cell.name;          
         },
       },     
       previewDeal:{
         title: 'Preview Deal',
         type: 'html',
-        filter:false 
+        filter:false,
+        valuePrepareFunction: (cell, row) => { return `<a href="/#/merchants/deals/preview/${row._id}" target="_blank">${row.name}</a>` }
       },
       status:{
         title: 'Status',
         type: 'string',
-        filter:false 
+        filter:false,
+        valuePrepareFunction: (cell, row) => {
+          var status = '';
+          if(cell == true){
+            status= "Active";
+          }else{
+            status= "Inactive";
+          }
+          return status;          
+        },
       },
-      actions: //or something
+      actions: 
       {
         title:'Actions',
         type:'html',
