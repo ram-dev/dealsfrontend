@@ -85,9 +85,7 @@ export class DealsListComponent {
           return `<div class="btn-group">
           <a title="Edit" class="btn btn-primary btn-icon" href="/#/merchants/deals/edit/${row._id}"> 
           <i class="nb-edit"></i> 
-          <a title="Add Coupon" class="btn btn-success btn-icon" href="/#/merchants/deals/addcoupon/${row._id}">
-           <i class="nb-plus"></i>
-           </a></div>`
+          </div>`
         },
         filter:false       
       },

@@ -54,7 +54,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="mainCategoryId">Category</label>
-                                <select name="mainCategoryId"  id="mainCategoryId" (change)="onSelectedMainCatChange($event.target.value)" formControlName="mainCategoryId" class="form-control" [class.form-control-danger]="dealForm.get('mainCategoryId').invalid && dealForm.get('mainCategoryId').touched">
+                                <select name="mainCategoryId"  id="mainCategoryId" (change)="onSelectedMainCatChange()" formControlName="mainCategoryId" class="form-control" [class.form-control-danger]="dealForm.get('mainCategoryId').invalid && dealForm.get('mainCategoryId').touched">
                                     <option *ngFor="let category of mainCategoryList" [ngValue]="category._id">
                                       {{ category.name }}
                                     </option>
@@ -225,19 +225,3 @@
         </nb-card>
     </div>
 </div>
-
-
-<!-- <div class="row">
-    <div class="col-md-12">
-        <nb-card class="inline-form-card">
-            <nb-card-header>
-                <div class="row">
-                    <div class="col-sm-12 btn-deals">
-                        <button class="btn btn-success btn-semi-round btn-sm">Save as Draft</button>
-                        <button class="btn btn-success btn-semi-round btn-sm">Go Live</button>
-                    </div>
-                </div>
-            </nb-card-header>
-        </nb-card>
-    </div>
-</div> -->

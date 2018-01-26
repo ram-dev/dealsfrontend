@@ -8,7 +8,7 @@ import { AmenityService } from '../../../@core/data/amenity.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -104,12 +104,12 @@ export class DealsEditComponent {
                   for(var i=0; i< this.merchantData.categoryId.length; i++){
                     var category = this.merchantData.categoryId[i];
                     for(var k =0 ; k < this.categoryList.length; k++){
-                        var cat = this.categoryList[k];
-                        if(category == cat._id && cat.parent == null){
-                          this.mainCategoryList.push(cat);
-                        }else if(category == cat._id && cat.parent != null){
-                          this.subCategoryList.push(cat);
-                        }
+                      var cat = this.categoryList[k];
+                      if(category == cat._id && cat.parent == null){
+                        this.mainCategoryList.push(cat);
+                      }else if(category == cat._id && cat.parent != null){
+                        this.subCategoryList.push(cat);
+                      }
                     }                    
                   }
                   var arrayObj: any = [];
@@ -121,48 +121,54 @@ export class DealsEditComponent {
                     obj.checked = false;
                     arrayObj.push(obj)
                   })
-                  //this.outletIdItems = this.outLetList;
                   this.outletIdItems = arrayObj;
-                  this.imgIdItems = arrayObj;
-                  /*console.log(this.merchantData);
-                  console.log(this.outLetList);
-                  console.log(this.imagesList);
-                  console.log(this.mainCategoryList); 
-                  console.log(this.subCategoryList);   
-                  this.subCategoryitems = this.subCategoryList;*/
-                  this.initForm();
-                  /*this.selectedPackage = 2;
-                  this.dealForm.controls['offertype'].setValue(this.selectedPackage);*/
-                  
-                })
-                     
+                  this.imgIdItems = arrayObj;       
+                  this.amount = this.merchantData.amount;
+                  if(this.dealId){
+                    this.DealType = 'Edit';
+                    this.dealService.getDealByMechantId(this.merchantId, this.dealId)
+                    .subscribe(data => {
+                      var formdata: any = {};
+                      formdata.name = data.name;
+                      formdata.dayAllocationType = data.dayAllocationType;
+                      formdata.discount = data.discount;
+                      formdata.fundAllocation = data.fundAllocation;
+                      formdata.mainCategoryId = data.mainCategoryId._id;
+                      formdata.offer = data.offer;
+                      formdata.offerDeatils = data.offerDeatils;
+                      var datePipe = new DatePipe("en-US");                      
+                      formdata.offerValidFrom = datePipe.transform(data.offerValidFrom, 'yyyy-MM-dd') || '';
+                      formdata.offerValidTo = datePipe.transform(data.offerValidTo, 'yyyy-MM-dd') || '';
+                      formdata.offertype = data.offertype;
+                      formdata.offertype_one = data.offertype_one;
+                      formdata.offertype_two = data.offertype_two;
+                      formdata.terms= data.terms;                                            
+                      this.dealForm.setValue(formdata);
+                      this.onSelectedMainCatChange();
+                    });
+                  }else{
+                    this.initForm();
+                  }
+                })   
             });       
         });
       })
   }
   
-  ngOnInit(){      
+  ngOnInit(){
     this.initForm();
-    if(this.params.id){
-     this.DealType = 'Edit';
-    }    
-    
   }
 
   initForm(){
-
     this.dealForm = new FormGroup({
       'name': new FormControl(null, [Validators.required]),
-      'mainCategoryId': new FormControl(null, [Validators.required]),        
-      'outletIds': new FormControl(null),  
+      'mainCategoryId': new FormControl(null, [Validators.required]),
       'offertype': new FormControl(this.selectedPackage, [Validators.required]),
       'discount': new FormControl(null, [Validators.required]),
       'offer': new FormControl(null, [Validators.required]),
       'offerValidFrom': new FormControl(null, [Validators.required]),
       'offerValidTo': new FormControl(null, [Validators.required]),
-      'terms': new FormControl(null, [Validators.required]),
-      'images': new FormControl(null),
-      'subCategoryIds': new FormControl(null),
+      'terms': new FormControl(null, [Validators.required]),      
       'offertype_one': new FormControl(null, [Validators.required]),
       'offertype_two': new FormControl(null, [Validators.required]), 
       'offerDeatils': new FormControl(null, [Validators.required]), 
@@ -180,9 +186,7 @@ export class DealsEditComponent {
     this.errors = [];
     this.messages = [];
     this.submitted = true;
-    var formData : any  = {};
-    console.log(this.dealForm.value);
-    console.log(this.dealForm);
+    var formData : any  = {};    
     formData = this.dealForm.value;
     if(this.outletIdValues == null || this.outletIdValues == undefined || this.outletIdValues == ''){
       this.errors.push("please select outlet!");
@@ -201,15 +205,31 @@ export class DealsEditComponent {
      formData.images.push(value.value);
     });
     formData.outletIds = []
-    this.outletIdValues.forEach(function (value) {
-      console.log(value);
+    this.outletIdValues.forEach(function (value) {     
      formData.outletIds.push(value.value);
     }); 
     formData.userId = this.userId   
     console.log('final');
     console.log(formData);
     if(this.dealForm.valid){
-      this.dealService.createDeal(formData, this.merchantId).subscribe(
+      if(this.dealId){
+        this.dealService.updateDeal(formData, this.merchantId, this.dealId)
+          .subscribe(
+            (result)=>{
+              this.submitted = false
+              if (result.error) {
+                this.errors.push(result.error);              
+              } else {
+                this.messages.push("Deal successfully updated");                
+              } 
+            },
+            (error) => {
+              this.errors.push(error);
+            }
+          )
+      }else{
+        this.dealService.createDeal(formData, this.merchantId)
+        .subscribe(
             (result) => {
             this.submitted = false
             if (result.error) {
@@ -221,20 +241,20 @@ export class DealsEditComponent {
           error => {         
           this.errors.push(error);
         })
+      }      
     }
   }  
 
   offerChange(){   
     this.dealForm.controls['offertype_one'].setValue(null);
-    this.dealForm.controls['offertype_two'].setValue(null);    
-    console.log('test');
+    this.dealForm.controls['offertype_two'].setValue(null);  
   }
 
   onSelectedChange(){
 
   }
 
-  onSelectedMainCatChange(main){    
+  onSelectedMainCatChange(){       
     var selected : any = this.dealForm.get('mainCategoryId');
     var mainCat = this.mainCategoryList;
     var subCat = this.subCategoryList;
@@ -282,26 +302,26 @@ export class DealsEditComponent {
     );
     var value :any = this.formDataDeal;
     if(value.offertype == '1'){        
-            if(value.offertype_one != null && value.offertype_two != null){
-              value.discount = value.offertype_one;
-              value.offer = 'Flat '+ value.offertype_one +' % discount on '+ value.offertype_two;
-              this.dealForm.patchValue({'discount':value.discount, 'offer': value.offer});              
-            }   
-          }
-          if(value.offertype == '2'){        
-            if(value.offertype_one != null && value.offertype_two != null){             
-              value.discount =(value.offertype_one / value.offertype_two)*100;
-              value.offer = 'Flat Get Rs.'+ value.offertype_one +' Off on a minimum bill of Rs.'+ value.offertype_two;
-              this.dealForm.patchValue({'discount':value.discount, 'offer': value.offer});              
-            }   
-          }
-          if(value.offertype == '3'){        
-            if(value.offertype_one != null && value.offertype_two != null){
-              value.discount =(value.offertype_two / value.offertype_one)*100;
-              value.offer = 'Buy '+value.offertype_one+' Get '+value.offertype_two+' Free';
-              this.dealForm.patchValue({'discount':value.discount, 'offer': value.offer});              
-            }   
-          }
+      if(value.offertype_one != null && value.offertype_two != null){
+        value.discount = value.offertype_one;
+        value.offer = 'Flat '+ value.offertype_one +' % discount on '+ value.offertype_two;
+        this.dealForm.patchValue({'discount':value.discount, 'offer': value.offer});              
+      }   
+    }
+    if(value.offertype == '2'){        
+      if(value.offertype_one != null && value.offertype_two != null){             
+        value.discount =(value.offertype_one / value.offertype_two)*100;
+        value.offer = 'Flat Get Rs.'+ value.offertype_one +' Off on a minimum bill of Rs.'+ value.offertype_two;
+        this.dealForm.patchValue({'discount':value.discount, 'offer': value.offer});              
+      }   
+    }
+    if(value.offertype == '3'){        
+      if(value.offertype_one != null && value.offertype_two != null){
+        value.discount =(value.offertype_two / value.offertype_one)*100;
+        value.offer = 'Buy '+value.offertype_one+' Get '+value.offertype_two+' Free';
+        this.dealForm.patchValue({'discount':value.discount, 'offer': value.offer});              
+      }   
+    }
     event.stopPropagation();
   }
 }
