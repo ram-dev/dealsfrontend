@@ -18,12 +18,12 @@ export class DownloadGraphChartComponent implements AfterViewInit, OnDestroy {
 
   constructor(private theme: NbThemeService) {
 
-    const points = [490, 490, 495, 500, 505, 510, 520, 530, 550, 580, 630,
+    /*const points = [490, 490, 495, 500, 505, 510, 520, 530, 550, 580, 630,
       720, 800, 840, 860, 870, 870, 860, 840, 800, 720, 200, 145, 130, 130,
       145, 200, 570, 635, 660, 670, 670, 660, 630, 580, 460, 380, 350, 340,
       340, 340, 340, 340, 340, 340, 340, 340];
-
-    // const points = [];
+*/
+     const points = [];
     // let pointsCount = 100;
     // let min = -3;
     // let max = 3;

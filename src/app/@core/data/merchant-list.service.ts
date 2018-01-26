@@ -15,6 +15,15 @@ import { ApiService } from './api.service';
 export class MerchantListService {
     constructor( private apiService: ApiService ) { }
 
+    getMerchantStats(merchantId): Observable<any> {
+        return this.apiService.get('merchantstat/'+merchantId)
+            .map((res) => res)
+            .catch((error) => {
+                return error
+            }
+        );
+    }  
+
     getMerchantByMechantId(merchantId): Observable<any> {
         return this.apiService.get('merchant/'+merchantId)
             .map((res) => res)

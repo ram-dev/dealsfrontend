@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Input, OnInit} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
@@ -6,23 +6,22 @@ import { NbThemeService } from '@nebular/theme';
   styleUrls: ['./dealsummary.component.scss'],
   templateUrl: './dealsummary.component.html',
 })
-export class DealSummaryComponent implements OnDestroy {
+export class DealSummaryComponent {
 
-  temperature: number = 24;
-  temperatureOff: boolean = false;
-  temperatureMode = 'cool';
-
-  humidity: number = 87;
-  humidityOff: boolean = false;
-  humidityMode = 'heat';
-
+  @Input() activedeal: string;
+  @Input() inactivedeal: string;
+  dataObj : any =[];
   colors: any;
   themeSubscription: any;
-
+ 
   constructor(private theme: NbThemeService) {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       this.colors = config.variables;
-    });
+    });    
+  }
+
+  OnInit(){
+    
   }
 
   ngOnDestroy() {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
@@ -7,22 +7,28 @@ import { NbThemeService } from '@nebular/theme';
     <chart type="pie" [data]="data" [options]="options"></chart>
   `,
 })
-export class DealSummarychartsPieComponent implements OnDestroy {
-  data: any;
+export class DealSummarychartsPieComponent {
+  data: any;  
+  @Input() parent: any;
   options: any;
   themeSubscription: any;
 
   constructor(private theme: NbThemeService) {
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+   
+  }
 
+  ngOnInit() { 
+    var self = this;
+    var activeDeal = Number(this.parent.activedeal);
+    var inactiveDeal = Number(this.parent.inactivedeal);
+    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
       const colors: any = config.variables;
       const chartjs: any = config.variables.chartjs;
-
       this.data = {
-        labels: ['Active Deals', 'InActive Deals', 'InComplete Deals'],
+        labels: ['Active Deals', 'InActive Deals'],
         datasets: [{
-          data: [300, 500, 100],
-          backgroundColor: [colors.primaryLight, colors.infoLight, colors.successLight],
+          data: [activeDeal, inactiveDeal],
+          backgroundColor: [colors.successLight, colors.primaryLight],
         }],
       };
 
