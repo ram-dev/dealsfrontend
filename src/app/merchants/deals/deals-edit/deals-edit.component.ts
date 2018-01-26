@@ -211,6 +211,7 @@ export class DealsEditComponent {
     formData.userId = this.userId   
     console.log('final');
     console.log(formData);
+    var self = this;
     if(this.dealForm.valid){
       if(this.dealId){
         this.dealService.updateDeal(formData, this.merchantId, this.dealId)
@@ -221,6 +222,9 @@ export class DealsEditComponent {
                 this.errors.push(result.error);              
               } else {
                 this.messages.push("Deal successfully updated");                
+                setTimeout(function () {
+                  self.router.navigate(['/merchants/deals/list']);
+                }, 2000);                 
               } 
             },
             (error) => {
@@ -235,7 +239,10 @@ export class DealsEditComponent {
             if (result.error) {
                 this.errors.push(result.error);              
               } else {
-                this.messages.push("Deal successfully Created");                
+                this.messages.push("Deal successfully Created");
+                setTimeout(function () {
+                  self.router.navigate(['/merchants/deals/list']);
+                }, 2000);             
               }           
           },
           error => {         
