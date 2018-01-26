@@ -70,7 +70,9 @@
                                     <p title="">{{dealSource.outletList.contacts.address}} {{dealSource.outletList.contacts.city}} - {{dealSource.outletList.contacts.zip}} <br/> {{dealSource.outletList.contacts.state}} {{dealSource.outletList.contacts.country}}</p>
                                 </div>                               
                                 <div class="col-md-12">
-                                    <ngx-gmaps [latValue]="dealSource.lat" [lngValue]="dealSource.lng" ></ngx-gmaps>
+                                    <agm-map [latitude]="dealSource.lat" [longitude]="dealSource.lng">
+                                      <agm-marker [latitude]="dealSource.lat" [longitude]="dealSource.lng"></agm-marker>
+                                    </agm-map>                                    
                                 </div>
                             </div>
                         </div>

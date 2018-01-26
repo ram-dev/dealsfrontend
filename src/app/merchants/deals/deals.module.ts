@@ -12,7 +12,6 @@ import { DealsRoutingModule, routedComponents } from './deals-routing.module';
 import { DealsListService } from '../../@core/data/deals-list.service';
 import { TreeviewModule } from 'ngx-treeview';
 import { ShareButtonsModule } from 'ngx-sharebuttons';
-import { GmapsComponent } from '../../home/deals/gmaps/gmaps.component';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { GmapsComponent } from '../../home/deals/gmaps/gmaps.component';
     ShareButtonsModule.forRoot(),
   ],
   declarations: [
-    routedComponents,
-    GmapsComponent,
+    routedComponents,   
   ],
   providers: [
     DealsListService,
