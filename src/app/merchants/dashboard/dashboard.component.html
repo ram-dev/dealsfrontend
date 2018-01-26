@@ -12,12 +12,11 @@
   </div>
 
   <div class="col-xxxl-4 col-md-4">
-    <ngx-status-card title="Total Dowloads" value="{{statsData.total_downloads}}" type="info">
+    <ngx-status-card title="Total Downloads" value="{{statsData.total_downloads}}" type="info">
       <i class="fa fa-download"></i>
     </ngx-status-card>
   </div>  
 </div>
-
 <div class="row" *ngIf="statsData">
   <div class="col-xxxl-4 col-xxl-4 col-lg-5 col-md-6">
     <ngx-dealsummary activedeal="{{statsData.active_deals}}" inactivedeal="{{statsData.inactive_deals}}"></ngx-dealsummary>
