@@ -93,8 +93,8 @@
                                     <td>Saket </td></tr>-->
                                 <tr>
                                     <td valign="top">Address</td>
-                                    <td *ngFor="let outlet of dealSource.outletIds">
-                                        <p title="">{{outlet.contacts.address}} {{outlet.contacts.city}} - {{outlet.contacts.zip}} {{outlet.contacts.state}} {{outlet.contacts.country}}</p>
+                                    <td>
+                                        <p *ngFor="let outlet of dealSource.outletIds" title="">{{outlet.contacts.address}} {{outlet.contacts.city}} - {{outlet.contacts.zip}} {{outlet.contacts.state}} {{outlet.contacts.country}}</p>
                                     </td>
                                 </tr>
                                 <tr>
