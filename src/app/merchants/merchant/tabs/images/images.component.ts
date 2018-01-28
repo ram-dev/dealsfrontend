@@ -21,11 +21,9 @@ export class ImagesComponent {
 
   @ViewChild('fileInput') fileInput: ElementRef; 
 
-  constructor(private fb: FormBuilder, private merchantService : MerchantListService) {
-    
+  constructor(private fb: FormBuilder, private merchantService : MerchantListService, private router: Router) {    
     this.merchantId = sessionStorage.getItem('merchantId');
     this.createForm();    
-
   }
 
   showForm() {
@@ -46,7 +44,8 @@ export class ImagesComponent {
           arr.push(data);          
           this.gallery = arr;
         }       
-        console.log(this.gallery);
+        this.errors =[];
+        this.messages = [];        
       }
     )
   }
@@ -68,6 +67,7 @@ export class ImagesComponent {
   }
 
   onSubmit() {
+    var self = this;
     this.errors =[];
     this.messages = [];
     const formModel = this.form.value;
@@ -85,7 +85,11 @@ export class ImagesComponent {
           if (result.error) {
             this.errors.push(result.error);              
           } else {
-            this.messages.push("image successfully uploaded");                
+            this.messages.push("image successfully uploaded");  
+            setTimeout(function () {               
+                self.gallery = [];
+                self.createForm();
+              }, 1000)              
           }            
         },
         error => {      
