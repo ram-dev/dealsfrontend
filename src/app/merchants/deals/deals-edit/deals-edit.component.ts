@@ -122,7 +122,17 @@ export class DealsEditComponent {
                     arrayObj.push(obj)
                   })
                   this.outletIdItems = arrayObj;
-                  this.imgIdItems = arrayObj;       
+                  var arrayimgObj: any = [];
+                  this.imagesList.forEach(function (value) {
+                    var obj: any = {};
+                    obj.name = value.image.filename;
+                    obj.path = value.path;
+                    obj.text = value.path;
+                    obj.value = value._id;
+                    obj.checked = false;
+                    arrayimgObj.push(obj)
+                  })
+                  this.imgIdItems = arrayimgObj;       
                   this.amount = this.merchantData.amount;
                   if(this.dealId){
                     this.DealType = 'Edit';
