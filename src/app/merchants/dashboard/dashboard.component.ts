@@ -25,7 +25,7 @@ export class DashboardComponent {
   }
 
   ngOnInit() {     
-    this.service.getMerchantStats(this.merchantId)
+    this.service.getMerchantStats()
     .subscribe((result) => {          
       this.statsData = result;
     })
