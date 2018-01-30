@@ -47,6 +47,13 @@ export class DealPreviewComponent implements OnInit {
             text: ''
           })
         }else{
+          for(var i = 0; i < data.images.length;i++ ){
+            this.sliders.push({
+              imagePath: data.images[i].path,
+              label: '',
+              text: ''
+            })
+          }
           console.log('Need to develop');
         }
     });
