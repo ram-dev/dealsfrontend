@@ -27,11 +27,25 @@ export class ApiService {
     return new Headers(headersConfig);
   }
 
+  private setHeadersWithoutToken(): Headers {
+    const headersConfig = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    };    
+    return new Headers(headersConfig);
+  }
+
   private formatErrors(error: any) {
     return Observable.throw(error).catch(err => {       
        return Observable.of(err);
      }
     )
+  }
+
+  getWithoutToken(path: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {
+    return this.http.get(`${environment.apiUrl}${path}`, { headers: this.setHeadersWithoutToken(), search: params })
+    .catch(this.formatErrors)
+    .map((res: Response) => res.json());
   }
 
   get(path: string, params: URLSearchParams = new URLSearchParams()): Observable<any> {

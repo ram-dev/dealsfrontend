@@ -16,6 +16,11 @@
     <div class="logo-containter">       
         <a href="#/auth/register"  class="menu"> Register</a> 
         <a href="#/auth/login" class="menu"> Login</a>  
-        <a class="menu"><i class="fa fa-map-marker"></i> Hyderabad</a>     
+        <a class="menu">
+            <i class="fa fa-map-marker"></i> 
+            <select class="location" [(ngModel)]="city">
+                <option *ngFor="let x of cities" [ngValue]="x.name" [selected]="city == x.name" >{{x.name}}</option>
+            </select>   
+        </a>
     </div>    
 </div>

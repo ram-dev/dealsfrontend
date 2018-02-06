@@ -4,6 +4,7 @@ import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import { UserService } from '../../../@core/data/users.service';
 import { AnalyticsService } from '../../../@core/utils/analytics.service';
 import { NbAuthService, NbAuthJWTToken } from '../../../auth';
+import { GeneralService } from '../../../@core/data/general.service';
 
 
 @Component({
@@ -18,17 +19,28 @@ export class HeaderPublicTopComponent implements OnInit {
 
   user: any;
 
+  cities: any;
+
+  city : any;
+
   userMenu = [{ title: 'Log out' ,link:"/auth/logout"}];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private userService: UserService,
-              private analyticsService: AnalyticsService) {
-
+              private analyticsService: AnalyticsService,
+              private generalService : GeneralService) {
+    //this.cities = [{name: "Delhi"}];
   }
 
   ngOnInit() {
-    
+    this.generalService.getCityALL()
+      .subscribe(
+        data => {
+          this.cities = data;
+          this.city = this.cities[1].name;            
+        }
+      );
    
   }
 

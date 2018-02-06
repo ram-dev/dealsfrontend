@@ -34,6 +34,18 @@
     align-items: center;
     width: 100%;
 
+    select.location{
+      border: 0;
+      background: transparent;
+      color: white;
+      margin-right: 1rem;
+      text-transform: uppercase;
+      font-size: .9rem;
+
+      option {
+        color:black;
+      }
+    }
 
     .navigation {
       padding: .6rem .3rem;

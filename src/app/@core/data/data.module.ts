@@ -11,6 +11,7 @@ import { OutletService } from './outlet.service';
 import { MerchantListService } from './merchant-list.service';
 import { AmenityService } from './amenity.service';
 import { GalleryService } from './gallery.service';
+import { GeneralService } from './general.service';
 
 const SERVICES = [
   ApiService,
@@ -23,6 +24,7 @@ const SERVICES = [
   MerchantListService,
   AmenityService,
   GalleryService,
+  GeneralService,
 ];
 
 @NgModule({
