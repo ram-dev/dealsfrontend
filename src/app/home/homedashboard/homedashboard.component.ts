@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
+import { GeneralService } from '../../@core/data/general.service';
+
 
 @Component({
   selector: 'ngx-dashboard',
@@ -7,11 +9,9 @@ import { AfterViewInit, ViewChild } from '@angular/core';
   templateUrl: './homedashboard.component.html',
 })
 export class HomeDashboardComponent {
-  sliders: Array<any> = [];  
-
-  constructor() {
-      
-    this.sliders.push({
+  sliders: Array<any> = [];
+  constructor(private generalService: GeneralService) {
+   this.sliders.push({
             imagePath: 'assets/images/camera1.jpg',
             label: 'First slide label',
             text: 'First'
@@ -27,7 +27,7 @@ export class HomeDashboardComponent {
     
   }
 
-  ngOnInit(){
+  ngOnInit(){   
     
   }
 }

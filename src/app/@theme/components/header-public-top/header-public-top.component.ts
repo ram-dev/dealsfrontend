@@ -33,12 +33,14 @@ export class HeaderPublicTopComponent implements OnInit {
     //this.cities = [{name: "Delhi"}];
   }
 
-  ngOnInit() {
+  ngOnInit() {   
+     
     this.generalService.getCityALL()
       .subscribe(
         data => {
           this.cities = data;
-          this.city = this.cities[1].name;            
+          this.city = this.cities[0].name;
+          this.generalService.setCityObj(this.city); 
         }
       );
    
@@ -60,5 +62,9 @@ export class HeaderPublicTopComponent implements OnInit {
 
   startSearch() {
     this.analyticsService.trackEvent('startSearch');
+  }
+
+  onChange(event){
+    this.generalService.setCityObj(event.target.value); 
   }
 }

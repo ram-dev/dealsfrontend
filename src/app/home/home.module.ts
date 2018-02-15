@@ -5,6 +5,8 @@ import { HomeDashboardModule } from './homedashboard/homedashboard.module';
 import { DealsCategoryModule } from './deals/deals-category.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
+import { GeneralService } from '../@core/data/general.service';
+
 import {
     NgbCarouselModule,
     NgbAlertModule
@@ -27,7 +29,7 @@ const HOME_COMPONENTS = [
     HOME_COMPONENTS,
   ],
   providers:[
-  
+    GeneralService
   ]
 })
 export class HomeModule {

@@ -13,6 +13,7 @@ import { DealSummarychartsPieComponent } from './dealsummary/dealsummary-chart/d
 import { DownloadGraphComponent } from './downloadgraph/downloadgraph.component';
 import { DownloadGraphChartComponent } from './downloadgraph/downloadgraph-chart/downloadgraph-chart.component';
 import { DealSliderComponent } from './deal-slider/deal-slider.component';
+import { GeneralService } from '../../@core/data/general.service';
 
 
 import {
@@ -41,7 +42,8 @@ import { DataService } from '../deals/dealdata.service';
     DealSliderComponent  
   ],
   providers: [
-    DataService
+    DataService,
+    GeneralService
   ],
 })
 export class HomeDashboardModule { }

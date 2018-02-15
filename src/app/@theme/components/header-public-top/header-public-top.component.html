@@ -18,9 +18,9 @@
         <a href="#/auth/login" class="menu"> Login</a>  
         <a class="menu">
             <i class="fa fa-map-marker"></i> 
-            <select class="location" [(ngModel)]="city">
-                <option *ngFor="let x of cities" [ngValue]="x.name" [selected]="city == x.name" >{{x.name}}</option>
-            </select>   
+            <select class="location" id="city" name="city" (change)="onChange($event)">
+                <option *ngFor="let x of cities" [ngValue]="x.name">{{x.name}}</option>
+            </select>           
         </a>
     </div>    
 </div>

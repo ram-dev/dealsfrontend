@@ -13,8 +13,9 @@ import { ApiService } from './api.service';
 
 @Injectable()
 export class GeneralService {
-    constructor( private apiService: ApiService ) {
-
+    private city: string;
+    constructor( private apiService: ApiService ) {       
+        this.city = '';
     }
     
     getCityALL(): Observable<any> {
@@ -24,6 +25,14 @@ export class GeneralService {
                 return error
             }
         );
+    }
+
+    public setCityObj(val: string): void {
+        this.city = val;
+    }
+
+    public getCityObj(): string {
+        return this.city;
     }
 
 }
