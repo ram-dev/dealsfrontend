@@ -1,13 +1,16 @@
+<div *ngIf="items.length > 0">
 <div ng-multiplecarousel class="slides-wrapper" [items]="items" [width]="sliderWidth" [$prev]="prev" [$next]="next" [$item]="item"></div>
+</div>
 <ng-template #prev>
-    <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+    <span *ngIf="items.length > 4"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></span>
 </ng-template>
 <ng-template #next>
-    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+    <span *ngIf="items.length > 4"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></span>
 </ng-template>
 <ng-template #item let-item let-i="index">    
-    <div class="categoryItem" *ngIf="item.categories.indexOf(catId) > -1">
-        <div class="wrapper" (click)="redirect(item.id)" [class.unavailable]='!item.available'>
+   
+    <div class="categoryItem">
+        <div class="wrapper" (click)="redirect(item.id)">
             <div class="info">
                 <div class="img-wrapper">
                     <img class="img" [src]='item.images[0]'>

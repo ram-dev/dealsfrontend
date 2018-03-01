@@ -4,6 +4,8 @@ import { DataService } from './dealdata.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { FiltersComponent } from './filters/filters.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GeneralService } from '../../@core/data/general.service';
+
 
 @Component({
   selector: 'ngx-deal-category',
@@ -49,7 +51,7 @@ export class DealsCategoryComponent {
   private  sub: any;
 
   constructor(private dataService: DataService, private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router, private generalService : GeneralService) {
 
 
     this.sliders.push({
@@ -65,47 +67,52 @@ export class DealsCategoryComponent {
             label: 'Third slide label',
             text: 'Third'
         });
-         this.sub = this.route.params.subscribe(params => {
-          this.catid = +params['id']; // (+) converts string 'id' to a number
+        this.sub = this.route.params.subscribe(params => {
+          
+          this.catid = params.id // (+) converts string 'id' to a number
         });
   }
 
   ngOnInit(){   
     this.dataService.getData().then(data => {
       this.originalData = data; 
-      let list: any = [];
-      if(this.catid){
-        this.originalData.categories.forEach(element => {
-          if(element.categori_id == this.catid){
-            element.checked = true;
-            list.push(element);
+        this.generalService.getDealsByCity(this.generalService.getCityObj()).subscribe( data => {
+          var itemList = data;
+          this.originalData.deals = itemList;
+          let list: any = [];
+          if(this.catid){
+            this.originalData.categories.forEach(element => {
+              if(element.categori_id == this.catid){
+                element.checked = true;
+                list.push(element);
+              }else{
+                element.checked = false;
+              }
+            });
           }else{
-            element.checked = false;
+            this.originalData.categories.forEach(element => {          
+                element.checked = true;          
+            });
+            list = this.originalData.categories.slice(0);
           }
-        });
-      }else{
-        this.originalData.categories.forEach(element => {          
-            element.checked = true;          
-        });
-        list = this.originalData.categories.slice(0);
-      }
-      
-      this.mainFilter = {
-        search: '',
-        categories: list,
-        customFilter: this.customFilters[0],
-        discountFilter: this.discountFilters[0]
-      }
+          
+          this.mainFilter = {
+            search: '',
+            categories: list,
+            customFilter: this.customFilters[0],
+            discountFilter: this.discountFilters[0]
+          }
 
-      //Make a deep copy of the original data to keep it immutable
-      this.products = this.originalData.deals.slice(0)
-      this.sortProducts('name');
-      //this.filtersComponent.reset(this.customFilters, this.discountFilters)
-      this.updateProducts({
-      type:'category',
-      change: 1
-    })
-      
+          //Make a deep copy of the original data to keep it immutable
+          this.products = this.originalData.deals.slice(0)
+          this.sortProducts('name');
+          //this.filtersComponent.reset(this.customFilters, this.discountFilters)
+          this.updateProducts({
+            type:'category',
+            change: 1
+          })  
+          
+        });            
     })
   }
 
@@ -185,7 +192,7 @@ export class DealsCategoryComponent {
       //Filter by categories
       if(filterAllData || filter.type=='category'){
         let passCategoryFilter = false
-        product.categories.forEach(product_category => {
+        product.mainCategoryId.forEach(product_category => {
           if(!passCategoryFilter){
             passCategoryFilter = this.mainFilter.categories.reduce((found, category) => {
                 return found || product_category == category.categori_id

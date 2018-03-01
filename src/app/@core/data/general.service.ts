@@ -15,7 +15,7 @@ import { ApiService } from './api.service';
 export class GeneralService {
     private city: string;
     constructor( private apiService: ApiService ) {       
-        this.city = '';
+        this.city = 'Delhi';
     }
     
     getCityALL(): Observable<any> {
@@ -33,6 +33,33 @@ export class GeneralService {
 
     public getCityObj(): string {
         return this.city;
+    }
+
+    getDeals():Observable<any> {
+        return this.apiService.getWithoutToken('deal')
+            .map((res) => res)
+            .catch((error) => {
+                return error
+            }
+        );
+    }
+
+    getDealsByCity(city):Observable<any> {      
+        return this.apiService.getWithoutToken('deal?city='+city)
+            .map((res) => res)
+            .catch((error) => {
+                return error
+            }
+        );
+    }
+
+    getDealsByID(dealId):Observable<any> {
+        return this.apiService.getWithoutToken('nondeal/'+dealId)
+            .map((res) => res)
+            .catch((error) => {
+                return error
+            }
+        );
     }
 
 }

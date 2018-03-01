@@ -1,27 +1,27 @@
 export const DATA: any  = {
   "categories": [
     {
-      "categori_id": "1",
+      "categori_id": "5a290b2d539eb0b14cd91d0c",
       "name": "Food & Beverages",
     },
     {
-      "categori_id": "2",
+      "categori_id": "5a290b84539eb0b14cd91d1a",
       "name": "Wellness"
     },
     {
-      "categori_id": "3",
+      "categori_id": "5a290ba6539eb0b14cd91d1f",
       "name": "SPA"
     },
     {
-      "categori_id": "4",
+      "categori_id": "57d900c2df896e82ac1f8548",
       "name": "Entertainment"
     },
     {
-      "categori_id": "5",
+      "categori_id": "5a290c78539eb0b14cd91d37",
       "name": "Travel"
     },
     {
-      "categori_id": "6",
+      "categori_id": "5a290c83539eb0b14cd91d39",
       "name": "E Shopping"
     }
   ],

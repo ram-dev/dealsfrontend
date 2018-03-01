@@ -218,9 +218,8 @@ export class DealsEditComponent {
     this.outletIdValues.forEach(function (value) {     
      formData.outletIds.push(value.value);
     }); 
-    formData.userId = this.userId   
-    console.log('final');
-    console.log(formData);
+    formData.userId = this.userId; 
+   
     var self = this;
     if(this.dealForm.valid){
       if(this.dealId){

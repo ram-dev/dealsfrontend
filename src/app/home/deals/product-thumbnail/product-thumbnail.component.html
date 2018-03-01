@@ -1,4 +1,4 @@
-<div class="wrapper" [class.unavailable]='!product.available'>
+<div class="wrapper" >
     <div class="info">
         <div class="img-wrapper" (click)="redirect(product.id)">
             
@@ -11,7 +11,7 @@
         <h5 class="title">{{product.name}}</h5>
         <p class="price"><span>{{product.discount}}</span> % Discount</p>
         <div class="details">
-            <div class="available" *ngIf='product.available'>
+            <div class="available">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="clearfix">
@@ -21,9 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="not-available" *ngIf='!product.available'>
-                <p>Not available</p>
-            </div>
+           
         </div>
         <!--span class="category-name" *ngFor='let category of product.categories'>{{category}}</span-->
         <div class="detail-view" [class.active]='detailViewActive'>

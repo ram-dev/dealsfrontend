@@ -21,7 +21,7 @@ export class DealPreviewComponent implements OnInit {
    constructor(private activatedRoute: ActivatedRoute, private router: Router, private service: DealsListService) {
     this.merchantId = sessionStorage.getItem('merchantId');
     this.params = this.activatedRoute.snapshot.params;
-    console.log(this.params);
+   
     this.id = this.params.id;
   }
   
@@ -54,7 +54,7 @@ export class DealPreviewComponent implements OnInit {
               text: ''
             })
           }
-          console.log('Need to develop');
+          
         }
     });
   }
