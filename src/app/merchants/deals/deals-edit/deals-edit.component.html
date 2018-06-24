@@ -40,7 +40,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
+                           <div class="form-group">
                                 <label for="name">Deal Name</label>
                                 <input type="text" id="name" formControlName="name" class="form-control" [class.form-control-danger]="dealForm.get('name').invalid && dealForm.get('name').touched">
                                 <span *ngIf="!dealForm.get('name').valid && dealForm.get('name').touched" class="form-text error">                           
@@ -226,9 +226,18 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12">                           
+                            <label class="custom-control custom-checkbox">
+                              <input type="checkbox" [checked]="goliveRequest" class="custom-control-input" value="{{goliveRequest}}" name="goliveRequest" (click)="onChangesGolive()">
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">please Request go live!</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12 btn-deals" style="margin-bottom: 20px;">
-                            <button class="btn btn-success btn-semi-round btn-sm">Save as Draft</button>
-                            <button class="btn btn-success btn-semi-round btn-sm" disabled="true">Go Live</button>
+                            <button class="btn btn-success btn-semi-round btn-sm" [disabled]="golive">Save as Draft</button>
+                            <button class="btn btn-success btn-semi-round btn-sm" [disabled]="!goliveRequest || golive">Go Live</button>
                         </div>
                         <br/>
                     </div>

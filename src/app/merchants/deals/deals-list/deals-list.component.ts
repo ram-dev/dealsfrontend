@@ -77,15 +77,40 @@ export class DealsListComponent {
           return status;          
         },
       },
+      golive:{
+        title: 'Go Live',
+        type: 'string',
+        filter:false,
+        valuePrepareFunction: (cell, row) => {
+          var status = '';
+          if(cell == true){
+            status= "Yes";
+          }else{
+            status= "No";
+          }
+          return status;          
+        },
+      },
       actions: 
       {
         title:'Actions',
         type:'html',
-        valuePrepareFunction:(cell,row)=>{         
-          return `<div class="btn-group">
+        valuePrepareFunction:(cell,row)=>{  
+          var isActive = row.status;
+          var edit = '';
+          console.log(isActive);
+          if(isActive == true){
+            edit =`<div class="btn-group">
+          <a title="Edit" class="btn btn-primary btn-icon disabled" href="/#/merchants/deals/edit/${row._id}"> 
+          <i class="nb-edit"></i> 
+          </div>`;
+          } else{
+            edit = `<div class="btn-group">
           <a title="Edit" class="btn btn-primary btn-icon" href="/#/merchants/deals/edit/${row._id}"> 
           <i class="nb-edit"></i> 
-          </div>`
+          </div>`;
+          }   
+          return edit;
         },
         filter:false       
       },

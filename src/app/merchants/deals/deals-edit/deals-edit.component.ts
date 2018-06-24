@@ -69,6 +69,8 @@ export class DealsEditComponent {
   buttonClass = this.buttonClasses[1];
   formDataDeal :any ={};
   userId: any;
+  golive : any;
+  goliveRequest : any;
   
   constructor(private activatedRoute: ActivatedRoute, private router: Router,
    private dealService: DealsListService,
@@ -83,6 +85,7 @@ export class DealsEditComponent {
     this.merchantService.getMerchantByMechantId(this.merchantId)
       .subscribe((result) => {
         this.merchantData = result;
+
         this.outletService.getAllOutletByMechantId(this.merchantId).subscribe( data => {
             if (data instanceof Array) {         
               this.outLetList = data;
@@ -152,7 +155,9 @@ export class DealsEditComponent {
                       formdata.offertype = data.offertype;
                       formdata.offertype_one = data.offertype_one;
                       formdata.offertype_two = data.offertype_two;
-                      formdata.terms= data.terms;                                            
+                      formdata.terms= data.terms;         
+                      this.goliveRequest = data.golive; 
+                      this.golive = data.status;                                        
                       this.dealForm.setValue(formdata);
                       this.onSelectedMainCatChange();
                     });
@@ -184,6 +189,7 @@ export class DealsEditComponent {
       'offerDeatils': new FormControl(null, [Validators.required]), 
       'fundAllocation': new FormControl(null, [Validators.required]), 
       'dayAllocationType': new FormControl(this.daysType[0]),
+
     });
     
      this.dealForm.statusChanges.subscribe(
@@ -223,6 +229,10 @@ export class DealsEditComponent {
     var self = this;
     if(this.dealForm.valid){
       if(this.dealId){
+        if(this.goliveRequest){          
+          formData.golive = this.goliveRequest;
+        }
+        
         this.dealService.updateDeal(formData, this.merchantId, this.dealId)
           .subscribe(
             (result)=>{
@@ -339,5 +349,9 @@ export class DealsEditComponent {
       }   
     }
     event.stopPropagation();
+  }
+
+  onChangesGolive(){
+    this.goliveRequest = !this.goliveRequest;
   }
 }
