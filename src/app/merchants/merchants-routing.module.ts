@@ -22,6 +22,11 @@ const routes: Routes = [{
     loadChildren: './download/download.module#DownloadModule',
   },
   {
+    path: 'account',
+    canActivate :[AuthGuard],
+    loadChildren: './accounts/accounts.module#AccountsModule',
+  },
+  {
     path: 'profile',
     canActivate :[AuthGuard],
     loadChildren: './profile/profile.module#ProfileModule',

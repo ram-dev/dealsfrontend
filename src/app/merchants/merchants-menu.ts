@@ -39,28 +39,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },  
   {
     title: 'Add Money',
-    icon :'nb-plus-circled'
-  },
-  /*{
-    title: 'Auth',
-    icon: 'nb-locked',
-    children: [
-      {
-        title: 'Login',
-        link: '/auth/login',
-      },
-      {
-        title: 'Register',
-        link: '/auth/register',
-      },
-      {
-        title: 'Request Password',
-        link: '/auth/request-password',
-      },
-      {
-        title: 'Reset Password',
-        link: '/auth/reset-password',
-      },
-    ],
-  },*/
+    icon :'nb-plus-circled',
+    link: '/merchants/account/history'
+  }  
 ];

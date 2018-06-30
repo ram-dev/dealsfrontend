@@ -24,6 +24,15 @@ export class MerchantListService {
         );
     }  
 
+    getMerchantHistory(merchantId): Observable<any> {
+        return this.apiService.get('transaction/'+merchantId)
+            .map((res) => res)
+            .catch((error) => {
+                return error
+            }
+        );
+    } 
+
     getMerchantByMechantId(merchantId): Observable<any> {
         return this.apiService.get('merchant/'+merchantId)
             .map((res) => res)
