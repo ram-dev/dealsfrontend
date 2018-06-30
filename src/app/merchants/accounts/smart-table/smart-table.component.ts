@@ -20,7 +20,18 @@ export class SmartTableComponent {
       edit:false,
       delete: false
     },    
-    columns: {     
+    columns: { 
+      updated: {
+        title: 'Transcation Date',
+        type: 'number',
+        filter:false,
+        valuePrepareFunction: (cell, row) => {          
+          var raw = new Date(cell);         
+          console.log(raw);
+          var date = raw.toLocaleDateString() + ' - '+raw.toLocaleTimeString();
+          return date;
+        },
+      },    
       status: {
         title: 'Status',
         type: 'string',
@@ -40,18 +51,7 @@ export class SmartTableComponent {
         title: 'Info',
         type: 'string',
         filter:false
-      },
-      updated: {
-        title: 'Transcation Date',
-        type: 'number',
-        filter:false,
-        valuePrepareFunction: (cell, row) => {          
-          var raw = new Date(cell);         
-          console.log(raw);
-          var date = raw.toLocaleDateString() + ' - '+raw.toLocaleTimeString();
-          return date;
-        },
-      },
+      },      
     },
   };
   id :any ;
