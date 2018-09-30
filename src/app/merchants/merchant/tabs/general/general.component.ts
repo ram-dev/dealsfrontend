@@ -93,13 +93,15 @@ export class GeneralComponent {
         }
         if(this.generalForm.valid){   
           formData.amenityId = this.selectedAminity;    
+
            this.service.saveMechantGeneral(formData, this.merchantId).subscribe(
             (result) => {
               this.submitted = false
               if (result.error) {
                 this.errors.push(result.error);              
               } else {
-                this.messages.push("General successfully Updated");                
+                this.messages.push("General successfully Updated");  
+                self.router.navigate(['/merchants/merchant/tabs/images']);              
               }            
             },
             error => {         

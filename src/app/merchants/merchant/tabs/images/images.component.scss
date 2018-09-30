@@ -3,6 +3,9 @@
 @import '~@nebular/theme/styles/global/bootstrap/breakpoints';
 
 @include nb-install-component() {
+.gallery_product{
+	position:relative;
+}
  .img-responsive {
     display: inline;
 }
@@ -10,6 +13,15 @@
     border-radius: 6px;
     width:100%;
     height: 12rem;
-    margin-bottom:2rem;
+    margin-bottom:1rem;
 } 
+.btm-small{
+	font-size: 2rem;
+    padding: 0px;
+}
+.delete-img{
+	position: absolute;
+    top: 0;
+    right: .75rem;
+}
 }

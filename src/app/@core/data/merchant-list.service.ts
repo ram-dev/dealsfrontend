@@ -49,6 +49,16 @@ export class MerchantListService {
                 return error
             }
         );
+    }
+
+    deleteMerchantImages(merchantId, imageId): Observable<any> {
+        return this.apiService
+           .delete('merchant/'+merchantId+'/images/'+imageId)
+           .map((res) => res)
+           .catch((error) => {
+                return error
+            }
+        );
     }  
 
     saveMechantGeneral(merchant, merchantId): Observable<any> {

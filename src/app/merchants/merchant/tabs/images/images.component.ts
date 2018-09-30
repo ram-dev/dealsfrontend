@@ -30,6 +30,10 @@ export class ImagesComponent {
     this.isUpload = !(this.isUpload);
   }
 
+  nextTab(){
+    this.router.navigate(['/merchants/merchant/tabs/outlets']); 
+  }
+
   createForm() {
     this.form = this.fb.group({
       merchantId: [this.merchantId],
@@ -89,6 +93,7 @@ export class ImagesComponent {
             setTimeout(function () {               
                 self.gallery = [];
                 self.createForm();
+
               }, 1000)              
           }            
         },
@@ -107,4 +112,17 @@ export class ImagesComponent {
     this.fileInput.nativeElement.value = '';
   }
 
+  deleteImg(id){
+    var self = this;
+    if (window.confirm('Are you sure you want to delete?')) {     
+      this.merchantService.deleteMerchantImages(this.merchantId, id).subscribe( data => {
+        setTimeout(function () {               
+          self.gallery = [];
+          self.createForm();
+        }, 1000);
+      });          
+    } else {      
+      self.router.navigate(['/merchants/merchant/tabs/images']);      
+    }
+  }
 }

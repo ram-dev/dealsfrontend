@@ -8,7 +8,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   template: `
      <div style="margin-bottom:10px;"> 
     <a href="/#/merchants/merchant/outlets/edit" class="btn btn-outline-success btn-sm"><i class="nb-plus"></i> Create Outlets</a>
-   </div>
+    <a href="/#/merchants/merchant/tabs/amenities" class="btn btn-sm btn-hero-success">Save & Next</a>
+   </div>   
     <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table> 
   `,
@@ -92,6 +93,7 @@ export class OutletsComponent {
     }   
    
     this.service.getAllOutletByMechantId(this.id).subscribe( data => {
+
         if (data instanceof Array) {         
           this.source.load(data);
         }else{

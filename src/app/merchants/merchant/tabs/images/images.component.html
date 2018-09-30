@@ -1,6 +1,8 @@
 <div style="text-align: right;margin-bottom: 2rem;">
   <button *ngIf="!isUpload" type="button" class="btn btn-sm btn-info" id="uploadBtn" (click)="showForm()">Upload Image</button>
+  <button *ngIf="gallery" type="button" class="btn btn-sm btn-hero-success" id="imageNext" (click)="nextTab()" >Save & Next</button>
 </div>
+
 <div *ngIf="isUpload"> 
 <button *ngIf="isUpload" type="button" class="close" aria-label="Close" (click)="showForm()">
   <span aria-hidden="true">&times;</span>
@@ -26,7 +28,10 @@
 </div>
 
  <div class="row" *ngIf="gallery">   
-    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe" *ngFor="let item of gallery">
+    <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe" *ngFor="let item of gallery">      
         <img [src]="item.path" class="img-rounded img-responsive">
+        <div class="delete-img">
+          <button class="btn btn-info btn-icon btm-small" type="button" (click)="deleteImg(item._id.toString())"><i class="nb-trash"></i></button>
+        </div>
     </div>
-</div>
+</div> 
