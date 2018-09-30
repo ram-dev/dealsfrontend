@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
 
 import { LocalDataSource } from 'ng2-smart-table';
 import { DealsListService } from '../../../@core/data/deals-list.service';
@@ -13,6 +13,28 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./deals-list.component.scss']  
 })
 export class DealsListComponent {
+
+  
+  source: LocalDataSource = new LocalDataSource();
+  id :any ;
+  params :any;
+ 
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private service: DealsListService, private elementRef:ElementRef) {
+    this.id = sessionStorage.getItem('merchantId');
+    this.params = this.activatedRoute.snapshot.params;
+    this.service.getAllDealByMechantId(this.id).subscribe( data => {
+        if (data instanceof Array) {         
+          this.source.load(data);
+        }else{
+          var arr = [];
+          arr.push(data);          
+          this.source.load(arr);
+        }        
+    });    
+    //get merchant details check main category is required and minmum onr outlet and one image
+  }
+
+  
 
   settings = {   
     actions: {
@@ -87,19 +109,21 @@ export class DealsListComponent {
         type:'html',
         valuePrepareFunction:(cell,row)=>{  
           var isActive = row.status;
-          var edit = '';
-          console.log(isActive);
+          var isGolive = row.golive;
+          var edit = '<div class="btn-group">';
+          //console.log(isActive);
           if(isActive == true){
-            edit =`<div class="btn-group">
-          <a title="Edit" class="btn btn-primary btn-icon disabled btn-sm" href="/#/merchants/deals/edit/${row._id}"> 
-          <i class="nb-edit"></i> 
-          </div>`;
+            edit +=`<a title="Edit" class="btn btn-primary btn-tn btn-small disabled btn-sm" href="/#/merchants/deals/edit/${row._id}"><i class="nb-edit"></i></a>`;
           } else{
-            edit = `<div class="btn-group">
-          <a title="Edit" class="btn btn-primary btn-tn red" href="/#/merchants/deals/edit/${row._id}"> 
-          <i class="nb-edit"></i> 
-          </div>`;
+            edit +=`<a title="Edit" class="btn btn-primary btn-tn btn-small" href="/#/merchants/deals/edit/${row._id}"><i class="nb-edit"></i></a>`;            
+            
           }   
+          if(isGolive == true || isActive == true){
+            edit +=`<a title="delete" class="btn btn-primary btn-tn btn-small disabled"><i class="nb-trash"></i></a>`;
+          }else{
+            edit +=`<a title="delete" class="btn btn-primary btn-tn btn-small btn-delete" href="/#/merchants/deals/delete/${row._id}"><i class="nb-trash"></i></a>`;
+          }          
+          edit+= '</div>';
           return edit;
         },
         filter:false       
@@ -107,23 +131,8 @@ export class DealsListComponent {
     },
   };
 
-  source: LocalDataSource = new LocalDataSource();
-  id :any ;
-  params :any;
- 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private service: DealsListService) {
-    this.id = sessionStorage.getItem('merchantId');
-    this.params = this.activatedRoute.snapshot.params;
-    this.service.getAllDealByMechantId(this.id).subscribe( data => {
-        if (data instanceof Array) {         
-          this.source.load(data);
-        }else{
-          var arr = [];
-          arr.push(data);          
-          this.source.load(arr);
-        }        
-    });    
-    //get merchant details check main category is required and minmum onr outlet and one image
+  onDeleteDeal(event){
+    alert('gg');
   }
 
   onDeleteConfirm(event): void {
@@ -133,4 +142,5 @@ export class DealsListComponent {
       event.confirm.reject();
     }
   }
+  
 }
