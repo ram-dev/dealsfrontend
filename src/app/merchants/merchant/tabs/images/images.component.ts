@@ -8,7 +8,7 @@ import { MerchantListService } from '../../../../@core/data/merchant-list.servic
 @Component({
   selector: 'ngx-merchant-images',
   templateUrl: './images.component.html',
-   styleUrls: ['./images.component.scss'],
+  styleUrls: ['./images.component.scss'],
 })
 export class ImagesComponent { 
   form: FormGroup;

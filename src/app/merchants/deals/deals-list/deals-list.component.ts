@@ -10,17 +10,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'ngx-deals-list',
   templateUrl: './deals-list.component.html',
-  styles: [`
-    nb-card {
-      transform: translate3d(0, 0, 0);
-    }
-    nb-card-body{
-      tr.ng2-smart-filters th{
-        padding:0;
-      }
-    } 
-
-  `],
+  styleUrls: ['./deals-list.component.scss']  
 })
 export class DealsListComponent {
 
@@ -101,12 +91,12 @@ export class DealsListComponent {
           console.log(isActive);
           if(isActive == true){
             edit =`<div class="btn-group">
-          <a title="Edit" class="btn btn-primary btn-icon disabled" href="/#/merchants/deals/edit/${row._id}"> 
+          <a title="Edit" class="btn btn-primary btn-icon disabled btn-sm" href="/#/merchants/deals/edit/${row._id}"> 
           <i class="nb-edit"></i> 
           </div>`;
           } else{
             edit = `<div class="btn-group">
-          <a title="Edit" class="btn btn-primary btn-icon" href="/#/merchants/deals/edit/${row._id}"> 
+          <a title="Edit" class="btn btn-primary btn-tn red" href="/#/merchants/deals/edit/${row._id}"> 
           <i class="nb-edit"></i> 
           </div>`;
           }   
