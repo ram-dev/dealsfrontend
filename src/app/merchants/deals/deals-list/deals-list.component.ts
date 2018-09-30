@@ -113,10 +113,9 @@ export class DealsListComponent {
           var edit = '<div class="btn-group">';
           //console.log(isActive);
           if(isActive == true){
-            edit +=`<a title="Edit" class="btn btn-primary btn-tn btn-small disabled btn-sm" href="/#/merchants/deals/edit/${row._id}"><i class="nb-edit"></i></a>`;
+            edit +=`<a title="Edit active deal" class="btn btn-primary btn-tn btn-small btn-sm" href="/#/merchants/deals/activedealedit/${row._id}"><i class="nb-edit"></i></a>`;
           } else{
             edit +=`<a title="Edit" class="btn btn-primary btn-tn btn-small" href="/#/merchants/deals/edit/${row._id}"><i class="nb-edit"></i></a>`;            
-            
           }   
           if(isGolive == true || isActive == true){
             edit +=`<a title="delete" class="btn btn-primary btn-tn btn-small disabled"><i class="nb-trash"></i></a>`;

@@ -12,11 +12,11 @@ import { DatePipe } from '@angular/common';
 
 
 @Component({
-  selector: 'ngx-deals-edit',
-  templateUrl: './deals-edit.component.html',  
-  styleUrls: ['./deals-edit.component.scss']  
+  selector: 'ngx-deals-edit-some',
+  templateUrl: './deals-edit-some.component.html',  
+  styleUrls: ['./deals-edit-some.component.scss']  
 })
-export class DealsEditComponent {
+export class DealsEditSomeComponent {
   private params;
   selectedPackage = '1';
   DealType = 'Create';
@@ -204,28 +204,11 @@ export class DealsEditComponent {
     this.submitted = true;
     var formData : any  = {};    
     formData = this.dealForm.value;
-    if(this.outletIdValues == null || this.outletIdValues == undefined || this.outletIdValues == ''){
-      this.errors.push("please select outlet!");
-      this.submitted = false;
-    }
-    if(this.imagesValues == null || this.imagesValues == undefined || this.imagesValues == ''){
-      this.errors.push("please select Image!");
-      this.submitted = false;
-    }
-    formData.subCategoryIds = []
-    this.subCategoryValues.forEach(function (value) {
-     formData.subCategoryIds.push(value._id);
-    });
-    formData.images = []
-    this.imagesValues.forEach(function (value) {
-     formData.images.push(value.value);
-    });
-    formData.outletIds = []
-    this.outletIdValues.forEach(function (value) {     
-     formData.outletIds.push(value.value);
-    }); 
+    formData.allfields = false;
+    console.log(formData);
+    
     formData.userId = this.userId; 
-    formData.allfields = true;
+   
     var self = this;
     if(this.dealForm.valid){
       if(this.dealId){
@@ -269,6 +252,7 @@ export class DealsEditComponent {
         })
       }      
     }
+    
   }  
 
   offerChange(){   

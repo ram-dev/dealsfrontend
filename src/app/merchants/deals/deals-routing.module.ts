@@ -5,7 +5,7 @@ import { DealsComponent } from './deals.component';
 import { DealsListComponent } from './deals-list/deals-list.component';
 import { DealsEditComponent } from './deals-edit/deals-edit.component';
 import { DealPreviewComponent } from './deals-preview/deals-preview.component';
-
+import { DealsEditSomeComponent } from './deals-edit-some/deals-edit-some.component';
 
 
 const routes: Routes = [{
@@ -20,6 +20,9 @@ const routes: Routes = [{
   },{
     path: 'edit/:id',
     component: DealsEditComponent,
+  },{
+    path: 'activedealedit/:id',
+    component: DealsEditSomeComponent,
   },{
     path: 'preview/:id',
     component : DealPreviewComponent
@@ -36,5 +39,6 @@ export const routedComponents = [
   DealsComponent,
   DealsListComponent,
   DealsEditComponent,
-  DealPreviewComponent
+  DealPreviewComponent,
+  DealsEditSomeComponent
 ];
